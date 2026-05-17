@@ -1,273 +1,295 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mental Health Frontline — Login</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <title>Practitioner Portal | Mental Health Frontline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Tajawal', sans-serif; background-color: #cee3f8; }
+        .bg-navy { background-color: #154e86; }
+        .text-navy { color: #0F3963; }
+        .btn-action { background-color: #1A63AD; transition: 0.3s; }
+        .btn-action:hover { background-color: #0F3963; transform: translateY(-1px); }
 
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: #f0f7ff;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            overflow: hidden;
-            position: relative;
+        .card-animate {
+            animation: cardEntrance 0.85s cubic-bezier(0.16,1,0.3,1) both;
+        }
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(40px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        .glow-point {
-            position: absolute;
+        .slide-left { animation: slideLeft 0.85s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+        @keyframes slideLeft {
+            from { opacity: 0; transform: translateX(-25px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-right { animation: slideRight 0.85s cubic-bezier(0.16,1,0.3,1) 0.15s both; }
+        @keyframes slideRight {
+            from { opacity: 0; transform: translateX(25px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .fade-down-1 { animation: fadeDown 0.6s ease 0.40s both; }
+        .fade-down-2 { animation: fadeDown 0.6s ease 0.55s both; }
+        .fade-down-3 { animation: fadeDown 0.6s ease 0.70s both; }
+        .fade-down-4 { animation: fadeDown 0.6s ease 0.85s both; }
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-up-1 { animation: fadeUp 0.5s ease 0.50s both; }
+        .fade-up-2 { animation: fadeUp 0.5s ease 0.60s both; }
+        .fade-up-3 { animation: fadeUp 0.5s ease 0.70s both; }
+        .fade-up-4 { animation: fadeUp 0.5s ease 0.80s both; }
+        .fade-up-5 { animation: fadeUp 0.5s ease 0.90s both; }
+        .fade-up-6 { animation: fadeUp 0.5s ease 1.00s both; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .deco-circle {
+            position: absolute; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 7px; height: 7px;
+            border-radius: 50%; background: #2ecc71;
+            vertical-align: middle;
+            animation: blink 2s ease infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.2; }
+        }
+
+        .progress-bar {
+            height: 2px; background: #e2eaf3;
+            border-radius: 2px; overflow: hidden;
+            margin-bottom: 1.25rem;
+        }
+        .progress-fill {
+            height: 100%; width: 0%;
+            background: #1A63AD; border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+
+        .field-input:focus {
+            box-shadow: 0 0 0 3px rgba(26,99,173,0.12);
+        }
+
+        .btn-action { position: relative; overflow: hidden; }
+        .btn-action::before {
+            content: '';
+            position: absolute; top: 50%; left: 50%;
+            width: 0; height: 0;
+            background: rgba(255,255,255,0.15);
             border-radius: 50%;
-            filter: blur(80px);
-            z-index: 0;
-            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
         }
-        .glow-1 { width: 400px; height: 400px; background: rgba(59, 130, 246, 0.15); top: 20%; left: 30%; }
-        .glow-2 { width: 150px; height: 150px; background: rgba(59, 130, 246, 0.3); top: 30%; left: 10%; filter: blur(40px); }
-        .glow-3 { width: 250px; height: 250px; background: rgba(59, 130, 246, 0.12); bottom: 10%; right: 15%; }
-        .glow-4 { width: 300px; height: 300px; background: #ffffff; top: 10%; right: 10%; opacity: 0.5; }
+        .btn-action:hover::before { width: 500px; height: 500px; }
 
-        .card {
-            background: #ffffff;
-            border-radius: 32px;
-            padding: 20px 40px 30px;
-            width: 100%;
-            max-width: 420px;
-            box-shadow: 0 25px 60px rgba(30, 58, 138, 0.08);
-            position: relative;
-            margin-top: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            z-index: 10;
-        }
-
-        .logo-box {
-            position: absolute;
-            top: -120px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 220px;
-            z-index: 20;
-            display: flex;
-            justify-content: center;
-        }
-        .logo-box img {
-            width: 100%;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.12));
-            transition: transform 0.4s ease;
-        }
-        .logo-box:hover img { transform: scale(1.05); }
-
-        .logo-title {
-            font-family: 'Montserrat', sans-serif;
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            text-transform: uppercase;
+        /* الجانب الأزرق */
+        .left-panel {
+            background-color: #154e86;
             display: flex;
             flex-direction: column;
-            align-items: center;
-        }
-        .logo-title .main-brand {
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, #1e3a8a, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .logo-title .sub-brand {
-            font-size: 14px;
-            font-weight: 400;
-            letter-spacing: 6px;
-            color: #64748b;
-            margin-top: 2px;
-            margin-right: -6px;
-        }
-
-        .welcome {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 25px;
-        }
-
-        .field { margin-bottom: 15px; }
-        .field label {
-            display: block;
-            text-align: left;
-            font-size: 13.5px;
-            font-weight: 600;
-            color: #475569;
-            margin-bottom: 6px;
-        }
-
-        .input-wrap {
+            justify-content: space-between;
+            padding: 10px 26px;
             position: relative;
-            display: flex;
-            align-items: center;
-        }
-        .input-wrap input {
-            width: 100%;
-            padding: 12px 15px 12px 45px;
-            border: 1.5px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 15px;
-            background: #f8fafc;
-            outline: none;
-            transition: all 0.2s;
-        }
-        .input-wrap input:focus {
-            border-color: #184B89;
-            background: #fff;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.08);
+            overflow: hidden;
         }
 
-        /* حقل فيه خطأ */
-        .input-wrap input.is-error {
-            border-color: #ef4444;
-            background: #fff5f5;
+        .logo-circle {
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 1.5px solid rgba(255,255,255,0.2);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
         }
 
-        .icon-side {
-            position: absolute;
-            left: 14px;
-            color: #184B89;
-            opacity: 0.8;
-            display: flex;
-            align-items: center;
-        }
-
-        .toggle-pass {
-            position: absolute;
-            right: 14px;
-            background: none;
+        .panel-divider {
             border: none;
-            cursor: pointer;
-            color: #94a3b8;
+            border-top: 0.5px solid rgba(255,255,255,0.12);
+            margin: 28px 0;
+        }
+
+        .quote-block {
+            border-left: 3px solid #e74c3c;
+            padding-left: 14px;
+        }
+
+        .security-block {
+            background: rgba(255,255,255,0.06);
+            border: 0.5px solid rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 16px 18px;
             display: flex;
-            align-items: center;
+            gap: 14px;
+            align-items: flex-start;
+            margin-top: 24px;
         }
+        @keyframes custom-pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
 
-        /* رسالة الخطأ تحت الحقل */
-        .error-msg {
-            color: #ef4444;
-            font-size: 12px;
-            margin-top: 5px;
-            display: block;
-        }
-
-        .forgot { text-align: right; margin-top: -8px; margin-bottom: 20px; }
-        .forgot a { font-size: 12.5px; color: #184B89; text-decoration: none; font-weight: 600; }
-
-        .btn-login {
-            width: 100%;
-            padding: 14px;
-            background: #184B89;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-family: 'Tajawal';
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-            transition: 0.3s;
-        }
-        .btn-login:hover { transform: translateY(-1px); }
-        .btn-login:disabled { opacity: 0.7; cursor: not-allowed; }
+.real-pulse {
+    animation: custom-pulse 2s infinite;
+}
     </style>
 </head>
-<body>
+<body class="min-h-screen flex items-center justify-center p-4">
 
-    <div class="glow-point glow-1"></div>
-    <div class="glow-point glow-2"></div>
-    <div class="glow-point glow-3"></div>
-    <div class="glow-point glow-4"></div>
+    <div class="max-w-4xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row card-animate">
 
-    <div class="card">
-        <div class="logo-box">
-            <img src="{{ asset('reachout/img/logo2.png') }}" alt="Mental Health Logo">
-        </div>
+        <!-- ===== الجانب الأزرق ===== -->
+        <div class="md:w-1/2 left-panel text-white slide-left">
 
-        <div class="logo-title">
-            <span class="main-brand">Mental Health</span>
-            <span class="sub-brand">Frontline</span>
-        </div>
+            <!-- دوائر زخرفية -->
+            <div class="deco-circle" style="width:220px;height:220px;bottom:-70px;left:-70px;"></div>
+            <div class="deco-circle" style="width:130px;height:130px;top:-35px;right:-35px;"></div>
 
-        <div class="welcome">Welcome Back!</div>
+            <!-- المحتوى الرئيسي -->
+            <div class="relative z-10 flex flex-col items-center justify-center h-full">
 
-        {{-- ✅ action يروح للـ LoginController --}}
-        <form action="{{ route('login.post') }}" method="POST">
-            @csrf
-
-            <div class="field">
-                <label>Email Address</label>
-                <div class="input-wrap">
-                    <span class="icon-side">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    </span>
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="dr.ahmed@mhfrontline.com"
-                        value="{{ old('email') }}"
-                        class="{{ $errors->has('email') ? 'is-error' : '' }}"
-                        required
-                    >
+                <!-- اللوقو + الاسم -->
+                <div class="fade-down-1" style="display:flex; align-items:center; gap:14px; padding-bottom:28px; border-bottom:0.5px solid rgba(255,255,255,0.12); margin-bottom:28px;">
+                    <div class="logo-circle">
+                        <div class="logo-circle real-pulse">
+                        <img src="{{ asset('reachout/img/logogrope.png') }}" alt="Logo" style="width:200px; height:200px; object-fit:contain;">
+                   </div>
+                    </div>
+  
                 </div>
-                {{-- رسالة خطأ الإيميل --}}
-                @error('email')
-                    <span class="error-msg">{{ $message }}</span>
-                @enderror
+
+                      <div class="text-center">
+        <h1 class="text-2xl font-bold tracking-tight text-white mb-2">Mental Health Frontline</h1>
+        <p class="text-lg text-white/70 font-light ">The Expert’s Hub for Mental Health Frontliners</p>
+    </div>
             </div>
 
-            <div class="field">
-                <label>Password</label>
-                <div class="input-wrap">
-                    <span class="icon-side">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    </span>
-                    <input
-                        type="password"
-                        name="password"
-                        id="passwordInput"
-                        placeholder="••••••••••"
-                        class="{{ $errors->has('password') ? 'is-error' : '' }}"
-                        required
-                    >
-                    <button type="button" class="toggle-pass" onclick="togglePassword()">
-                        <svg id="eyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <!-- شريط الحالة السفلي -->
+        <div class="relative z-10 fade-down-4 flex items-center justify-center gap-2 mt-auto pb-4">
+            <span class="status-dot"></span>
+            <span style="font-size:10px; color:rgba(255,255,255,0.35); letter-spacing:2px; text-transform:uppercase;">Authorized Practitioner Access Only</span>
+        </div>
+
+        </div>
+
+        <!-- ===== الجانب الأيمن: الفورم ===== -->
+        <div class="md:w-1/2 p-8 md:p-12 slide-right">
+            <div class="mb-8 fade-up-1">
+                <h2 class="text-2xl font-bold">Welcome Back !</h2>
+                <p class="text-gray-500 text-sm mt-1">Please enter your credentials to access the dashboard.</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <form action="{{ route('login.post') }}" method="POST" class="space-y-5">
+                @csrf
+
+                <div class="fade-up-2">
+                    <label class="block text-xs font-bold text-gray-800 uppercase tracking-wider mb-2">Professional Email</label>
+                    <input type="email" name="email"
+                           value="{{ old('email') }}"
+                           placeholder="doctor@mhfrontline.com"
+                           oninput="updateProgress()"
+                           class="field-input w-full px-4 py-3 rounded-xl border {{ $errors->has('email') ? 'border-red-500' : 'border-gray-200' }} focus:outline-none focus:border-navy transition-all" required>
+                    @error('email')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="fade-up-3">
+                    <div class="flex justify-between mb-2">
+                        <label class="block text-xs font-bold text-gray-800 uppercase tracking-wider">Password</label>
+                        <a href="#" class="text-xs text-navy font-bold hover:underline">Forgot?</a>
+                    </div>
+                    <div class="relative">
+                        <input type="password" name="password" id="passwordInput"
+                               placeholder="••••••••••"
+                               oninput="updateProgress()"
+                               class="field-input w-full px-4 py-3 rounded-xl border {{ $errors->has('password') ? 'border-red-500' : 'border-gray-200' }} focus:outline-none focus:border-navy transition-all" required>
+                        <button type="button" onclick="togglePassword()" class="absolute right-3 top-3 text-gray-400 hover:text-navy">
+                            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </button>
+                    </div>
+                    @error('password')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="flex items-center fade-up-4">
+                    <input type="checkbox" name="remember" id="remember" class="w-4 h-4 rounded text-navy focus:ring-navy border-gray-300">
+                    <label for="remember" class="ml-2 text-sm text-gray-800">Keep me logged in</label>
+                </div>
+
+                <div class="fade-up-5">
+                    <button type="submit" class="w-full btn-action text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all uppercase tracking-widest text-sm">
+                        Secure Login
                     </button>
                 </div>
-                {{-- رسالة خطأ كلمة المرور --}}
-                @error('password')
-                    <span class="error-msg">{{ $message }}</span>
-                @enderror
+            </form>
+
+            <div class="mt-10 pt-6 border-t border-gray-50 fade-up-6">
+                <div class="flex items-center justify-center gap-2 text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    <span class="text-[10px] uppercase tracking-tighter">End-to-End Encrypted System</span>
+                </div>
             </div>
+        </div>
 
-            <div class="forgot"><a href="#">Forgot Password?</a></div>
-
-            <button type="submit" class="btn-login">Login</button>
-        </form>
     </div>
 
     <script>
         function togglePassword() {
             const input = document.getElementById('passwordInput');
-            input.type = input.type === 'password' ? 'text' : 'password';
+            const icon  = document.getElementById('eyeIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" />';
+            } else {
+                input.type = 'password';
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />';
+            }
+        }
+
+        function updateProgress() {
+            const email = document.querySelector('input[name="email"]').value;
+            const pass  = document.getElementById('passwordInput').value;
+            let pct = 0;
+            if (email.length > 3) pct += 50;
+            if (pass.length  > 4) pct += 50;
+            document.getElementById('progressFill').style.width = pct + '%';
         }
     </script>
-
 </body>
 </html>

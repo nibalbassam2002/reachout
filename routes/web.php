@@ -4,6 +4,8 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Doctor\DashboardController as DoctorDashboard;
+use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 // ─────────────────────────────────────────
@@ -14,6 +16,17 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 });
+Route::get('/home', function () {
+    return view('frontend.index'); // تأكد أن الاسم يطابق اسم المجلد والملف
+});
+Route::get('/news', [NewsController::class, 'index'])->name('news');
+ 
+Route::get('/policies', function () {
+    return view('frontend.policies');
+})->name('policies');
+Route::get('/donate-now', function () {
+    return view('frontend.donate'); // تأكد من اسم المجلد والملف
+})->name('donate.page');
 
 // ─────────────────────────────────────────
 // AUTH ROUTES — يحتاج تسجيل دخول
@@ -29,6 +42,7 @@ Route::middleware('auth')->group(function () {
          ->name('admin.')
          ->group(function () {
              Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+             Route::resource('doctors', DoctorController::class);
          });
 
     // Doctor فقط
@@ -40,5 +54,6 @@ Route::middleware('auth')->group(function () {
          });
 });
 
-// الصفحة الرئيسية → توجيه للـ login
-Route::get('/', fn() => redirect()->route('login'));
+Route::get('/', function () {
+    return view('frontend.index');
+})->name('home');

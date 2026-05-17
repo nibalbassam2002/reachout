@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{asset('reachout/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('reachout/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{asset('reachout/img/logogrope.png')}}" rel="icon">
+  <link href="{{asset('reachout/img/logo3.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -54,6 +54,24 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('reachout/js/main.js')}}"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+    });
+
+    @if(session('success'))
+        Toast.fire({
+            icon: 'success',
+            title: "{{ session('success') }}"
+        });
+    @endif
+</script>
   @yield('scripts')
 
 </body>

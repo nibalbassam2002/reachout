@@ -3,7 +3,7 @@
 
   <div class="d-flex align-items-center justify-content-between">
     <a href="{{ route('admin.dashboard') }}" class="logo d-flex align-items-center">
-      <img src="{{ asset('reachout/img/logo.png') }}" alt="">
+      <img src="{{ asset('reachout/img/logo5.png') }}" alt="">
     </a>
     <i class="bi bi-list toggle-sidebar-btn"></i>
   </div>
