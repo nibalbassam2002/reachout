@@ -231,7 +231,7 @@
                 </div>
             </div>
             <p class="bridge-desc reveal" style="transition-delay: 0.1s;">Every donation ensures the continuity of professional psychological support for children in conflict zones.</p>
-            <a href="#" class="donate-btn-large reveal" style="transition-delay: 0.2s;">Donate Now</a>
+            <a href="#" class="hero-btn reveal" style="transition-delay: 0.2s;">Donate Now</a>
             <p class="bridge-footer-text reveal" style="transition-delay: 0.3s;">Your generosity is the bridge between trauma and recovery</p>
         </div>
     </section>
@@ -244,29 +244,31 @@
                 <p class="ps-sub">We welcome collaboration with donors, grant officers, and partner organizations who share our commitment.</p>
             </div>
             <div class="ps-body">
-                <div class="partners-form-card reveal" style="transition-delay: 0.15s;">
-                    <form action="#">
-                        <div class="form-row">
-                            <input type="text" placeholder="First Name*" required>
-                            <input type="text" placeholder="Last Name*" required>
-                        </div>
-                        <input type="email" placeholder="Email*" required>
-                        <input type="tel" placeholder="Phone Number*">
-                        <textarea placeholder="Your message..."></textarea>
-                        <button type="submit" class="btn-send">Send Message</button>
-                    </form>
-                </div>
-                <div class="partners-content reveal-right" style="transition-delay: 0.25s;">
-                    <h2>Let's build something meaningful together.</h2>
-                    <p>Please use the form to connect with us regarding funding opportunities, partnerships, or joint initiatives.</p>
-                    <p>Our team will review your inquiry promptly and respond with the relevant information to move forward efficiently.</p>
-                    <div class="ps-features">
-                        <div class="ps-feature"><div class="ps-feature-dot"></div><span>Funding & grant collaboration opportunities</span></div>
-                        <div class="ps-feature"><div class="ps-feature-dot"></div><span>Joint mental health initiatives in conflict zones</span></div>
-                        <div class="ps-feature"><div class="ps-feature-dot"></div><span>Organizational partnerships & program support</span></div>
-                    </div>
-                </div>
+    <!-- النص أولاً -->
+    <div class="partners-content reveal-right" style="transition-delay: 0.25s;">
+        <h2>Let's build something meaningful together.</h2>
+        <p>Please use the form to connect with us regarding funding opportunities, partnerships, or joint initiatives.</p>
+        <p>Our team will review your inquiry promptly and respond with the relevant information to move forward efficiently.</p>
+        <div class="ps-features">
+            <div class="ps-feature"><div class="ps-feature-dot"></div><span>Funding & grant collaboration opportunities</span></div>
+            <div class="ps-feature"><div class="ps-feature-dot"></div><span>Joint mental health initiatives in conflict zones</span></div>
+            <div class="ps-feature"><div class="ps-feature-dot"></div><span>Organizational partnerships & program support</span></div>
+        </div>
+    </div>
+    <!-- الفورم ثانياً -->
+    <div class="partners-form-card reveal" style="transition-delay: 0.15s;">
+        <form action="#">
+            <div class="form-row">
+                <input type="text" placeholder="First Name*" required>
+                <input type="text" placeholder="Last Name*" required>
             </div>
+            <input type="email" placeholder="Email*" required>
+            <input type="tel" placeholder="Phone Number*">
+            <textarea placeholder="Your message..."></textarea>
+            <button type="submit" class="btn-send">Send Message</button>
+        </form>
+    </div>
+</div>
         </div>
     </section>
 

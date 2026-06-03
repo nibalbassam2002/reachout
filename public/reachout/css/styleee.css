@@ -17,8 +17,40 @@
             --section-subtitle-size: 22px;
             --section-subtitle-mb: 40px;
         }
+html {
+    overflow-x: hidden;
+    max-width: 100%;
+}
 
-        body { font-family: 'Nunito', sans-serif; color: var(--text); overflow-x: hidden; }
+body {
+    overflow-x: hidden;
+    max-width: 100%;
+    position: relative;
+    font-family: 'Nunito', sans-serif; color: var(--text);
+}
+/* في أول ملف الـ CSS */
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* إصلاح الـ hero */
+.hero-section {
+    height: calc(100vh - 64px);  /* بدل 100vh */
+    margin-top: 64px;
+}
+.hero-section {
+    /* كل الكود الأصلي + */
+    overflow: hidden; /* ← هاد بس الجديد */
+}
+.main-header {
+    overflow: hidden; /* ← أضف هاد */
+}
+
+.nav-logo {
+    margin-left: 0; /* ← بدل -30px */
+}
+       
 
         /* ══════════════════════════════════════
            SCROLL REVEAL
@@ -74,10 +106,10 @@
             to   { opacity: 1; transform: translateX(0); }
         }
         .nav-logo {
-            display: flex; align-items: center; gap: 10px; text-decoration: none;
-            flex-shrink: 0; margin-left: -30px;
-            animation: logoSlideIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
-        }
+        display: flex; align-items: center; gap: 10px; text-decoration: none;
+        flex-shrink: 0; margin-left: 0;  /* ← حذفنا الـ -30px */
+        animation: logoSlideIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
+    }
         @keyframes logoFloat {
             0%, 100% { transform: translateY(0); }
             50%       { transform: translateY(-4px); }
@@ -468,6 +500,37 @@
             color: #fff; text-decoration: none;
             transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s;
         }
+        /* إصلاح الـ footer badge */
+.footer-palestine-badge {
+    position: absolute;
+    top: -80px;
+    left: 0;       /* بدل -300px */
+    z-index: 5;
+}
+
+/* إصلاح wire image box */
+.wire-img-box {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    right: 0;
+    bottom: 30px;
+    overflow: hidden;   /* ← هاد الأهم */
+}
+
+/* منع الـ hero من الامتداد */
+.hero-section,
+.hero-slides,
+.hero-slide {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* منع الـ sections من الامتداد */
+section, header, footer {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
         .footer-social-btn:hover { transform: scale(1.28) rotate(-6deg); opacity: 0.92; }
         .footer-social-btn.wa  { background: #25D366; }
         .footer-social-btn.ig  { background: #E1306C; }
@@ -1017,9 +1080,8 @@ body {
 .load-more-btn:hover {
     opacity: 0.9;
 }
-/* تعديل القسم الرئيسي لزيادة المسافة من الأعلى */
 .news-page {
-    padding-top: 100px; /* زيادة المسافة تحت الهيدر */
+    padding-top: 100px; 
     padding-bottom: 80px;
     background-color: #fff;
     font-family: 'Nunito', sans-serif;
@@ -1528,13 +1590,27 @@ body {
    PATH OF HEALING
 ══════════════════════════════ */
 @media (max-width: 768px) {
-    .healing-section { padding: 50px 16px; }
-    .healing-title { font-size: 26px; margin-bottom: 36px; }
-    .healing-img { width: 100% !important; }
+    .healing-img:last-child {
+        transform: scale(1.7) !important;
+        transform-origin: center center !important;
+        margin: 10px 0 !important;
+    }
 }
-
+@media (max-width: 768px) {
+    .healing-img:first-child {
+        transform: scale(1.2) !important;
+        transform-origin: center center !important;
+        margin: 10px 0 !important;
+    }
+}
+@media (max-width: 768px) {
+    .healing-title {
+        margin-bottom: 30px !important;
+        
+    }
+}
 @media (max-width: 480px) {
-    .healing-title { font-size: 22px; }
+    .healing-title { font-size: 2px; }
 }
 
 /* ══════════════════════════════
@@ -1548,7 +1624,7 @@ body {
 @media (max-width: 768px) {
     .get-help-section { padding: 40px 16px; }
 
-    .get-help-title { font-size: 28px; }
+    .get-help-title { font-size: 26px; }
     .get-help-subtitle { font-size: 18px; margin-bottom: 28px; }
 
     .steps-wrapper { padding-left: 36px; }
@@ -1686,4 +1762,395 @@ body {
     .main-footer { padding: 60px 16px 160px; }
     .footer-heading { font-size: 22px; }
     .footer-kite-kids { width: 160px; }
+}
+/* ══════════════════════════════════════════════
+   MOBILE NAV DRAWER — COMPLETE & FINAL
+══════════════════════════════════════════════ */
+@media (max-width: 860px) {
+
+  /* Overlay */
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 42, 74, 0.45);
+    backdrop-filter: blur(3px);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .nav-overlay.active {
+    display: block;
+    opacity: 1;
+  }
+
+  /* Drawer */
+  .nav-links {
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important;
+    left: auto !important;
+    width: 78vw !important;
+    max-width: 300px !important;
+    height: 100dvh !important;
+    background: #ffffff !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 90px 0 40px !important;
+    transform: none !important;
+    opacity: 1 !important;
+    transition: right 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    pointer-events: none;
+    z-index: 999;
+    box-shadow: -8px 0 40px rgba(10, 42, 74, 0.18);
+    overflow-y: auto;
+  }
+
+  .nav-links.open {
+    right: 0 !important;
+    pointer-events: all;
+  }
+
+  /* Links */
+  .nav-links li {
+    opacity: 1 !important;
+    animation: none !important;
+    border-bottom: 1px solid rgba(10, 42, 74, 0.08) !important;
+  }
+
+  .nav-links li a {
+    color: #0a2a4a !important;
+    font-size: 15px !important;
+    padding: 16px 28px !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    transition: background 0.2s, color 0.2s, padding-left 0.2s !important;
+  }
+
+  .nav-links li a:hover {
+    background: #eef2ff !important;
+    color: #1a4fa0 !important;
+    padding-left: 36px !important;
+  }
+
+  .nav-links li a.active {
+    background: #eef2ff !important;
+    color: #1a4fa0 !important;
+    border-left: 3px solid #1a4fa0;
+  }
+
+  /* أيقونات اللينكات */
+  .nav-links li a::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 14px;
+    opacity: 0.5;
+    color: #0a2a4a;
+    width: 18px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .nav-links li:nth-child(1) a::before { content: "\f015"; } /* home     */
+  .nav-links li:nth-child(2) a::before { content: "\f05a"; } /* about    */
+  .nav-links li:nth-child(3) a::before { content: "\f0e0"; } /* contact  */
+  .nav-links li:nth-child(4) a::before { content: "\f1ea"; } /* news     */
+  .nav-links li:nth-child(5) a::before { content: "\f15c"; } /* policies */
+  .nav-links li:nth-child(6) a::before { content: "\f004"; } /* donate   */
+
+  /* زر Donate */
+  .nav-links li a.donate-btn-nav {
+    margin: 20px 24px 0 !important;
+    border-radius: 50px !important;
+    background: #c0392b !important;
+    color: #fff !important;
+    justify-content: center !important;
+    padding: 14px 28px !important;
+    font-size: 15px !important;
+    border-left: none !important;
+  }
+  .nav-links li a.donate-btn-nav:hover {
+    background: #a93226 !important;
+    padding-left: 28px !important;
+  }
+  .nav-links li a.donate-btn-nav::before {
+    color: #fff !important;
+    opacity: 0.9 !important;
+  }
+
+  /* شعار داخل الـ Drawer — يسار */
+  .nav-drawer-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(10, 42, 74, 0.10);
+    background: #fff;
+  }
+  .nav-drawer-logo img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: contain;
+    border: 2px solid rgba(10, 42, 74, 0.15);
+    flex-shrink: 0;
+  }
+  .nav-drawer-logo span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0a2a4a;
+    line-height: 1.3;
+    margin-left: 10px;
+  }
+/* الشعار مخفي على الشاشات الكبيرة */
+.nav-drawer-logo { display: none !important; }
+
+  /* Hamburger → X */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 6px;
+    z-index: 1001;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+    transition: transform 0.35s ease, opacity 0.25s ease, background 0.25s ease;
+    transform-origin: center;
+  }
+  .hamburger.open {
+    transform: scale(1.15);
+  }
+  .hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+    background: #c0392b;
+  }
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+    background: #c0392b;
+  }
+
+  /* منع scroll الخلفية */
+  body.nav-open {
+    overflow: hidden;
+  }
+}
+.hide-on-desktop { display: none; }
+
+@media (max-width: 860px) {
+  .hide-on-desktop { display: flex !important; }
+}
+@media (max-width: 768px) {
+    .hero-section {
+        height: 55vh !important;
+        min-height: 300px !important;
+    }
+}
+/* ══ FIX: Get Help Section - Mobile ══ */
+@media (max-width: 768px) {
+
+    /* إصلاح الخط الجانبي - يوقف عند الـ policy-container */
+    .steps-wrapper::before {
+        bottom: 0 !important;
+    }
+
+    /* إصلاح الـ policy-container على الموبايل */
+    .policy-container {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        margin-left: 0 !important;
+        gap: 16px !important;
+        padding: 20px !important;
+    }
+
+    /* الأيقونة والنص جنب بعض */
+    .policy-info {
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+    }
+
+    .policy-info i {
+        font-size: 22px !important;
+        margin-top: 2px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .policy-text {
+        font-size: 13.5px !important;
+        text-align: left !important;
+    }
+
+    /* زر التحميل - عرض كامل */
+    .btn-download {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 11px 16px !important;
+    }
+
+    /* إصلاح الـ footer section */
+    .get-help-footer {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+        padding-left: 36px !important;
+    }
+
+    .footer-text {
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+
+    /* أزرار الواتساب والإيميل - عمود */
+    .contact-buttons {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    .btn-contact {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 13px 20px !important;
+        font-size: 15px !important;
+    }
+}
+@media (max-width: 768px) {
+    .main-footer {
+        padding: 70px 20px 140px 20px !important; 
+        min-height: unset !important;
+    }
+    .footer-inner {
+        position: relative !important;
+        z-index: 4 !important;
+        padding-bottom: 0 !important;
+    }
+    .footer-heading { 
+        font-size: 22px !important; 
+        margin-bottom: 16px !important;
+    }
+    .footer-socials {
+        margin-bottom: 0 !important;
+    }
+    .footer-social-btn { 
+        width: 44px !important; 
+        height: 44px !important; 
+        font-size: 18px !important; 
+    }
+    .footer-kite-kids { 
+        width: 260px !important; 
+        left: -5px !important; 
+        bottom: 0 !important;
+        z-index: 3 !important;
+    }
+    .footer-flag {
+        top: 15px !important; 
+        right: 16px !important;
+        width: 45px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-footer { 
+        padding: 65px 16px 130px 16px !important; 
+    }
+    .footer-kite-kids { width: 220px !important; }
+}
+
+/* ══ POLICIES HERO - MOBILE FIX ══ */
+@media (max-width: 768px) {
+    .policy-hero-detailed {
+        padding: 30px 20px 40px !important;
+        min-height: unset !important;
+    }
+
+    .policy-hero-logo img {
+        width: 100px !important;
+        height: 100px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .policy-main-title {
+        font-size: 1.6rem !important;
+        margin-bottom: 20px !important;
+    }
+
+    .policy-hero-text p {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+        margin-bottom: 10px !important;
+    }
+}
+.policy-hero-detailed {
+    margin-top: 64px !important;
+}
+@media (max-width: 768px) {
+    .policy-hero-detailed {
+        padding: 40px 24px 50px !important;
+        /* تم التعديل هنا لتوسيط كل المحتويات النصية واللوقو إذا كان img أو inline element */
+        text-align: center !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* يضمن توسيط اللوقو تماماً حتى لو كان عنصر block */
+    }
+
+    .policy-main-title {
+        font-size: clamp(1.5rem, 5vw, 2rem) !important;
+        /* تم التعديل هنا لتوسيط العنوان الرئيسي */
+        text-align: center !important; 
+        margin-bottom: 20px !important;
+        width: 100% !important;
+    }
+
+    .policy-hero-text {
+        /* تم التعديل هنا لتوسيط حاوية النصوص */
+        text-align: center !important; 
+    }
+
+    .policy-hero-text p {
+        font-size: 15px !important;
+        line-height: 1.7 !important;
+        /* تم التعديل هنا لتوسيط الفقرة الوصفية */
+        text-align: center !important; 
+    }
+
+    /* في حال كان للوقو الدائري كلاس مستقل (مثلاً لو كان اسمه .policy-logo) */
+    /* يمكنك إضافة هذا الجزء لتأكيد توسيطه بالهوامش */
+    .policy-hero-detailed img:not([class^="ph-doc"]) { 
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-bottom: 15px !important; /* مسافة بين اللوقو والعنوان */
+    }
+
+    /* إظهار المستندات الزخرفية (تظل كما هي في كودك الأصلي) */
+    .ph-doc-1, .ph-doc-2, .ph-doc-3,
+    .ph-doc-4, .ph-doc-5, .ph-doc-6 {
+        display: block !important;
+    }
+
+    .ph-doc-1 { width: 60px !important; height: 80px !important; left: -10px !important; }
+    .ph-doc-2 { width: 50px !important; height: 65px !important; left: 10px !important; }
+    .ph-doc-3 { width: 65px !important; height: 85px !important; left: -5px !important; }
+    .ph-doc-4 { width: 60px !important; height: 80px !important; right: -10px !important; }
+    .ph-doc-5 { width: 50px !important; height: 65px !important; right: 10px !important; }
+    .ph-doc-6 { width: 65px !important; height: 85px !important; right: -5px !important; }
 }

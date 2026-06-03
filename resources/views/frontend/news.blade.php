@@ -11,10 +11,18 @@
             @forelse($articles as $article)
                 <article class="article-card">
                     <div class="article-image">
-                        <img src="{{ $article->image_url ?? asset('reachout/img/default-news.png') }}" 
-                             alt="{{ $article->title }}"
-                             onerror="this.src='{{ asset('reachout/img/default-news.png') }}'">
-                    </div>
+                        @php
+                            $fallbacks = [
+                                asset('reachout/img/default-news-1.webp'),
+                                asset('reachout/img/default-news-2.jpg'),
+                                asset('reachout/img/default-news-3.webp'),
+                            ];
+                            $fallback = $fallbacks[$loop->index % 3];
+                        @endphp
+                        <img src="{{ $article->image_url ?? $fallback }}" 
+                            alt="{{ $article->title }}"
+                            onerror="this.src='{{ $fallback }}'">
+                            </div>
                     <div class="article-content">
                         <h2 class="article-header">{{ $article->title }}</h2>
                         <p class="article-description">

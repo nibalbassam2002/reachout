@@ -26,7 +26,13 @@
     <span>Doctors Team</span>
   </a>
 </li>
-
+<li class="nav-item">
+  <a class="nav-link {{ request()->routeIs('admin.bank.edit') ? '' : 'collapsed' }}" 
+     href="{{ route('admin.bank.edit') }}">
+    <i class="bi bi-bank"></i>
+    <span>Bank Settings</span>
+  </a>
+</li>
     {{-- Coming soon placeholder --}}
     <li class="nav-item">
       <span class="nav-link collapsed" style="opacity:.45; cursor:default;">

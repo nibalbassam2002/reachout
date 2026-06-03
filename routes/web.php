@@ -7,6 +7,7 @@ use App\Http\Controllers\Doctor\DashboardController as DoctorDashboard;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ReachoutController;
+use App\Models\BankAccount;
 use Illuminate\Support\Facades\Route;
 
 // ─────────────────────────────────────────
@@ -26,7 +27,9 @@ Route::get('/policies', function () {
     return view('frontend.policies');
 })->name('policies');
 Route::get('/donate-now', function () {
-    return view('frontend.donate'); // تأكد من اسم المجلد والملف
+    
+    $bank = \App\Models\BankAccount::first(); 
+    return view('frontend.donate', compact('bank'));
 })->name('donate.page');
 
 // ─────────────────────────────────────────
@@ -44,6 +47,8 @@ Route::middleware('auth')->group(function () {
          ->group(function () {
              Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
              Route::resource('doctors', DoctorController::class);
+             Route::get('/bank-settings', [AdminDashboard::class, 'editBank'])->name('bank.edit');
+             Route::post('/bank-settings', [AdminDashboard::class, 'updateBank'])->name('bank.update');
          });
 
     // Doctor فقط

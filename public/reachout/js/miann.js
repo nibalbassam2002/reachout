@@ -1,7 +1,12 @@
 /* ══ HERO SLIDESHOW ══ */
+/* ══ HERO SLIDESHOW ══ */
 (function () {
     const slides = document.querySelectorAll('.hero-slide');
     const dots   = document.querySelectorAll('.hero-dot');
+    
+    // 🛡️ شرط الأمان: إذا لم تكن السلايدات موجودة في الصفحة الحالية، توقف فوراً ولا تسبب خطأ
+    if (slides.length === 0) return;
+
     let current  = 0, timer;
     function goTo(index) {
         slides[current].classList.remove('active');
@@ -27,6 +32,7 @@
 /* ══ SERVICES IMAGE SLIDER ══ */
 (function () {
     const track = document.getElementById('servicesTrack');
+    if (!track) return;
     const total = track.querySelectorAll('.s-slide').length;
     let current = 0;
     function goTo(index) {
@@ -36,10 +42,42 @@
     setInterval(function () { goTo(current + 1); }, 3000);
 })();
 
-/* ══ HAMBURGER ══ */
-document.getElementById('hamburger').addEventListener('click', function () {
-    document.getElementById('navLinks').classList.toggle('open');
-});
+/* ══ MOBILE NAV DRAWER ══ */
+(function () {
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    const overlay   = document.getElementById('navOverlay');
+
+    if (!hamburger || !navLinks || !overlay) return;
+
+    function openNav() {
+        navLinks.classList.add('open');
+        hamburger.classList.add('open');
+        overlay.classList.add('active');
+        document.body.classList.add('nav-open');
+    }
+
+    function closeNav() {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        overlay.classList.remove('active');
+        document.body.classList.remove('nav-open');
+    }
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.contains('open') ? closeNav() : openNav();
+    });
+
+    overlay.addEventListener('click', closeNav);
+
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeNav);
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 860) closeNav();
+    });
+})();
 
 /* ══ SCROLL REVEAL ══ */
 (function () {
@@ -95,28 +133,36 @@ document.getElementById('hamburger').addEventListener('click', function () {
     document.querySelectorAll('.impact-stat[data-target]')
         .forEach(function (el) { counterObserver.observe(el); });
 })();
-// ══ Scroll-based Active Nav ══
-const contactLink = document.querySelectorAll('.nav-links a')[2];
 
-function updateActiveNav() {
-    const scrollY = window.scrollY + 100;
+/* ══ ACTIVE NAV ══ */
+(function () {
+    const path     = window.location.pathname;
+    const navItems = document.querySelectorAll('.nav-links li a');
 
-    const aboutSection   = document.getElementById('about');
-    const contactSection = document.getElementById('get-help');
+    if (path.includes('news') || path.includes('policies') || path.includes('donate')) return;
 
-    const aboutStart    = aboutSection?.offsetTop ?? 0;
-    const contactBegin  = contactSection?.offsetTop ?? 999999;
+    if (!document.getElementById('about')) return;
 
-    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    const map = {
+        'hero':     navItems[0],
+        'about':    navItems[1],
+        'get-help': navItems[2],
+    };
 
-    if (scrollY >= contactBegin) {
-        contactLink?.classList.add('active');
-    } else if (scrollY >= aboutStart) {
-        document.querySelector('.nav-links li:nth-child(2) a')?.classList.add('active');
-    } else {
-    document.querySelector('.nav-links li:first-child a')?.classList.add('active');
-}
-}
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const id = entry.target.id;
+            if (!map[id]) return;
+            navItems.forEach(a => a.classList.remove('active'));
+            map[id].classList.add('active');
+        });
+    }, { rootMargin: '-40% 0px -55% 0px' });
 
-window.addEventListener('scroll', updateActiveNav);
-updateActiveNav();
+    Object.keys(map).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+    });
+
+    navItems[0]?.classList.add('active');
+})();

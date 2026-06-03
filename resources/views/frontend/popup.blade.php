@@ -923,6 +923,282 @@
             .form-grid.triple { grid-template-columns: 1fr 1fr; }
             .req-tab span { display: none; }
         }
+        /* ══ POPUP RESPONSIVE ══ */
+@media (max-width: 640px) {
+    .pop-overlay {
+        padding: 12px;
+        align-items: flex-end;
+    }
+
+    .pop-modal {
+        border-radius: 24px 24px 0 0;
+        max-height: 95vh;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .pop-header {
+        height: 80px;
+        border-radius: 24px 24px 0 0;
+    }
+
+    .pop-kite {
+        width: 160px;
+        top: 5px;
+        right: 5px;
+    }
+
+    .pop-logo { width: 80px; }
+    .pop-logo-wrap { bottom: -36px; }
+
+    .pop-body {
+        padding: 50px 18px 20px 18px;
+    }
+
+    .pop-title { font-size: 16px; }
+    .pop-subtitle { font-size: 13px; }
+    .pop-description p { font-size: 11.5px; }
+
+    .pop-btn-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .pop-btn {
+        width: 100%;
+        padding: 11px 12px;
+        font-size: 12px;
+    }
+
+    .pop-btn-donate {
+        width: 70%;
+        font-size: 12px;
+        padding: 11px;
+    }
+
+    /* ══ Form View ══ */
+    .form-view {
+        padding: 50px 16px 20px 16px;
+    }
+
+    .request-type-tabs {
+        gap: 6px;
+        padding: 4px;
+    }
+
+    .req-tab {
+        font-size: 11px;
+        padding: 8px 6px;
+        gap: 5px;
+    }
+
+    .req-tab i { font-size: 13px; }
+
+    /* progress bar */
+    .form-progress { gap: 4px; margin-bottom: 18px; }
+    .progress-step .step-circle { width: 26px; height: 26px; font-size: 11px; }
+    .progress-step .step-label { font-size: 9px; }
+    .progress-line { flex: 0.2; }
+
+    .step-title { font-size: 14px; }
+    .step-desc { font-size: 10px; margin-bottom: 14px; }
+
+    /* form grid */
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+
+    .form-grid.triple {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .form-field label { font-size: 10.5px; }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    .form-field textarea { min-height: 75px; }
+
+    /* gender buttons */
+    .gender-btn {
+        padding: 8px 4px;
+        font-size: 10.5px;
+    }
+
+    /* symptoms grid */
+    .symptoms-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+
+    .symptom-btn {
+        padding: 8px 4px;
+        font-size: 9.5px;
+        border-radius: 10px;
+    }
+
+    .symptom-btn i { font-size: 15px; }
+
+    /* impact buttons */
+    .impact-group { gap: 6px; }
+
+    .impact-btn {
+        padding: 8px 4px;
+        font-size: 10px;
+    }
+
+    .impact-btn i { font-size: 13px; }
+
+    /* nav buttons */
+    .form-nav { gap: 8px; margin-top: 4px; }
+
+    .btn-back { width: 34px; height: 34px; }
+
+    .btn-next,
+    .btn-submit {
+        padding: 11px;
+        font-size: 12px;
+    }
+
+    /* phone picker */
+    .country-picker-btn {
+        padding: 8px 6px 8px 8px;
+        font-size: 11px;
+    }
+
+    #selectedCode { font-size: 11px; }
+
+    .country-dropdown { width: 220px; }
+
+    /* follow-up section */
+    .ref-lookup-box { padding: 12px; }
+    .ref-lookup-row { gap: 6px; }
+    .ref-prefix { padding: 8px 8px 8px 10px; font-size: 12px; }
+    .ref-lookup-input { font-size: 12px; padding: 8px 8px; }
+    .ref-lookup-btn { padding: 8px 12px; font-size: 11px; }
+
+    .followup-intro { font-size: 12px; }
+    .followup-intro-sub { font-size: 10px; }
+
+    .btn-send-followup {
+        padding: 11px;
+        font-size: 12px;
+    }
+
+    /* success view */
+    .success-view {
+        padding: 50px 20px 28px 20px;
+    }
+
+    .success-icon { width: 54px; height: 54px; }
+    .success-icon i { font-size: 24px; }
+    .success-title { font-size: 15px; }
+    .success-desc { font-size: 11.5px; }
+
+    .success-ref-box {
+        padding: 6px 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .success-ref-number { font-size: 13px; }
+
+    .btn-whatsapp-final {
+        padding: 11px 22px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+    .pop-overlay { padding: 8px; }
+
+    .pop-body { padding: 48px 14px 18px 14px; }
+    .form-view { padding: 48px 12px 18px 12px; }
+
+    .symptoms-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .form-grid.triple { grid-template-columns: 1fr; }
+
+    .req-tab span { display: none; }
+
+    .pop-btn { font-size: 11px; }
+    .pop-btn-donate { width: 80%; }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+    .pop-overlay { padding: 16px; }
+
+    .pop-modal {
+        max-width: 500px;
+        border-radius: 24px;
+    }
+
+    .pop-kite { width: 200px; }
+
+    .pop-btn-row { gap: 10px; }
+
+    .symptoms-grid { grid-template-columns: repeat(4, 1fr); }
+
+    .form-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .pop-modal { max-width: 560px; }
+    .symptoms-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 1400px) {
+    .pop-modal { max-width: 660px; }
+    .pop-title { font-size: 21px; }
+}
+/* ══ إصلاح الأزرار الثلاثة ══ */
+@media (max-width: 768px) {
+    .pop-cta-box {
+        padding: 14px 12px;
+    }
+
+    .pop-btn-row {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+
+    .pop-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 13px;
+        border-radius: 50px;
+    }
+
+    .pop-btn-donate {
+        width: 100%;        /* ← نفس عرض الباقي */
+        display: block;
+        padding: 12px;
+        font-size: 13px;
+        border-radius: 50px;
+        margin: 0;
+    }
+}
+@media (max-width: 640px) {
+    .pop-overlay {
+        padding: 0;           /* ← شيل الـ padding */
+        align-items: center;  /* ← وسط الشاشة */
+    }
+
+    .pop-modal {
+        border-radius: 24px;  /* ← زوايا من كل الجهات */
+        max-height: 90vh;
+        width: calc(100% - 32px); /* ← هامش 16px من كل جهة */
+        margin: 0 auto;
+    }
+}
     </style>
 </head>
 <body>

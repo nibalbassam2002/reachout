@@ -12,7 +12,7 @@
     @yield('styles')
 </head>
 <body>
-
+<div class="nav-overlay" id="navOverlay"></div>
     <header class="main-header">
         <nav class="navbar">
             <a href="{{ url('/') }}" class="nav-logo">
@@ -20,6 +20,10 @@
             </a>
             <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
             <ul class="nav-links" id="navLinks">
+                <div class="nav-drawer-logo hide-on-desktop">
+                        <img src="{{ asset('reachout/img/logogrope.png') }}" alt="Logo">
+                        <span>Mental Health<br>Frontline</span>
+                    </div>
                 <li><a href="{{ route('home') }}" class="{{ request()->is('/') || request()->is('home') ? 'active' : '' }}">Home</a></li>
                 <li><a href="{{ route('home') }}#about">About Us</a></li>
                 <li><a href="{{ route('home') }}#get-help">Contact Us</a></li>
