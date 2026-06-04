@@ -17,7 +17,7 @@
                 <h1 class="hero-title">Psychological First Aid for Children Under Fire</h1>
                 <p class="hero-sub">In conflict zones trauma spreads faster than the news.</p>
                 <p class="hero-sub">Your support delivers immediate mental health care when it matters most.</p>
-                <a href="#" class="hero-btn">Donate Now</a>
+                <a href="{{ route('donate.page') }}" class="hero-btn">Donate Now</a>
             </div>
         </div>
         <div class="hero-dots">
@@ -231,7 +231,7 @@
                 </div>
             </div>
             <p class="bridge-desc reveal" style="transition-delay: 0.1s;">Every donation ensures the continuity of professional psychological support for children in conflict zones.</p>
-            <a href="#" class="hero-btn reveal" style="transition-delay: 0.2s;">Donate Now</a>
+            <a href="{{ route('donate.page') }}" class="hero-btn reveal" style="transition-delay: 0.2s;">Donate Now</a>
             <p class="bridge-footer-text reveal" style="transition-delay: 0.3s;">Your generosity is the bridge between trauma and recovery</p>
         </div>
     </section>

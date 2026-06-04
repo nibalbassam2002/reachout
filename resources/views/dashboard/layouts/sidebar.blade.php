@@ -33,6 +33,19 @@
     <span>Bank Settings</span>
   </a>
 </li>
+<li class="nav-item">
+  <a class="nav-link {{ request()->routeIs('admin.complaints.*') ? '' : 'collapsed' }}" 
+     href="{{ route('admin.complaints.index') }}">
+    <i class="bi bi-flag"></i>
+    <span>Complaints
+      @if(isset($unreadComplaints) && $unreadComplaints > 0)
+        <span style="background:#e53935; color:#fff; font-size:11px; font-weight:700; padding:1px 7px; border-radius:20px; margin-left:6px;">
+          {{ $unreadComplaints }}
+        </span>
+      @endif
+    </span>
+  </a>
+</li>
     {{-- Coming soon placeholder --}}
     <li class="nav-item">
       <span class="nav-link collapsed" style="opacity:.45; cursor:default;">

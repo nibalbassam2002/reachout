@@ -2154,3 +2154,59 @@ body {
     .ph-doc-5 { width: 50px !important; height: 65px !important; right: 10px !important; }
     .ph-doc-6 { width: 65px !important; height: 85px !important; right: -5px !important; }
 }
+.complaint-success-msg {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-bottom: 16px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.policy-form-error {
+    color: #e53935;
+    font-size: 13px;
+    margin-top: 4px;
+    display: block;
+}
+.cc-label {
+    font-weight: 700;
+    color: #1565c0;
+    font-size: 13px;
+    min-width: 55px;
+    flex-shrink: 0;
+}
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.pagination-wrapper .nav-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #1a446c; /* كحلي متناسق */
+    color: #ffffff;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.pagination-wrapper .nav-icon:hover {
+    background-color: #b32d2e; /* أحمر ناعم عند التمرير */
+}
+
+.pagination-wrapper .nav-icon.disabled {
+    background-color: #f1f5f9;
+    color: #cbd5e1;
+    cursor: not-allowed;
+}

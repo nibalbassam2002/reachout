@@ -1246,7 +1246,7 @@
                             Send us an Email
                         </button>
                     </div>
-                    <a href="#donate" class="pop-btn-donate" id="popupDonateAction">Donate now</a>
+                    <a href="{{ route('donate.page') }}" class="pop-btn-donate" id="popupDonateAction">Donate now</a>
                 </div>
             </div>
         </div>

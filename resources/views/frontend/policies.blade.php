@@ -6,17 +6,13 @@
     <!-- ══ HERO SECTION ══ -->
 <section class="policy-hero-detailed">
 
-    <!-- مستندات يسار -->
     <div class="ph-doc ph-doc-1"></div>
     <div class="ph-doc ph-doc-2"></div>
     <div class="ph-doc ph-doc-3"></div>
-
-    <!-- مستندات يمين -->
     <div class="ph-doc ph-doc-4"></div>
     <div class="ph-doc ph-doc-5"></div>
     <div class="ph-doc ph-doc-6"></div>
 
-    <!-- موجة سفلية -->
     <svg class="ph-wave-bottom" viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:70px;">
         <path d="M0,35 C300,70 600,0 900,40 C1100,65 1300,20 1440,35 L1440,70 L0,70 Z" fill="rgba(0,0,0,0.12)"/>
     </svg>
@@ -186,61 +182,78 @@
             </div>
 
             <!-- 9. Reporting & Complaints Mechanism -->
-<div class="policy-item-block reporting-full-section">
-    <div class="policy-item-header">
-        <img src="{{ asset('reachout/img/icon9.png') }}" alt="Icon">
-        <h2>Reporting & Complaints Mechanism</h2>
-    </div>
-
-    <div class="reporting-main-container">
-        <!-- الفقرة العلوية مع خطها الخاص -->
-        <div class="reporting-top-part">
-            <p>We provide a safe, confidential, and accessible mechanism for reporting concerns, including safeguarding issues, misconduct or inappropriate behavior, breaches of confidentiality, and any risks to safety or wellbeing, with all reports treated in strict confidence, acted upon immediately in cases of risk, promptly reviewed and investigated, and with individuals reporting in good faith protected from retaliation.</p>
-        </div>
-
-        <!-- الجزء السفلي: العنوان والفورم -->
-        <div class="reporting-bottom-flex">
-            <div class="reporting-text-col">
-                <div class="complaint-text-bottom">
-                    <h2>Submit a Complaint or <br> Report a Concern</h2>
-                    <p>Please use the form to submit your concern.<br> All submissions are handled securely and in<br> accordance with our safeguarding and confidentiality policies. <br>Safeguarding is at the core of everything we do. <br>We are committed to protecting every child and family we serve<br> without exception.</p>
+            <div class="policy-item-block reporting-full-section">
+                <div class="policy-item-header">
+                    <img src="{{ asset('reachout/img/icon9.png') }}" alt="Icon">
+                    <h2>Reporting & Complaints Mechanism</h2>
                 </div>
-            </div>
 
-            <div class="reporting-form-col">
-                <div class="form-card-inner figma-final-box">
-                    <div class="form-card-title">
-                        <i class="fa-regular fa-file-lines"></i> <span>submit a concern</span>
+                <div class="reporting-main-container">
+                    <div class="reporting-top-part">
+                        <p>We provide a safe, confidential, and accessible mechanism for reporting concerns, including safeguarding issues, misconduct or inappropriate behavior, breaches of confidentiality, and any risks to safety or wellbeing, with all reports treated in strict confidence, acted upon immediately in cases of risk, promptly reviewed and investigated, and with individuals reporting in good faith protected from retaliation.</p>
                     </div>
-                    <form action="#">
-                        <div class="policy-form-group">
-                            <label>Your contact info</label>
-                            <input type="text" placeholder="Name or Email">
+
+                    <div class="reporting-bottom-flex">
+                        <div class="reporting-text-col">
+                            <div class="complaint-text-bottom">
+                                <h2>Submit a Complaint or <br> Report a Concern</h2>
+                                <p>Please use the form to submit your concern.<br> All submissions are handled securely and in<br> accordance with our safeguarding and confidentiality policies. <br>Safeguarding is at the core of everything we do. <br>We are committed to protecting every child and family we serve<br> without exception.</p>
+                            </div>
                         </div>
-                        <div class="policy-form-group">
-                            <label>Type of Concern</label>
-                            <input type="text" placeholder="Subject of concern">
+
+                        <div class="reporting-form-col">
+                            <div class="form-card-inner figma-final-box">
+                                <div class="form-card-title">
+                                    <i class="fa-regular fa-file-lines"></i> <span>submit a concern</span>
+                                </div>
+
+                                {{-- ✅ [1] رسالة النجاح --}}
+                                @if(session('complaint_success'))
+                                    <div class="complaint-success-msg">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        {{ session('complaint_success') }}
+                                    </div>
+                                @endif
+
+                                {{-- ✅ [2] الفورم مع name لكل حقل --}}
+                                <form action="{{ route('policies.complaint.store') }}" method="POST">
+                                    @csrf
+                                    <div class="policy-form-group">
+                                        <label>Your contact info</label>
+                                        <input type="text" name="contact_info" placeholder="Name or Email" value="{{ old('contact_info') }}">
+                                        @error('contact_info')
+                                            <span class="policy-form-error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="policy-form-group">
+                                        <label>Type of Concern</label>
+                                        <input type="text" name="type_of_concern" placeholder="Subject of concern" value="{{ old('type_of_concern') }}">
+                                        @error('type_of_concern')
+                                            <span class="policy-form-error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="policy-form-group">
+                                        <label>Details</label>
+                                        <textarea rows="4" name="details" placeholder="Describe your concern">{{ old('details') }}</textarea>
+                                        @error('details')
+                                            <span class="policy-form-error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <button type="submit" class="btn-submit-policy-final">Secure Submission</button>
+                                </form>
+                            </div>
                         </div>
-                        <div class="policy-form-group">
-                            <label>Details</label>
-                            <textarea rows="4" placeholder="Describe your concern"></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit-policy-final">Secure Submission</button>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
         </div>
     </section>
 
 @endsection
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-
-    // ══ انميشن الهيرو عند تحميل الصفحة ══
     const heroElements = [
         { el: document.querySelectorAll('.ph-doc-1, .ph-doc-2, .ph-doc-3, .ph-doc-4, .ph-doc-5, .ph-doc-6'), delay: 0 },
         { el: document.querySelectorAll('.policy-hero-logo'), delay: 200 },
@@ -257,7 +270,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ══ انميشن باقي الصفحة عند الـ Scroll ══
     const scrollElements = document.querySelectorAll(
         '.policy-item-block, .policy-item-header, .policy-blue-border-content, .reporting-top-part, .reporting-bottom-flex'
     );
@@ -277,6 +289,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     scrollElements.forEach(el => observer.observe(el));
-
 });
 </script>

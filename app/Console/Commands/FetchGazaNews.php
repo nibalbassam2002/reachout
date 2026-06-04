@@ -1,61 +1,64 @@
 <?php
-
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Http; // مهم جداً لجلب البيانات
-use App\Models\Article; // تأكد من إنشاء الموديل أولاً
+use Illuminate\Support\Facades\Http;
+use App\Models\Article;
 use Carbon\Carbon;
-use Illuminate\Support\Str;
 
 class FetchGazaNews extends Command
 {
-    /**
-     * الاسم الذي ستكتبه في التيرمينال لتشغيل الأمر
-     */
     protected $signature = 'news:fetch';
-
-    /**
-     * وصف الأمر
-     */
     protected $description = 'Fetch latest news about Gaza children from NewsAPI';
 
-    /**
-     * تنفيذ الأمر
-     */
     public function handle()
     {
         $this->info('Starting to fetch news...');
 
-        $apiKey = env('NEWS_API_KEY'); 
-        
+        $apiKey = env('NEWS_API_KEY');
         $url = "https://newsapi.org/v2/everything";
 
         try {
             $response = Http::withoutVerifying()->get($url, [
-                'q' => '"Gaza children" OR "Gaza orphans"',
+                'q' => '"Gaza children"  OR "Gaza orphans" OR "children of Palestine" OR "Gaza families" OR "Palestinian children" OR "Palestine children" OR "Gaza mental health"',
                 'language' => 'en',
-                'sortBy' => 'publishedAt',
-                'pageSize' => 20, // جلب 20 خبر فقط ليكون البحث أدق في البداية
-                'apiKey' => $apiKey,
+                'sortBy'   => 'publishedAt',
+                'pageSize' => 20,
+                'apiKey'   => $apiKey,
             ]);
 
             if ($response->successful()) {
                 $articles = $response->json()['articles'];
                 $count = 0;
 
+                $blockedKeywords = [
+                    'israel', 'israeli', 'idf',
+                    'hostage', 'bomb', 'rocket',
+                    'netanyahu', 'trump', 'biden',
+                    'michael jackson', 'election',
+                ];
+
                 foreach ($articles as $item) {
-                    // تجنب العناوين المحذوفة أو الفارغة
                     if ($item['title'] === '[Removed]' || empty($item['title'])) continue;
 
+                    $titleLower = strtolower($item['title'] . ' ' . ($item['description'] ?? ''));
+                    $blocked = false;
+                    foreach ($blockedKeywords as $keyword) {
+                        if (str_contains($titleLower, $keyword)) {
+                            $blocked = true;
+                            break;
+                        }
+                    }
+                    if ($blocked) continue;
+
                     Article::updateOrCreate(
-                        ['title' => $item['title']], // إذا وجد نفس العنوان لا يكرره
+                        ['title' => $item['title']],
                         [
-                            'description' => $item['description'] ?? 'No description available',
-                            'url'         => $item['url'],
-                            'image_url'   => $item['urlToImage'], // قد يكون نل (null)
-                            'source'      => $item['source']['name'] ?? 'Unknown Source',
-                            'published_at'=> Carbon::parse($item['publishedAt']),
+                            'description'  => $item['description'] ?? 'No description available',
+                            'url'          => $item['url'],
+                            'image_url'    => $item['urlToImage'],
+                            'source'       => $item['source']['name'] ?? 'Unknown Source',
+                            'published_at' => Carbon::parse($item['publishedAt']),
                         ]
                     );
                     $count++;

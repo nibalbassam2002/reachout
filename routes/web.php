@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ReachoutController;
 use App\Models\BankAccount;
+use App\Http\Controllers\Frontend\PolicyComplaintController;
+use App\Http\Controllers\Admin\ComplaintController;
 use Illuminate\Support\Facades\Route;
 
 // ─────────────────────────────────────────
@@ -49,6 +51,8 @@ Route::middleware('auth')->group(function () {
              Route::resource('doctors', DoctorController::class);
              Route::get('/bank-settings', [AdminDashboard::class, 'editBank'])->name('bank.edit');
              Route::post('/bank-settings', [AdminDashboard::class, 'updateBank'])->name('bank.update');
+             Route::get('/complaints', [ComplaintController::class, 'index'])->name('complaints.index');
+             Route::patch('/complaints/{complaint}/status', [ComplaintController::class, 'updateStatus'])->name('complaints.updateStatus');
          });
 
     // Doctor فقط
@@ -71,7 +75,9 @@ Route::prefix('reachout')->name('reachout.')->group(function () {
     Route::post('/followup',[ReachoutController::class, 'followup'])->name('followup');
  
 });
-
+// Policy Complaint
+Route::post('/policies/complaint', [PolicyComplaintController::class, 'store'])
+    ->name('policies.complaint.store');
 
 Route::get('/', function () {
     return view('frontend.index');
