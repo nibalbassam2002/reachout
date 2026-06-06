@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class ReachoutController extends Controller
@@ -112,7 +113,6 @@ class ReachoutController extends Controller
             ]);
 
             DB::commit();
-
             // ── الرد على الـ frontend ──────────────────
             return response()->json([
                 'success'      => true,
@@ -264,18 +264,19 @@ class ReachoutController extends Controller
         };
 
         return
-            "🆔 *Ref:* {$caseNumber}\n" .
+            "*Mental Health Frontline*\n" .
+            " *Ref:* {$caseNumber}\n" .
             "──────────────────────\n" .
-            "👦 *Child:* {$request->child_name}\n" .
-            "🎂 *Age:* {$request->child_age}" . ($request->child_grade ? " | {$request->child_grade}" : '') . "\n" .
-            "⚥  *Gender:* {$genderText}\n" .
+            " *Child:* {$request->child_name}\n" .
+            " *Age:* {$request->child_age}" . ($request->child_grade ? " | {$request->child_grade}" : '') . "\n" .
+            " *Gender:* {$genderText}\n" .
             "──────────────────────\n" .
-            "👨 *Guardian:* {$request->guardian_name} ({$request->guardian_relation})\n" .
-            "📞 *Phone:* {$request->guardian_phone}\n" .
+            " *Guardian:* {$request->guardian_name} ({$request->guardian_relation})\n" .
+            " *Phone:* {$request->guardian_phone}\n" .
             "──────────────────────\n" .
-            "🩺 *Symptoms:* {$symptomsText}\n" .
-            "📊 *Impact:* {$impactText}\n" .
+            " *Symptoms:* {$symptomsText}\n" .
+            " *Impact:* {$impactText}\n" .
             "──────────────────────\n" .
-            "📝 *Details:*\n{$request->notes}";
+            " *Details:*\n{$request->notes}";
     }
 }
