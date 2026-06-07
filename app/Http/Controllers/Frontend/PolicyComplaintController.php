@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ComplaintReceived;
 use App\Models\PolicyComplaint;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PolicyComplaintController extends Controller
 {
     public function store(Request $request)
     {
-        // Validation
         $validated = $request->validate([
             'contact_info'    => 'required|string|max:255',
             'type_of_concern' => 'required|string|max:255',
@@ -22,15 +23,16 @@ class PolicyComplaintController extends Controller
             'details.min'              => 'Please provide more details (at least 10 characters).',
         ]);
 
-        // حفظ البيانات
-        PolicyComplaint::create([
+        $complaint = PolicyComplaint::create([
             'contact_info'    => $validated['contact_info'],
             'type_of_concern' => $validated['type_of_concern'],
             'details'         => $validated['details'],
             'ip_address'      => $request->ip(),
         ]);
 
-        // رسالة نجاح وإرجاع للصفحة
+        Mail::to('complaints@mentalhealthfrontline.org')
+            ->send(new ComplaintReceived($complaint));
+
         return back()->with('complaint_success', 'Your concern has been submitted successfully. We will review it confidentially.');
     }
 }

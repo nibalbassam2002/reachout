@@ -52,10 +52,13 @@
                 <li><a href="#">Privacy</a></li>
             </ul>
             <div class="footer-socials">
-                <a href="#" class="footer-social-btn wa"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" class="footer-social-btn ig"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="footer-social-btn em"><i class="fas fa-envelope"></i></a>
-                <a href="#" class="footer-social-btn fb"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/972568200088" target="_blank" class="footer-social-btn wa"><i class="fab fa-whatsapp"></i></a>
+                
+                <a href="https://www.instagram.com/mental_health_frontline?igsh=djBpaHNkY2E3Nnp6" target="_blank" class="footer-social-btn ig"><i class="fab fa-instagram"></i></a>
+                
+                <a href="mailto:info@mentalhealthfrontline.org" class="footer-social-btn em"><i class="fas fa-envelope"></i></a>
+                
+                <a href="https://www.facebook.com/share/1M1ZfM3BjV/" target="_blank" class="footer-social-btn fb"><i class="fab fa-facebook-f"></i></a>
             </div>
         </div>
         <img class="footer-kite-kids" src="{{ asset('reachout/img/kite-kids.png') }}" alt="Kite Kids">

@@ -14,38 +14,54 @@
       </a>
     </li>
 
-    {{-- ── MANAGEMENT (placeholder — تضيف الأقسام هنا تدريجياً) ── --}}
+    {{-- ── MANAGEMENT ── --}}
     <li class="nav-heading" style="margin-top:18px;">Management</li>
 
     <li class="nav-item">
-  {{-- الرابط يذهب لصفحة الـ index الخاصة بالأطباء --}}
-  {{-- نستخدم routeIs('admin.doctors.*') ليبقى الرابط ملوناً بالأزرق عند الدخول لصفحة الإضافة أو التعديل أيضاً --}}
-  <a class="nav-link {{ request()->routeIs('admin.doctors.*') ? '' : 'collapsed' }}" 
-     href="{{ route('admin.doctors.index') }}">
-    <i class="bi bi-person-vcard"></i>
-    <span>Doctors Team</span>
-  </a>
-</li>
-<li class="nav-item">
-  <a class="nav-link {{ request()->routeIs('admin.bank.edit') ? '' : 'collapsed' }}" 
-     href="{{ route('admin.bank.edit') }}">
-    <i class="bi bi-bank"></i>
-    <span>Bank Settings</span>
-  </a>
-</li>
-<li class="nav-item">
-  <a class="nav-link {{ request()->routeIs('admin.complaints.*') ? '' : 'collapsed' }}" 
-     href="{{ route('admin.complaints.index') }}">
-    <i class="bi bi-flag"></i>
-    <span>Complaints
-      @if(isset($unreadComplaints) && $unreadComplaints > 0)
-        <span style="background:#e53935; color:#fff; font-size:11px; font-weight:700; padding:1px 7px; border-radius:20px; margin-left:6px;">
-          {{ $unreadComplaints }}
+      <a class="nav-link {{ request()->routeIs('admin.doctors.*') ? '' : 'collapsed' }}"
+         href="{{ route('admin.doctors.index') }}">
+        <i class="bi bi-person-vcard"></i>
+        <span>Doctors Team</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link {{ request()->routeIs('admin.bank.edit') ? '' : 'collapsed' }}"
+         href="{{ route('admin.bank.edit') }}">
+        <i class="bi bi-bank"></i>
+        <span>Bank Settings</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link {{ request()->routeIs('admin.complaints.*') ? '' : 'collapsed' }}"
+         href="{{ route('admin.complaints.index') }}">
+        <i class="bi bi-flag"></i>
+        <span>Complaints
+          @if(isset($unreadComplaints) && $unreadComplaints > 0)
+            <span style="background:#e53935; color:#fff; font-size:11px; font-weight:700; padding:1px 7px; border-radius:20px; margin-left:6px;">
+              {{ $unreadComplaints }}
+            </span>
+          @endif
         </span>
-      @endif
-    </span>
-  </a>
-</li>
+      </a>
+    </li>
+
+    {{-- ── Cases ── --}}
+    <li class="nav-item">
+      <a class="nav-link {{ request()->routeIs('admin.cases.*') ? '' : 'collapsed' }}"
+         href="{{ route('admin.cases.index') }}">
+        <i class="bi bi-folder2-open"></i>
+        <span>Cases
+          @if(isset($newCasesCount) && $newCasesCount > 0)
+            <span style="background:#1565c0; color:#fff; font-size:11px; font-weight:700; padding:1px 7px; border-radius:20px; margin-left:6px;">
+              {{ $newCasesCount }}
+            </span>
+          @endif
+        </span>
+      </a>
+    </li>
+
     {{-- Coming soon placeholder --}}
     <li class="nav-item">
       <span class="nav-link collapsed" style="opacity:.45; cursor:default;">

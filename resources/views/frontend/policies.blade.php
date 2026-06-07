@@ -219,8 +219,8 @@
                                 <form action="{{ route('policies.complaint.store') }}" method="POST">
                                     @csrf
                                     <div class="policy-form-group">
-                                        <label>Your contact info</label>
-                                        <input type="text" name="contact_info" placeholder="Name or Email" value="{{ old('contact_info') }}">
+                                        <label>Your Email</label>
+                                        <input type="email" name="contact_info" placeholder="Your Email" value="{{ old('contact_info') }}">
                                         @error('contact_info')
                                             <span class="policy-form-error">{{ $message }}</span>
                                         @enderror

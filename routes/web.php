@@ -53,6 +53,9 @@ Route::middleware('auth')->group(function () {
              Route::post('/bank-settings', [AdminDashboard::class, 'updateBank'])->name('bank.update');
              Route::get('/complaints', [ComplaintController::class, 'index'])->name('complaints.index');
              Route::patch('/complaints/{complaint}/status', [ComplaintController::class, 'updateStatus'])->name('complaints.updateStatus');
+             Route::get('/cases',              [AdminDashboard::class, 'cases'])->name('cases.index');
+            Route::get('/cases/{id}',         [AdminDashboard::class, 'caseShow'])->name('cases.show');
+            Route::post('/cases/{id}/update', [AdminDashboard::class, 'caseUpdate'])->name('cases.update');
          });
 
     // Doctor فقط
@@ -78,7 +81,17 @@ Route::prefix('reachout')->name('reachout.')->group(function () {
 // Policy Complaint
 Route::post('/policies/complaint', [PolicyComplaintController::class, 'store'])
     ->name('policies.complaint.store');
-
+Route::post('/contact', function(\Illuminate\Http\Request $request) {
+    return redirect('mailto:info@mentalhealthfrontline.org'
+        . '?subject=New Partnership Inquiry'
+        . '&body=' . urlencode(
+            "Name: {$request->first_name} {$request->last_name}\n" .
+            "Email: {$request->email}\n" .
+            "Phone: {$request->phone}\n\n" .
+            "Message:\n{$request->message}"
+        )
+    );
+});
 Route::get('/', function () {
     return view('frontend.index');
 })->name('home');

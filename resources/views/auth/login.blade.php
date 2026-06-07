@@ -159,12 +159,12 @@
 }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="min-h-screen flex items-center justify-center md:p-4">
 
-    <div class="max-w-4xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row card-animate">
+    <div class="max-w-4xl w-full md:bg-white md:rounded-3xl md:shadow-2xl overflow-hidden flex flex-col md:flex-row card-animate min-h-screen md:min-h-0">
 
         <!-- ===== الجانب الأزرق ===== -->
-        <div class="md:w-1/2 left-panel text-white slide-left">
+        <div class="hidden md:flex md:w-1/2 left-panel text-white slide-left">
 
             <!-- دوائر زخرفية -->
             <div class="deco-circle" style="width:220px;height:220px;bottom:-70px;left:-70px;"></div>
@@ -198,7 +198,7 @@
         </div>
 
         <!-- ===== الجانب الأيمن: الفورم ===== -->
-        <div class="md:w-1/2 p-8 md:p-12 slide-right">
+        <div class="w-full md:w-1/2 p-6 pt-10 md:p-12 slide-right flex flex-col justify-center min-h-screen md:min-h-0">
             <div class="mb-8 fade-up-1">
                 <h2 class="text-2xl font-bold">Welcome Back !</h2>
                 <p class="text-gray-500 text-sm mt-1">Please enter your credentials to access the dashboard.</p>

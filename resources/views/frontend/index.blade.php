@@ -205,8 +205,16 @@
             <div class="get-help-footer reveal" style="transition-delay: 0.3s;">
                 <p class="footer-text">Don't hesitate to contact us to protect your child.</p>
                 <div class="contact-buttons">
-                    <a href="https://wa.me/yournumber" class="btn-contact btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp</a>
-                    <a href="mailto:info@example.com" class="btn-contact btn-email"><i class="fas fa-envelope"></i> Email</a>
+                   <div class="contact-buttons">
+                    <a href="#" class="btn-contact btn-whatsapp" 
+                    onclick="openPopupWithChannel('whatsapp'); return false;">
+                        <i class="fab fa-whatsapp"></i> Whatsapp
+                    </a>
+                    <a href="#" class="btn-contact btn-email" 
+                    onclick="openPopupWithChannel('email'); return false;">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
                 </div>
             </div>
         </div>
@@ -257,21 +265,51 @@
     </div>
     <!-- الفورم ثانياً -->
     <div class="partners-form-card reveal" style="transition-delay: 0.15s;">
-        <form action="#">
-            <div class="form-row">
-                <input type="text" placeholder="First Name*" required>
-                <input type="text" placeholder="Last Name*" required>
-            </div>
-            <input type="email" placeholder="Email*" required>
-            <input type="tel" placeholder="Phone Number*">
-            <textarea placeholder="Your message..."></textarea>
-            <button type="submit" class="btn-send">Send Message</button>
-        </form>
+        <div class="partners-form-card reveal" style="transition-delay: 0.15s;">
+    <form id="partnerForm">
+        <div class="form-row">
+            <input type="text" id="p_fname" placeholder="First Name*" required>
+            <input type="text" id="p_lname" placeholder="Last Name*" required>
+        </div>
+        <input type="email" id="p_email" placeholder="Email*" required>
+        <input type="tel" id="p_phone" placeholder="Phone Number*">
+        <textarea id="p_message" placeholder="Your message..."></textarea>
+        <button type="button" class="btn-send" onclick="sendPartnerEmail()">Send Message</button>
+    </form>
+</div>
     </div>
 </div>
         </div>
     </section>
 
     @include('frontend.popup')
+<script>
+function openPopupWithChannel(channel) {
+    const popup = document.getElementById('welcomePopup');
+    if (!popup) return;
+    popup.style.display = 'flex';
+    setTimeout(function() {
+        const btn = channel === 'whatsapp' 
+            ? document.getElementById('btnOpenFormWa') 
+            : document.getElementById('btnOpenFormEmail');
+        if (btn) btn.click();
+    }, 100);
+}
+function sendPartnerEmail() {
+    const fname   = document.getElementById('p_fname').value.trim();
+    const lname   = document.getElementById('p_lname').value.trim();
+    const email   = document.getElementById('p_email').value.trim();
+    const phone   = document.getElementById('p_phone').value.trim();
+    const message = document.getElementById('p_message').value.trim();
 
+    if (!fname || !email || !message) {
+        alert('Please fill in all required fields.');
+        return;
+    }
+
+    const body = `Name: ${fname} ${lname}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`;
+    const url  = `https://mail.google.com/mail/?view=cm&to=info@mentalhealthfrontline.org&su=New+Partnership+Inquiry&body=${encodeURIComponent(body)}`;
+    window.open(url, '_blank');
+}
+</script>
 @endsection

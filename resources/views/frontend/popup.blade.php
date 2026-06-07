@@ -1980,15 +1980,26 @@ document.addEventListener('DOMContentLoaded', function () {
             if (selectedChannel === 'whatsapp') {
     setTimeout(() => window.open(data.whatsapp_url || 'https://wa.me/yournumber', '_blank'), 1500);
 }
-        if (selectedChannel === 'email') {
+   if (selectedChannel === 'email') {
     const mailtoUrl = data.mailto_url || data.contact_url;
+    
+    // استخرج الـ body والـ subject من الـ mailto
+    const afterMailto = mailtoUrl.replace('mailto:' + 'info@mentalhealthfrontline.org', '');
+    const subjectMatch = afterMailto.match(/[?&]subject=([^&]*)/);
+    const bodyMatch    = afterMailto.match(/[?&]body=([^]*)/);
+    
+    const subject = subjectMatch ? decodeURIComponent(subjectMatch[1].replace(/\+/g, ' ')) : 'New Case Request';
+    const body    = bodyMatch    ? decodeURIComponent(bodyMatch[1].replace(/\+/g, ' '))    : '';
+
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&to=info@mentalhealthfrontline.org&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
     document.getElementById('finalWhatsappBtn').innerHTML = `
         <i class="far fa-envelope" style="font-size:20px"></i>
-        <span>${currentLang === 'ar' ? 'فتح الإيميل' : 'Open Email'}</span>
+        <span>Open Gmail</span>
     `;
     document.getElementById('finalWhatsappBtn').style.background = '#3b82f6';
-    document.getElementById('finalWhatsappBtn').href = mailtoUrl;
-    setTimeout(() => window.open(mailtoUrl, '_blank'), 1500);
+    document.getElementById('finalWhatsappBtn').href = gmailUrl;
+    setTimeout(() => window.open(gmailUrl, '_blank'), 1500);
 }
         } catch (error) {
             console.error('Submission error:', error);
