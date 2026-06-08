@@ -9,7 +9,9 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ReachoutController;
 use App\Models\BankAccount;
 use App\Http\Controllers\Frontend\PolicyComplaintController;
+use App\Http\Controllers\Frontend\PartnershipController;
 use App\Http\Controllers\Admin\ComplaintController;
+use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // ─────────────────────────────────────────
@@ -56,6 +58,11 @@ Route::middleware('auth')->group(function () {
              Route::get('/cases',              [AdminDashboard::class, 'cases'])->name('cases.index');
             Route::get('/cases/{id}',         [AdminDashboard::class, 'caseShow'])->name('cases.show');
             Route::post('/cases/{id}/update', [AdminDashboard::class, 'caseUpdate'])->name('cases.update');
+            Route::get('/profile',           [ProfileController::class, 'show'])->name('profile');
+            Route::post('/profile/info',     [ProfileController::class, 'updateInfo'])->name('profile.info');
+            Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
+            Route::post('/profile/avatar',   [ProfileController::class, 'updateAvatar'])->name('profile.avatar');
+            Route::get('/search', [AdminDashboard::class, 'search'])->name('search');
          });
 
     // Doctor فقط
@@ -92,6 +99,7 @@ Route::post('/contact', function(\Illuminate\Http\Request $request) {
         )
     );
 });
+Route::post('/partnership/send', [PartnershipController::class, 'send'])->name('partnership.send');
 Route::get('/', function () {
     return view('frontend.index');
 })->name('home');

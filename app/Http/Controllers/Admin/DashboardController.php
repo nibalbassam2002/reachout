@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\BankAccount;
 use App\Models\PolicyComplaint;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,10 +15,97 @@ class DashboardController extends Controller
     // ═══════════════════════════════════════════
     public function index()
     {
-        $complaints      = PolicyComplaint::latest()->take(5)->get();
+        // ── Stat Cards ──
+        $totalCases       = DB::table('child_cases')->count();
+        $totalFollowups   = DB::table('child_case_followups')->count();
+        $pendingCases     = DB::table('child_cases')->whereIn('status', ['new', 'assigned'])->count();
+        $highPriority     = DB::table('child_cases')->whereIn('priority', ['high', 'crisis'])->count();
         $unreadComplaints = PolicyComplaint::unread()->count();
+        $totalContacts    = DB::table('contacts')->count();
 
-        return view('dashboard.index', compact('complaints', 'unreadComplaints'));
+        // ── Recent Cases (last 5) ──
+        $recentCases = DB::table('child_cases')
+            ->join('contacts', 'child_cases.contact_id', '=', 'contacts.id')
+            ->select(
+                'child_cases.id',
+                'child_cases.case_number',
+                'child_cases.child_name',
+                'child_cases.child_age',
+                'child_cases.status',
+                'child_cases.priority',
+                'child_cases.channel',
+                'child_cases.created_at',
+                'contacts.display_name as guardian_name'
+            )
+            ->orderBy('child_cases.created_at', 'desc')
+            ->take(5)
+            ->get();
+
+        // ── Cases by Status ──
+        $casesByStatus = DB::table('child_cases')
+            ->select('status', DB::raw('count(*) as total'))
+            ->groupBy('status')
+            ->pluck('total', 'status');
+
+        // ── Cases by Priority ──
+        $casesByPriority = DB::table('child_cases')
+            ->select('priority', DB::raw('count(*) as total'))
+            ->groupBy('priority')
+            ->pluck('total', 'priority');
+
+        // ── Cases by Channel ──
+        $casesByChannel = DB::table('child_cases')
+            ->select('channel', DB::raw('count(*) as total'))
+            ->groupBy('channel')
+            ->pluck('total', 'channel');
+
+        // ── Symptoms distribution ──
+        $allSymptoms = DB::table('child_cases')
+            ->whereNotNull('symptoms')
+            ->pluck('symptoms');
+
+        $symptomsCount = [];
+        foreach ($allSymptoms as $raw) {
+            $arr = json_decode($raw, true) ?: [];
+            foreach ($arr as $s) {
+                $symptomsCount[$s] = ($symptomsCount[$s] ?? 0) + 1;
+            }
+        }
+        arsort($symptomsCount);
+        $symptomsCount = array_slice($symptomsCount, 0, 6, true);
+
+        // ── Cases last 7 days ──
+        $last7Days = [];
+        for ($i = 6; $i >= 0; $i--) {
+            $date = now()->subDays($i)->format('Y-m-d');
+            $label = now()->subDays($i)->format('d M');
+            $count = DB::table('child_cases')
+                ->whereDate('created_at', $date)
+                ->count();
+            $last7Days[] = ['label' => $label, 'count' => $count];
+        }
+
+        // ── Recent Activity (from activity_logs if exists, else fallback) ──
+        $recentActivity = DB::table('activity_logs')
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+
+        return view('dashboard.index', compact(
+            'totalCases',
+            'totalFollowups',
+            'pendingCases',
+            'highPriority',
+            'unreadComplaints',
+            'totalContacts',
+            'recentCases',
+            'casesByStatus',
+            'casesByPriority',
+            'casesByChannel',
+            'symptomsCount',
+            'last7Days',
+            'recentActivity'
+        ));
     }
 
     // ═══════════════════════════════════════════
@@ -44,8 +132,6 @@ class DashboardController extends Controller
     {
         $unreadComplaints = PolicyComplaint::unread()->count();
 
-
-        // Query with filters
         $query = DB::table('child_cases')
             ->join('contacts', 'child_cases.contact_id', '=', 'contacts.id')
             ->select(
@@ -66,7 +152,6 @@ class DashboardController extends Controller
                 'contacts.guardian_relation',
             );
 
-        // Search
         if ($search = $request->input('search')) {
             $query->where(function ($q) use ($search) {
                 $q->where('child_cases.child_name', 'like', "%{$search}%")
@@ -76,7 +161,6 @@ class DashboardController extends Controller
             });
         }
 
-        // Filters
         if ($status = $request->input('status')) {
             $query->where('child_cases.status', $status);
         }
@@ -87,7 +171,6 @@ class DashboardController extends Controller
             $query->where('child_cases.channel', $channel);
         }
 
-        // Sort: priority order → status order → newest
         $query->orderByRaw("FIELD(child_cases.priority, 'crisis', 'high', 'medium', 'low')")
               ->orderByRaw("FIELD(child_cases.status, 'new', 'assigned', 'in_progress', 'resolved')")
               ->orderBy('child_cases.created_at', 'desc');
@@ -113,9 +196,7 @@ class DashboardController extends Controller
             )
             ->first();
 
-        if (!$case) {
-            abort(404, 'Case not found');
-        }
+        if (!$case) abort(404, 'Case not found');
 
         $followups = DB::table('child_case_followups')
             ->where('child_case_id', $id)
@@ -178,7 +259,7 @@ class DashboardController extends Controller
 
         $callback = function () use ($cases) {
             $h = fopen('php://output', 'w');
-            fputs($h, "\xEF\xBB\xBF"); // UTF-8 BOM for Excel Arabic support
+            fputs($h, "\xEF\xBB\xBF");
             fputcsv($h, [
                 'Ref', 'Child Name', 'Age', 'Grade', 'Gender',
                 'Guardian', 'Relation', 'Phone', 'Channel',
@@ -211,4 +292,65 @@ class DashboardController extends Controller
 
         return response()->stream($callback, 200, $headers);
     }
+    public function search(Request $request)
+{
+    $q = trim($request->get('q', ''));
+
+    if (strlen($q) < 2) {
+        return response()->json(['results' => []]);
+    }
+
+    $results = [];
+    $like    = "%{$q}%";
+
+    try {
+        // 1. الحالات - بحث في الاسم، رقم الحالة، ورقم هاتف ولي الأمر
+        $cases = DB::table('child_cases')
+            ->join('contacts', 'child_cases.contact_id', '=', 'contacts.id')
+            ->where(function($query) use ($like) {
+                $query->where('child_cases.child_name', 'like', $like)
+                      ->orWhere('child_cases.case_number', 'like', $like)
+                      ->orWhere('contacts.identifier', 'like', $like); // رقم الجوال
+            })
+            ->select('child_cases.id', 'child_cases.child_name', 'child_cases.case_number', 'child_cases.status')
+            ->limit(5)
+            ->get();
+
+        foreach ($cases as $c) {
+            $results[] = [
+                'type'     => 'case',
+                'icon'     => 'bi-folder2',
+                'title'    => $c->child_name . ' — ' . $c->case_number,
+                'subtitle' => 'حالة: ' . ucfirst($c->status),
+                // استخدمنا رابط يدوي مؤقتاً للتأكد من عدم حدوث خطأ 500
+                'url'      => url("/admin/cases/" . $c->id), 
+                'color'    => '#1f5a8a',
+            ];
+        }
+
+        // 2. الأطباء
+        $doctors = DB::table('users')
+            ->where('role', 'doctor')
+            ->where('name', 'like', $like)
+            ->limit(3)
+            ->get();
+
+        foreach ($doctors as $d) {
+            $results[] = [
+                'type'     => 'doctor',
+                'icon'     => 'bi-person-badge',
+                'title'    => 'د. ' . $d->name,
+                'subtitle' => $d->email,
+                'url'      => url("/admin/doctors"), 
+                'color'    => '#1d9e75',
+            ];
+        }
+
+        return response()->json(['results' => $results]);
+
+    } catch (\Exception $e) {
+        // في حال حدوث أي خطأ، سيرجع لك رسالة الخطأ بدلاً من 500
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+}
 }

@@ -72,6 +72,7 @@
         });
     @endif
 </script>
+
   @yield('scripts')
 
 </body>

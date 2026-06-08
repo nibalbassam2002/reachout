@@ -205,8 +205,7 @@
             <div class="get-help-footer reveal" style="transition-delay: 0.3s;">
                 <p class="footer-text">Don't hesitate to contact us to protect your child.</p>
                 <div class="contact-buttons">
-                   <div class="contact-buttons">
-                    <a href="#" class="btn-contact btn-whatsapp" 
+                     <a href="#" class="btn-contact btn-whatsapp" 
                     onclick="openPopupWithChannel('whatsapp'); return false;">
                         <i class="fab fa-whatsapp"></i> Whatsapp
                     </a>
@@ -214,7 +213,6 @@
                     onclick="openPopupWithChannel('email'); return false;">
                         <i class="fas fa-envelope"></i> Email
                     </a>
-                </div>
                 </div>
             </div>
         </div>
@@ -265,7 +263,6 @@
     </div>
     <!-- الفورم ثانياً -->
     <div class="partners-form-card reveal" style="transition-delay: 0.15s;">
-        <div class="partners-form-card reveal" style="transition-delay: 0.15s;">
     <form id="partnerForm">
         <div class="form-row">
             <input type="text" id="p_fname" placeholder="First Name*" required>
@@ -277,7 +274,6 @@
         <button type="button" class="btn-send" onclick="sendPartnerEmail()">Send Message</button>
     </form>
 </div>
-    </div>
 </div>
         </div>
     </section>
@@ -295,21 +291,97 @@ function openPopupWithChannel(channel) {
         if (btn) btn.click();
     }, 100);
 }
+
+function setError(id, msg) {
+    const el = document.getElementById(id);
+    el.style.border = '2px solid #e53e3e';
+    el.style.background = '#fff5f5';
+    let err = el.parentElement.querySelector('.field-error');
+    if (!err) {
+        err = document.createElement('span');
+        err.className = 'field-error';
+        err.style.cssText = 'color:#e53e3e; font-size:12px; margin-top:4px; display:block;';
+        el.parentElement.appendChild(err);
+    }
+    err.textContent = msg;
+}
+
+function clearErrors() {
+    ['p_fname','p_lname','p_email','p_phone','p_message'].forEach(id => {
+        const el = document.getElementById(id);
+        el.style.border = '';
+        el.style.background = '';
+        const err = el.parentElement.querySelector('.field-error');
+        if (err) err.remove();
+    });
+}
+
 function sendPartnerEmail() {
+    clearErrors();
+
     const fname   = document.getElementById('p_fname').value.trim();
     const lname   = document.getElementById('p_lname').value.trim();
     const email   = document.getElementById('p_email').value.trim();
     const phone   = document.getElementById('p_phone').value.trim();
     const message = document.getElementById('p_message').value.trim();
 
-    if (!fname || !email || !message) {
-        alert('Please fill in all required fields.');
-        return;
-    }
+    let hasError = false;
 
-    const body = `Name: ${fname} ${lname}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`;
-    const url  = `https://mail.google.com/mail/?view=cm&to=info@mentalhealthfrontline.org&su=New+Partnership+Inquiry&body=${encodeURIComponent(body)}`;
-    window.open(url, '_blank');
+    if (!fname) { setError('p_fname', 'First name is required.'); hasError = true; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError('p_email', 'Please enter a valid email.'); hasError = true; }
+    if (!phone || !/^[0-9+\s\-]{7,15}$/.test(phone)) { setError('p_phone', 'Please enter a valid phone number.'); hasError = true; }
+    if (!message) { setError('p_message', 'Message is required.'); hasError = true; }
+
+    if (hasError) return;
+
+    const btn = document.querySelector('.btn-send');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    fetch('{{ route("partnership.send") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({ fname, lname, email, phone, message })
+    })
+    .then(res => res.json())
+    .then(() => {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+        document.getElementById('partnerForm').reset();
+
+        const success = document.createElement('div');
+        success.innerHTML = `
+            <div style="
+                position:fixed; top:0; left:0; width:100%; height:100%;
+                background:rgba(0,0,0,0.5); z-index:9999;
+                display:flex; align-items:center; justify-content:center;
+            ">
+                <div style="
+                    background:#fff; border-radius:16px; padding:40px;
+                    text-align:center; max-width:400px; width:90%;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                ">
+                    <div style="font-size:50px; margin-bottom:16px;">✅</div>
+                    <h3 style="color:#1a3c6e; margin-bottom:10px;">Message Sent!</h3>
+                    <p style="color:#666;">Your inquiry has been received. Our team will get back to you shortly.</p>
+                    <button onclick="this.closest('div[style]').parentElement.remove()" style="
+                        margin-top:20px; background:#1a3c6e; color:#fff;
+                        border:none; padding:10px 30px; border-radius:8px;
+                        cursor:pointer; font-size:15px;
+                    ">OK</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(success);
+    })
+    .catch(() => {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+        alert('Something went wrong. Please try again.');
+    });
 }
 </script>
 @endsection
