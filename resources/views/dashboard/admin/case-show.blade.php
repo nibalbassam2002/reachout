@@ -465,10 +465,29 @@
     </nav>
 </div>
 
-<a href="{{ route('admin.cases.index') }}" class="back-link">
-    <i class="fas fa-arrow-left" style="font-size:12px"></i> Back to Cases
-</a>
 
+<div style="display:flex; align-items:center; gap:12px; margin-bottom:18px">
+    <a href="{{ route('admin.cases.index') }}" class="back-link" style="margin-bottom:0">
+        <i class="fas fa-arrow-left" style="font-size:12px"></i> Back to Cases
+    </a>
+
+    <form action="{{ route('admin.cases.destroy', $case->id) }}" method="POST"
+          onsubmit="return confirm('Are you sure you want to delete this case? This action cannot be undone.')">
+        @csrf
+        @method('DELETE')
+        <button type="submit" style="
+            display:inline-flex; align-items:center; gap:6px;
+            background:#fef2f2; color:#ef4444;
+            border:1.5px solid #fecaca; border-radius:10px;
+            padding:7px 14px; font-size:13px; font-weight:600;
+            cursor:pointer; transition:0.2s; font-family:inherit;
+        "
+        onmouseover="this.style.background='#ef4444';this.style.color='#fff'"
+        onmouseout="this.style.background='#fef2f2';this.style.color='#ef4444'">
+            <i class="fas fa-trash" style="font-size:11px"></i> Delete Case
+        </button>
+    </form>
+</div>
 @php
     $symptomsArr = is_string($case->symptoms) ? json_decode($case->symptoms, true) : (array)$case->symptoms;
     $symptomsArr = $symptomsArr ?: [];

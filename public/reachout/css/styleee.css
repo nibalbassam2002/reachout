@@ -1852,12 +1852,7 @@ body {
     text-align: center;
     flex-shrink: 0;
   }
-  .nav-links li:nth-child(1) a::before { content: "\f015"; } /* home     */
-  .nav-links li:nth-child(2) a::before { content: "\f05a"; } /* about    */
-  .nav-links li:nth-child(3) a::before { content: "\f0e0"; } /* contact  */
-  .nav-links li:nth-child(4) a::before { content: "\f1ea"; } /* news     */
-  .nav-links li:nth-child(5) a::before { content: "\f15c"; } /* policies */
-  .nav-links li:nth-child(6) a::before { content: "\f004"; } /* donate   */
+
 
   /* زر Donate */
   .nav-links li a.donate-btn-nav {
@@ -2209,4 +2204,15 @@ body {
     background-color: #f1f5f9;
     color: #cbd5e1;
     cursor: not-allowed;
+}
+.footer-social-btn.tw { background: #000000; }
+/* إخفاء أيقونات الـ nav على الديسكتوب */
+.nav-links li a i {
+    display: none;
+}
+
+@media (max-width: 860px) {
+    .nav-links li a i {
+        display: inline-block;
+    }
 }

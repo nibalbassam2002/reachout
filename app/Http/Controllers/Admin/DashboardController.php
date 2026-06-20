@@ -353,4 +353,10 @@ class DashboardController extends Controller
         return response()->json(['error' => $e->getMessage()], 500);
     }
 }
+public function caseDestroy($id)
+{
+    DB::table('child_cases')->where('id', $id)->delete();
+    return redirect()->route('admin.cases.index')
+                     ->with('success', 'Case deleted successfully.');
+}
 }

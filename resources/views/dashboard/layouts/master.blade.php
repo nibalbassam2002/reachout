@@ -9,6 +9,12 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+<meta property="og:description" content="You deserve to be heard. You don't have to go through this alone." />
+
+<meta property="og:image" content="{{ secure_asset('reachout/img/logo3.png') }}" />
+
+
+<meta property="og:type" content="website" />
   <!-- Favicons -->
   <link href="{{asset('reachout/img/logogrope.png')}}" rel="icon">
   <link href="{{asset('reachout/img/logo3.png')}}" rel="apple-touch-icon">

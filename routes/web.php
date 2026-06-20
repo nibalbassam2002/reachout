@@ -63,6 +63,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
             Route::post('/profile/avatar',   [ProfileController::class, 'updateAvatar'])->name('profile.avatar');
             Route::get('/search', [AdminDashboard::class, 'search'])->name('search');
+            Route::delete('/cases/{id}', [AdminDashboard::class, 'caseDestroy'])->name('cases.destroy');
          });
 
     // Doctor فقط
@@ -99,6 +100,7 @@ Route::post('/contact', function(\Illuminate\Http\Request $request) {
         )
     );
 });
+
 Route::post('/partnership/send', [PartnershipController::class, 'send'])->name('partnership.send');
 Route::get('/', function () {
     return view('frontend.index');

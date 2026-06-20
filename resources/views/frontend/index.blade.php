@@ -198,7 +198,7 @@
                         Please take a moment to review our terms. they are designed to protect your privacy and ensure clear, safe communication. You can contact us anytime for support. By reaching out, you confirm your understanding and acceptance of these guidelines.
                     </p>
                 </div>
-                <a href="policies.pdf" class="btn-download" download title="Download Usage Policies">
+                <a href="/documents/legal-en.pdf" class="btn-download" download title="Download Usage Policies">
                     <i class="fas fa-download"></i> Download PDF
                 </a>
             </div>
