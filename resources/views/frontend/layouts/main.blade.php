@@ -70,7 +70,7 @@
     <i class="fas fa-scale-balanced"></i> Policies
 </a></li>
 
-<li><a href="{{ route('donate.page') }}" class="donate-btn-nav {{ request()->routeIs('donate.page') ? 'active' : '' }}">
+<li><a href="{{ route('backus') }}" class="donate-btn-nav {{ request()->is('back-us*') || request()->routeIs('backus') ? 'active' : '' }}">
     <i class="fas fa-hand-holding-heart"></i> Back Us
 </a></li>
             </ul>

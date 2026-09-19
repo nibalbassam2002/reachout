@@ -16,7 +16,7 @@
                 <h1 class="hero-title">Invest in Mental Health Support for Children and Families Under Fire</h1>
                 <p class="hero-sub">In conflict zones trauma spreads faster than the news.</p>
                 <p class="hero-sub">Your support delivers immediate mental health care when it matters most.</p>
-                <a href="{{ route('donate.page') }}" class="hero-btn">Back Us</a>
+                <a href="{{ route('backus') }}" class="hero-btn">Back Us</a>
             </div>
         </div>
         <div class="hero-dots">
@@ -217,7 +217,7 @@
     </section>
 
     <!-- ══ BRIDGE SECTION ══ -->
-    <section class="bridge-section" id="donate">
+    <section class="bridge-section" id="back-us">
         <div class="bridge-container">
             <h2 class="bridge-title reveal">From Trauma to Resilience: Your Support is the Bridge</h2>
             <div class="bridge-grid">
@@ -234,8 +234,8 @@
                     <div class="bridge-card-overlay"><p class="bridge-card-text">Building cognitive<br>resilience</p></div>
                 </div>
             </div>
-            <p class="bridge-desc reveal" style="transition-delay: 0.1s;">Every donation ensures the continuity of professional psychological support for children in conflict zones.</p>
-            <a href="{{ route('donate.page') }}" class="hero-btn reveal" style="transition-delay: 0.2s;">Back Us</a>
+            <p class="bridge-desc reveal" style="transition-delay: 0.1s;">Backing us ensures the continuity of professional psychological support for children in conflict zones.</p>
+            <a href="{{ route('backus') }}" class="hero-btn reveal" style="transition-delay: 0.2s;">Back Us</a>
             <p class="bridge-footer-text reveal" style="transition-delay: 0.3s;">Your generosity is the bridge between trauma and recovery</p>
         </div>
     </section>

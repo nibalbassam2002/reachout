@@ -2298,7 +2298,7 @@ body {
 <section class="ro-hero-section">
     <!-- Full Background Image using uploaded hero_girl_wide.jpg (Girl on Left, Text on Right) -->
     <div class="ro-hero-bg-layer">
-        <img src="{{ asset('reachout/img/imageser.jpg') }}" alt="Mental Health Frontline Support" class="ro-hero-bg-img">
+        <img src="{{ asset('reachout/img/hero_girl_wide.jpg') }}" alt="Mental Health Frontline Support" class="ro-hero-bg-img">
         <div class="ro-hero-overlay"></div>
     </div>
 
@@ -2539,7 +2539,7 @@ body {
     <div class="ro-why-container">
         <!-- Left Image with Reachout visual frame -->
         <div class="ro-wire-box">
-            <img src="{{ asset('reachout/img/hero_girl_wide.jpg') }}" alt="Children in Gaza supported by mental health care">
+            <img src="{{ asset('reachout/img/imageser.jpg') }}" alt="Children in Gaza supported by mental health care">
             <div class="why-handwritten-badge font-script">
                 Protection, Healing & Hope. <i class="fas fa-heart" style="color: #ef4444; font-size: 11px; margin-left: 3px;"></i>
             </div>

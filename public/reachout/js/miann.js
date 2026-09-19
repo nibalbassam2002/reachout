@@ -139,7 +139,7 @@
     const path     = window.location.pathname;
     const navItems = document.querySelectorAll('.nav-links li a');
 
-    if (path.includes('news') || path.includes('policies') || path.includes('donate')) return;
+    if (path.includes('news') || path.includes('policies') || path.includes('donate') || path.includes('back-us') || path.includes('backus')) return;
 
     if (!document.getElementById('about')) return;
 

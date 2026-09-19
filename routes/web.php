@@ -30,14 +30,16 @@ Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/policies', function () {
     return view('frontend.policies');
 })->name('policies');
-Route::get('/donate-now', function () {
+Route::get('/back-us', function () {
     $bank = \App\Models\BankAccount::first(); 
     return view('frontend.donate', compact('bank'));
+})->name('backus');
+
+// Redirect legacy /donate-now to /back-us
+Route::get('/donate-now', function () {
+    return redirect()->route('backus', [], 301);
 })->name('donate.page');
 
-Route::get('/back-us', function () {
-    return redirect()->route('donate.page');
-})->name('backus');
 
 // ─────────────────────────────────────────
 // AUTH ROUTES — يحتاج تسجيل دخول

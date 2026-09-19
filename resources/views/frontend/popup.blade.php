@@ -1244,7 +1244,7 @@
                             <span data-en="Send us an Email" data-ar="راسلنا عبر البريد الإلكتروني"></span>
                         </button>
                     </div>
-                    <a href="{{ route('donate.page') }}" class="pop-btn-donate" id="popupDonateAction" data-en="Back Us" data-ar="ادعم رسالتنا"></a>
+                    <a href="{{ route('backus') }}" class="pop-btn-donate" id="popupDonateAction" data-en="Back Us" data-ar="ادعم رسالتنا"></a>
                 </div>
             </div>
         </div>
