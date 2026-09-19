@@ -41,7 +41,6 @@
             <!-- 1. Safeguarding Policy -->
             <div class="policy-item-block">
                 <div class="policy-item-header">
-                    <img src="{{ asset('reachout/img/icon1.png') }}" alt="Icon">
                     <h2>Safeguarding Policy</h2>
                 </div>
                 <div class="policy-blue-border-content">
@@ -64,7 +63,6 @@
             <!-- 2. Child Protection Policy -->
             <div class="policy-item-block">
                 <div class="policy-item-header">
-                    <img src="{{ asset('reachout/img/icon2.png') }}" alt="Icon">
                     <h2>Child Protection Policy</h2>
                 </div>
                 <div class="policy-blue-border-content">
@@ -81,7 +79,6 @@
             <!-- 3. Code of Conduct -->
             <div class="policy-item-block">
                 <div class="policy-item-header">
-                    <img src="{{ asset('reachout/img/icon3.png') }}" alt="Icon">
                     <h2>Code of Conduct</h2>
                 </div>
                 <div class="policy-blue-border-content">
@@ -99,7 +96,6 @@
             <!-- 4. Confidentiality & Data Protection -->
             <div class="policy-item-block">
                 <div class="policy-item-header">
-                    <img src="{{ asset('reachout/img/icon4.png') }}" alt="Icon">
                     <h2>Confidentiality & Data Protection</h2>
                 </div>
                 <div class="policy-blue-border-content">
@@ -120,7 +116,6 @@
             <!-- 5. Online Safety Policy -->
             <div class="policy-item-block">
                 <div class="policy-item-header">
-                    <img src="{{ asset('reachout/img/icon5.png') }}" alt="Icon">
                     <h2>Online Safety Policy</h2>
                 </div>
                 <div class="policy-blue-border-content">
@@ -138,7 +133,6 @@
             <!-- 6. Do No Harm & Ethical Practice -->
             <div class="policy-item-block">
                 <div class="policy-item-header">
-                    <img src="{{ asset('reachout/img/icon6.png') }}" alt="Icon">
                     <h2>Do No Harm & Ethical Practice</h2>
                 </div>
                 <div class="policy-blue-border-content">
@@ -156,7 +150,6 @@
             <!-- 7. Accountability & Transparency -->
             <div class="policy-item-block">
                 <div class="policy-item-header">
-                    <img src="{{ asset('reachout/img/icon7.png') }}" alt="Icon">
                     <h2>Accountability & Transparency</h2>
                 </div>
                 <div class="policy-blue-border-content">
@@ -173,7 +166,6 @@
             <!-- 8. Zero Tolerance Policy -->
             <div class="policy-item-block">
                 <div class="policy-item-header">
-                    <img src="{{ asset('reachout/img/icon8.png') }}" alt="Icon">
                     <h2>Zero Tolerance Policy</h2>
                 </div>
                 <div class="policy-blue-border-content">
@@ -184,7 +176,6 @@
             <!-- 9. Reporting & Complaints Mechanism -->
             <div class="policy-item-block reporting-full-section">
                 <div class="policy-item-header">
-                    <img src="{{ asset('reachout/img/icon9.png') }}" alt="Icon">
                     <h2>Reporting & Complaints Mechanism</h2>
                 </div>
 

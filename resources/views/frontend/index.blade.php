@@ -7,23 +7,21 @@
     <!-- ══ HERO ══ -->
     <section class="hero-section" id="hero">
         <div class="hero-slides">
-            <div class="hero-slide active" style="background-image: url('{{ asset('reachout/img/hero1.jpeg') }}');"></div>
-            <div class="hero-slide" style="background-image: url('{{ asset('reachout/img/hero2.jpeg') }}');"></div>
-            <div class="hero-slide" style="background-image: url('{{ asset('reachout/img/hero3.jpeg') }}');"></div>
+            <div class="hero-slide active" style="background-image: url('{{ asset('reachout/img/hero1.png') }}');"></div>
+            <div class="hero-slide" style="background-image: url('{{ asset('reachout/img/hero2.jpg') }}');"></div>
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-content-inner">
-                <h1 class="hero-title">Psychological First Aid for Children Under Fire</h1>
+                <h1 class="hero-title">Invest in Mental Health Support for Children and Families Under Fire</h1>
                 <p class="hero-sub">In conflict zones trauma spreads faster than the news.</p>
                 <p class="hero-sub">Your support delivers immediate mental health care when it matters most.</p>
-                <a href="{{ route('donate.page') }}" class="hero-btn">Donate Now</a>
+                <a href="{{ route('donate.page') }}" class="hero-btn">Back Us</a>
             </div>
         </div>
         <div class="hero-dots">
             <button class="hero-dot active" data-index="0"></button>
             <button class="hero-dot" data-index="1"></button>
-            <button class="hero-dot" data-index="2"></button>
         </div>
     </section>
 
@@ -72,15 +70,15 @@
             <div class="services-right reveal-right">
                 <div class="wire-img-box">
                     <div class="slider-track" id="servicesTrack">
-                        <img class="s-slide" src="{{ asset('reachout/img/services1.png') }}"  alt="">
-                        <img class="s-slide" src="{{ asset('reachout/img/services2.png') }}"  alt="">
+                        <img class="s-slide" src="{{ asset('reachout/img/services1.jpg') }}"  alt="">
+                        <img class="s-slide" src="{{ asset('reachout/img/services2.jpg') }}"  alt="">
                         <img class="s-slide" src="{{ asset('reachout/img/services3.jpg') }}"  alt="">
                         <img class="s-slide" src="{{ asset('reachout/img/services4.png') }}"  alt="">
-                        <img class="s-slide" src="{{ asset('reachout/img/services5.png') }}"  alt="">
-                        <img class="s-slide" src="{{ asset('reachout/img/services6.png') }}"  alt="">
+                        <img class="s-slide" src="{{ asset('reachout/img/services5.jpg') }}"  alt="">
+                        <img class="s-slide" src="{{ asset('reachout/img/services6.jpg') }}"  alt="">
                         <img class="s-slide" src="{{ asset('reachout/img/services7.jpeg') }}"  alt="">
-                        <img class="s-slide" src="{{ asset('reachout/img/services8.jpeg') }}"  alt="">
-                        <img class="s-slide" src="{{ asset('reachout/img/services9.jpeg') }}"  alt="">
+                        <img class="s-slide" src="{{ asset('reachout/img/services8.jpg') }}"  alt="">
+                        <img class="s-slide" src="{{ asset('reachout/img/services9.jpg') }}"  alt="">
                         <img class="s-slide" src="{{ asset('reachout/img/services10.jpg') }}" alt="">
                     </div>
                 </div>
@@ -111,7 +109,7 @@
                 </div>
             </div>
             <div class="impact-card reveal-scale" style="transition-delay: 0.1s;">
-                <img class="impact-card-img" src="{{ asset('reachout/img/impact2.png') }}" alt="">
+                <img class="impact-card-img" src="{{ asset('reachout/img/impact2.jpg') }}" alt="">
                 <div class="impact-card-body">
                     <div class="impact-stat" data-target="100" data-suffix="%">100%</div>
                     <p class="impact-desc">All children in Gaza are now in need of mental health and psychosocial support.</p>
@@ -127,7 +125,7 @@
                 </div>
             </div>
             <div class="impact-card reveal-scale" style="transition-delay: 0.3s;">
-                <img class="impact-card-img" src="{{ asset('reachout/img/impact4.jpg') }}" alt="">
+                <img class="impact-card-img" src="{{ asset('reachout/img/impact4.jpeg') }}" alt="">
                 <div class="impact-card-body">
                     <div class="impact-stat" data-target="96" data-suffix="%">96%</div>
                     <p class="impact-desc">of children in Gaza feel their death is imminent due to ongoing trauma.</p>
@@ -135,7 +133,7 @@
                 </div>
             </div>
             <div class="impact-card reveal-scale" style="transition-delay: 0.4s;">
-                <img class="impact-card-img" src="{{ asset('reachout/img/impact5.png') }}" alt="">
+                <img class="impact-card-img" src="{{ asset('reachout/img/impact5.jpg') }}" alt="">
                 <div class="impact-card-body">
                     <div class="impact-stat" data-target="80" data-suffix="%">80%</div>
                     <p class="impact-desc">4 in 5 children show signs of severe emotional distress, depression, or anxiety due to ongoing conflict.</p>
@@ -143,7 +141,7 @@
                 </div>
             </div>
             <div class="impact-card reveal-scale" style="transition-delay: 0.5s;">
-                <img class="impact-card-img" src="{{ asset('reachout/img/impact6.png') }}" alt="">
+                <img class="impact-card-img" src="{{ asset('reachout/img/impact6.jpg') }}" alt="">
                 <div class="impact-card-body">
                     <div class="impact-stat" data-target="1000000" data-suffix="">1 million</div>
                     <p class="impact-desc">Almost every child in Gaza, over 1 million children is in need of mental health and psychosocial support.</p>
@@ -224,11 +222,11 @@
             <h2 class="bridge-title reveal">From Trauma to Resilience: Your Support is the Bridge</h2>
             <div class="bridge-grid">
                 <div class="bridge-card reveal" style="transition-delay: 0.05s;">
-                    <img src="{{ asset('reachout/img/bridge1.png') }}" alt="Preventing chronic trauma">
+                    <img src="{{ asset('reachout/img/bridge1.jpg') }}" alt="Preventing chronic trauma">
                     <div class="bridge-card-overlay"><p class="bridge-card-text">Preventing chronic<br>trauma</p></div>
                 </div>
                 <div class="bridge-card reveal" style="transition-delay: 0.15s;">
-                    <img src="{{ asset('reachout/img/bridge2.png') }}" alt="Secure digital sanctuary">
+                    <img src="{{ asset('reachout/img/bridge2.jpg') }}" alt="Secure digital sanctuary">
                     <div class="bridge-card-overlay"><p class="bridge-card-text">Secure digital<br>sanctuary</p></div>
                 </div>
                 <div class="bridge-card reveal" style="transition-delay: 0.25s;">
@@ -237,7 +235,7 @@
                 </div>
             </div>
             <p class="bridge-desc reveal" style="transition-delay: 0.1s;">Every donation ensures the continuity of professional psychological support for children in conflict zones.</p>
-            <a href="{{ route('donate.page') }}" class="hero-btn reveal" style="transition-delay: 0.2s;">Donate Now</a>
+            <a href="{{ route('donate.page') }}" class="hero-btn reveal" style="transition-delay: 0.2s;">Back Us</a>
             <p class="bridge-footer-text reveal" style="transition-delay: 0.3s;">Your generosity is the bridge between trauma and recovery</p>
         </div>
     </section>

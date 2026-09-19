@@ -36,15 +36,9 @@ html, body {
 
 /* إصلاح الـ hero */
 .hero-section {
-    height: calc(100vh - 64px);  /* بدل 100vh */
-    margin-top: 64px;
-}
-.hero-section {
-    /* كل الكود الأصلي + */
-    overflow: hidden; /* ← هاد بس الجديد */
-}
-.main-header {
-    overflow: hidden; /* ← أضف هاد */
+    height: calc(100vh - 80px);  /* بدل 100vh */
+    margin-top: 80px;
+    overflow: hidden;
 }
 
 .nav-logo {
@@ -96,9 +90,10 @@ html, body {
         .main-header {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             background: #ffffff; box-shadow: 0 2px 16px rgba(10,42,74,0.10);
+            height: 80px;
         }
         .navbar {
-            max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 64px;
+            max-width: 1240px; margin: 0 auto; padding: 0 24px; height: 80px;
             display: flex; align-items: center; justify-content: space-between; gap: 20px;
         }
         @keyframes logoSlideIn {
@@ -106,20 +101,21 @@ html, body {
             to   { opacity: 1; transform: translateX(0); }
         }
         .nav-logo {
-        display: flex; align-items: center; gap: 10px; text-decoration: none;
-        flex-shrink: 0; margin-left: 0;  /* ← حذفنا الـ -30px */
-        animation: logoSlideIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
-    }
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            flex-shrink: 0; margin-left: 0;
+            animation: logoSlideIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
+        }
         @keyframes logoFloat {
             0%, 100% { transform: translateY(0); }
             50%       { transform: translateY(-4px); }
         }
         .nav-logo img {
-            height: 100px; width: 100px; object-fit: contain; border-radius: 50%;
+            height: 64px; width: 64px; object-fit: contain; border-radius: 50%;
             animation: logoFloat 3.5s ease-in-out infinite; transition: transform 0.3s;
+            display: block;
         }
-        .nav-logo:hover img { animation-play-state: paused; transform: scale(1.07) rotate(-3deg); }
-        .nav-links { list-style: none; display: flex; align-items: center; gap: 4px; }
+        .nav-logo:hover img { animation-play-state: paused; transform: scale(1.08) rotate(-3deg); }
+        .nav-links { list-style: none; display: flex; align-items: center; gap: 6px; }
         @keyframes navItemDrop {
             from { opacity: 0; transform: translateY(-10px); }
             to   { opacity: 1; transform: translateY(0); }
@@ -132,14 +128,14 @@ html, body {
         .nav-links li:nth-child(5) { animation-delay: 0.33s; }
         .nav-links li:nth-child(6) { animation-delay: 0.40s; }
         .nav-links li a {
-            display: block; padding: 7px 16px; font-size: 14px; font-weight: 700;
+            display: block; padding: 8px 16px; font-size: 15px; font-weight: 700;
             color: var(--text); text-decoration: none; border-radius: 8px;
             transition: background 0.2s, color 0.2s, transform 0.2s;
         }
         .nav-links li a:hover { background: #eef2ff; color: var(--blue); transform: translateY(-1px); }
         .nav-links li a.active { background: var(--blue); color: #fff; }
         .nav-links li a.donate-btn-nav {
-            background: var(--red); color: #fff; padding: 7px 20px;
+            background: var(--red); color: #fff; padding: 9px 22px; font-size: 15px;
             transition: background 0.2s, transform 0.2s;
         }
         .nav-links li a.donate-btn-nav:hover { background: var(--red-h); transform: translateY(-1px) scale(1.04); }
@@ -147,7 +143,7 @@ html, body {
         /* ══ HERO ══ */
         .hero-section {
             position: relative; width: 100%; height: 100vh;
-            min-height: 560px; margin-top: 64px; overflow: hidden;
+            min-height: 560px; margin-top: 80px; overflow: hidden;
         }
         .hero-slides { position: absolute; inset: 0; width: 100%; height: 100%; }
         .hero-slide {
@@ -1454,10 +1450,17 @@ body {
     .hamburger { display: flex; }
 }
 
+@media (max-width: 860px) {
+    .main-header { height: 72px; }
+    .navbar { height: 72px; padding: 0 20px; }
+    .nav-logo img { height: 56px; width: 56px; }
+}
+
 @media (max-width: 480px) {
-    .nav-logo img { height: 70px; width: 70px; }
-    .nav-logo { margin-left: -10px; }
-    .navbar { padding: 0 16px; }
+    .main-header { height: 68px; }
+    .navbar { height: 68px; padding: 0 16px; }
+    .nav-logo img { height: 52px; width: 52px; }
+    .nav-logo { margin-left: 0; }
 }
 
 /* ══════════════════════════════
@@ -2095,7 +2098,17 @@ body {
     }
 }
 .policy-hero-detailed {
-    margin-top: 64px !important;
+    margin-top: 80px !important;
+}
+@media (max-width: 860px) {
+    .policy-hero-detailed {
+        margin-top: 72px !important;
+    }
+}
+@media (max-width: 480px) {
+    .policy-hero-detailed {
+        margin-top: 68px !important;
+    }
 }
 @media (max-width: 768px) {
     .policy-hero-detailed {

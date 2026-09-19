@@ -27,7 +27,6 @@
             background-color: #f0f2f5;
         }
 
-        /* ══ RTL: scoped to modal only ══ */
         #welcomePopup[dir="rtl"] *,
         #welcomePopup[dir="rtl"] input,
         #welcomePopup[dir="rtl"] select,
@@ -35,42 +34,38 @@
         #welcomePopup[dir="rtl"] button {
             font-family: 'Cairo', 'Tajawal', 'Inter', sans-serif;
         }
-        /* ══ RTL: scoped to modal only ══ */
-#welcomePopup[dir="rtl"] input,
-#welcomePopup[dir="rtl"] select,
-#welcomePopup[dir="rtl"] textarea,
-#welcomePopup[dir="rtl"] button,
-#welcomePopup[dir="rtl"] p,
-#welcomePopup[dir="rtl"] span,
-#welcomePopup[dir="rtl"] label,
-#welcomePopup[dir="rtl"] a,
-#welcomePopup[dir="rtl"] h1,
-#welcomePopup[dir="rtl"] h2,
-#welcomePopup[dir="rtl"] h3,
-#welcomePopup[dir="rtl"] div {
-    font-family: 'Cairo', 'Tajawal', 'Inter', sans-serif;
-}
+        #welcomePopup[dir="rtl"] input,
+        #welcomePopup[dir="rtl"] select,
+        #welcomePopup[dir="rtl"] textarea,
+        #welcomePopup[dir="rtl"] button,
+        #welcomePopup[dir="rtl"] p,
+        #welcomePopup[dir="rtl"] span,
+        #welcomePopup[dir="rtl"] label,
+        #welcomePopup[dir="rtl"] a,
+        #welcomePopup[dir="rtl"] h1,
+        #welcomePopup[dir="rtl"] h2,
+        #welcomePopup[dir="rtl"] h3,
+        #welcomePopup[dir="rtl"] div {
+            font-family: 'Cairo', 'Tajawal', 'Inter', sans-serif;
+        }
+        #welcomePopup[dir="rtl"] i,
+        #welcomePopup[dir="rtl"] .fa,
+        #welcomePopup[dir="rtl"] .fas,
+        #welcomePopup[dir="rtl"] .fab,
+        #welcomePopup[dir="rtl"] .far {
+            font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
+        }
+        #welcomePopup[dir="rtl"] .gender-btn i,
+        #welcomePopup[dir="rtl"] .impact-btn i {
+            display: block !important;
+            font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
+        }
+        .gender-btn i,
+        .impact-btn i {
+            display: block !important;
+            font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
+        }
 
-/* استثناء الأيقونات — تبقى Font Awesome */
-#welcomePopup[dir="rtl"] i,
-#welcomePopup[dir="rtl"] .fa,
-#welcomePopup[dir="rtl"] .fas,
-#welcomePopup[dir="rtl"] .fab,
-#welcomePopup[dir="rtl"] .far {
-    font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
-}
-#welcomePopup[dir="rtl"] .gender-btn i,
-#welcomePopup[dir="rtl"] .impact-btn i {
-    display: block !important;
-    font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
-}
-
-/* وهذا للـ LTR كمان */
-.gender-btn i,
-.impact-btn i {
-    display: block !important;
-    font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
-}
         /* ══ LANG TOGGLE ══ */
         .lang-toggle {
             position: absolute;
@@ -103,7 +98,6 @@
             border-radius: 50px;
         }
         .lang-btn:hover:not(.active) { color: #fff; }
-
         #welcomePopup[dir="rtl"] .lang-toggle {
             left: auto;
             right: 52px;
@@ -285,18 +279,10 @@
             cursor: pointer;
         }
 
-        .btn-wa {
-            background: #e7f6ed;
-            color: #24a159;
-        }
+        .btn-wa { background: #e7f6ed; color: #24a159; }
         .btn-wa:hover { background: #d9f2e3; transform: translateY(-2px); }
-
-        .btn-mail {
-            background: #eff4ff;
-            color: #3b82f6;
-        }
+        .btn-mail { background: #eff4ff; color: #3b82f6; }
         .btn-mail:hover { background: #e0e9ff; transform: translateY(-2px); }
-
         .pop-btn i { font-size: 16px; color: inherit; }
 
         .pop-btn-donate {
@@ -314,6 +300,42 @@
             transition: 0.3s;
         }
         .pop-btn-donate:hover { background: #163a66; transform: translateY(-2px); }
+.terms-notice {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #eef2ff;
+    border: 1.5px solid #c7d2fe;
+    border-radius: 8px;
+    padding: 7px 12px;
+    margin: 0 0 12px 0;  /* قلل الـ margin */
+    font-size: 11px;      /* صغر الخط */
+    font-weight: 600;
+    color: #0d2849;
+    line-height: 1.4;
+}
+.terms-notice i {
+    font-size: 12px;
+    color: #6366f1;
+    flex-shrink: 0;
+}
+.pop-legal-links {
+    margin: 8px 0 8px 0;  /* كان 12px 0 16px */
+    font-size: 12px;
+}
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+            to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        @keyframes toastOut {
+            from { opacity: 1; }
+            to   { opacity: 0; }
+        }
+        @keyframes toastBounce {
+            from { transform: translateY(0); }
+            to   { transform: translateY(3px); }
+        }
+        #welcomePopup[dir="rtl"] .terms-toast { direction: rtl; }
 
         /* ══ FORM VIEW ══ */
         .form-view {
@@ -483,11 +505,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        .child-record-meta {
-            font-size: 11px;
-            color: #6b7280;
-            margin-top: 2px;
-        }
+        .child-record-meta { font-size: 11px; color: #6b7280; margin-top: 2px; }
         .child-ref-badge {
             font-size: 10.5px;
             font-weight: 700;
@@ -858,51 +876,53 @@
         }
         .btn-submit.loading .spinner { display: block; }
         .btn-submit.loading .btn-text { display: none; }
-         /* ══ Legal Doc Modal ══ */
-.legal-overlay {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 99999;
-    display: flex; align-items: center; justify-content: center;
-    animation: fadeIn 0.15s ease;
-}
-.legal-modal {
-    background: #fff;
-    border-radius: 18px;
-    padding: 24px 20px 16px;
-    width: min(290px, calc(100vw - 32px));
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-}
-.legal-modal-title {
-    font-size: 15px; font-weight: 700;
-    color: #0d2849; margin: 0 0 4px;
-}
-.legal-modal-sub {
-    font-size: 11.5px; color: #6b7280;
-    margin: 0 0 16px;
-}
-.legal-action-btn {
-    display: flex; align-items: center; gap: 10px;
-    width: 100%; padding: 11px 14px;
-    border-radius: 10px;
-    border: 1.5px solid #e5e7eb;
-    background: #fafafa;
-    font-size: 13px; font-weight: 600;
-    color: #111827; cursor: pointer;
-    transition: 0.15s; margin-bottom: 8px;
-    text-align: left;
-}
-.legal-action-btn:hover { background: #f3f4f6; border-color: #0d2849; }
-.legal-action-btn i { font-size: 16px; color: #6b7280; }
-.legal-cancel-btn {
-    width: 100%; padding: 9px;
-    border: none; background: transparent;
-    font-size: 12.5px; color: #9ca3af;
-    cursor: pointer; margin-top: 4px;
-    border-radius: 8px;
-}
-.legal-cancel-btn:hover { background: #f3f4f6; color: #374151; }
-#welcomePopup[dir="rtl"] .legal-action-btn { text-align: right; }
+
+        /* ══ Legal Doc Modal ══ */
+        .legal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 99999;
+            display: flex; align-items: center; justify-content: center;
+            animation: fadeIn 0.15s ease;
+        }
+        .legal-modal {
+            background: #fff;
+            border-radius: 18px;
+            padding: 24px 20px 16px;
+            width: min(290px, calc(100vw - 32px));
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        .legal-modal-title {
+            font-size: 15px; font-weight: 700;
+            color: #0d2849; margin: 0 0 4px;
+        }
+        .legal-modal-sub {
+            font-size: 11.5px; color: #6b7280;
+            margin: 0 0 16px;
+        }
+        .legal-action-btn {
+            display: flex; align-items: center; gap: 10px;
+            width: 100%; padding: 11px 14px;
+            border-radius: 10px;
+            border: 1.5px solid #e5e7eb;
+            background: #fafafa;
+            font-size: 13px; font-weight: 600;
+            color: #111827; cursor: pointer;
+            transition: 0.15s; margin-bottom: 8px;
+            text-align: left;
+        }
+        .legal-action-btn:hover { background: #f3f4f6; border-color: #0d2849; }
+        .legal-action-btn i { font-size: 16px; color: #6b7280; }
+        .legal-cancel-btn {
+            width: 100%; padding: 9px;
+            border: none; background: transparent;
+            font-size: 12.5px; color: #9ca3af;
+            cursor: pointer; margin-top: 4px;
+            border-radius: 8px;
+        }
+        .legal-cancel-btn:hover { background: #f3f4f6; color: #374151; }
+        #welcomePopup[dir="rtl"] .legal-action-btn { text-align: right; }
+
         /* Animations */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp {
@@ -1041,25 +1061,13 @@
         .error-msg { font-size: 10px; color: #ef4444; margin-top: 2px; display: none; }
         .error-msg.show { display: block; }
 
-        /* ══ RTL direction fixes — scoped to modal ══ */
+        /* ══ RTL direction fixes ══ */
         #welcomePopup[dir="rtl"] .form-nav { flex-direction: row-reverse; }
         #welcomePopup[dir="rtl"] .pop-btn-row { flex-direction: row; }
         #welcomePopup[dir="rtl"] .gender-group { flex-direction: row; }
         #welcomePopup[dir="rtl"] .impact-group { flex-direction: row; }
         #welcomePopup[dir="rtl"] .ref-lookup-row { flex-direction: row; }
-/* gender icons */
-.gender-btn i { 
-    display: block !important; 
-    font-size: 16px; 
-    margin-bottom: 3px; 
-}
 
-/* impact icons */
-.impact-btn i { 
-    display: block !important; 
-    font-size: 15px; 
-    margin-bottom: 3px; 
-}
         /* ══ RESPONSIVE ══ */
         @media (max-width: 500px) {
             .pop-modal { border-radius: 24px; }
@@ -1130,6 +1138,8 @@
             .success-ref-box { padding: 6px 14px; flex-wrap: wrap; justify-content: center; gap: 4px; }
             .success-ref-number { font-size: 13px; }
             .btn-whatsapp-final { padding: 11px 22px; font-size: 13px; }
+            /* toast on mobile */
+            .terms-toast { font-size: 10.5px; padding: 8px 14px; bottom: 14px; }
         }
 
         @media (max-width: 380px) {
@@ -1141,6 +1151,7 @@
             .req-tab span { display: none; }
             .pop-btn { font-size: 11px; }
             .pop-btn-donate { width: 80%; }
+            .terms-toast { white-space: normal; text-align: center; width: calc(100% - 32px); }
         }
 
         @media (min-width: 641px) and (max-width: 768px) {
@@ -1210,12 +1221,17 @@
                 </div>
 
                 <p class="pop-legal-links">
-                    <a href="#" onclick="openDoc(); return false;" 
+                    <a href="#" onclick="openDoc(); return false;"
                         data-en="Terms of Service" data-ar="شروط الخدمة"></a>
                         &amp;
-                        <a href="#" onclick="openDoc(); return false;" 
+                        <a href="#" onclick="openDoc(); return false;"
                         data-en="Privacy Policy" data-ar="سياسة الخصوصية"></a>
                 </p>
+                <div class="terms-notice">
+    <i class="fas fa-shield-halved"></i>
+    <span data-en="Please read our Terms & Privacy Policy before reaching out to us." 
+          data-ar="يرجى قراءة شروط الخدمة وسياسة الخصوصية قبل التواصل معنا."></span>
+</div>
 
                 <div class="pop-cta-box">
                     <div class="pop-btn-row">
@@ -1228,7 +1244,7 @@
                             <span data-en="Send us an Email" data-ar="راسلنا عبر البريد الإلكتروني"></span>
                         </button>
                     </div>
-                    <a href="{{ route('donate.page') }}" class="pop-btn-donate" id="popupDonateAction" data-en="Donate now" data-ar="تبرع الآن"></a>
+                    <a href="{{ route('donate.page') }}" class="pop-btn-donate" id="popupDonateAction" data-en="Back Us" data-ar="ادعم رسالتنا"></a>
                 </div>
             </div>
         </div>
@@ -1594,17 +1610,14 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     let currentLang = 'en';
-
     // ══ setLang: scoped to modal only ══
     window.setLang = function(lang) {
         currentLang = lang;
 
-        // ✅ Apply dir/lang ONLY on the popup — NOT on <html>
         const popup = document.getElementById('welcomePopup');
         popup.setAttribute('lang', lang);
         popup.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
 
-        // Load Arabic font when needed
         if (lang === 'ar') {
             const fontLink = document.getElementById('arabicFont');
             if (fontLink.getAttribute('href') === '') {
@@ -1616,7 +1629,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('btnLangEn').classList.toggle('active', lang === 'en');
         document.getElementById('btnLangAr').classList.toggle('active', lang === 'ar');
 
-        // Update all [data-en] [data-ar] elements inside popup only
         popup.querySelectorAll('[data-en]').forEach(el => {
             const txt = el.getAttribute('data-' + lang);
             if (txt !== null) el.textContent = txt;
@@ -1632,11 +1644,13 @@ document.addEventListener('DOMContentLoaded', function () {
             if (txt) opt.textContent = txt;
         });
 
-        // Fix arrow direction via JS too
         popup.querySelectorAll('.btn-back i, .btn-next i').forEach(icon => {
             icon.style.transform = lang === 'ar' ? 'scaleX(-1)' : 'scaleX(1)';
         });
+
     };
+
+
 
     setLang('en');
 
@@ -1978,29 +1992,24 @@ document.addEventListener('DOMContentLoaded', function () {
             switchView('view-success');
             if (data.whatsapp_url) document.getElementById('finalWhatsappBtn').href = data.whatsapp_url;
             if (selectedChannel === 'whatsapp') {
-    setTimeout(() => window.open(data.whatsapp_url || 'https://wa.me/yournumber', '_blank'), 1500);
-}
-   if (selectedChannel === 'email') {
-    const mailtoUrl = data.mailto_url || data.contact_url;
-    
-    // استخرج الـ body والـ subject من الـ mailto
-    const afterMailto = mailtoUrl.replace('mailto:' + 'info@mentalhealthfrontline.org', '');
-    const subjectMatch = afterMailto.match(/[?&]subject=([^&]*)/);
-    const bodyMatch    = afterMailto.match(/[?&]body=([^]*)/);
-    
-    const subject = subjectMatch ? decodeURIComponent(subjectMatch[1].replace(/\+/g, ' ')) : 'New Case Request';
-    const body    = bodyMatch    ? decodeURIComponent(bodyMatch[1].replace(/\+/g, ' '))    : '';
-
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&to=info@mentalhealthfrontline.org&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    document.getElementById('finalWhatsappBtn').innerHTML = `
-        <i class="far fa-envelope" style="font-size:20px"></i>
-        <span>Open Gmail</span>
-    `;
-    document.getElementById('finalWhatsappBtn').style.background = '#3b82f6';
-    document.getElementById('finalWhatsappBtn').href = gmailUrl;
-    setTimeout(() => window.open(gmailUrl, '_blank'), 1500);
-}
+                setTimeout(() => window.open(data.whatsapp_url || 'https://wa.me/yournumber', '_blank'), 1500);
+            }
+            if (selectedChannel === 'email') {
+                const mailtoUrl = data.mailto_url || data.contact_url;
+                const afterMailto = mailtoUrl.replace('mailto:' + 'info@mentalhealthfrontline.org', '');
+                const subjectMatch = afterMailto.match(/[?&]subject=([^&]*)/);
+                const bodyMatch    = afterMailto.match(/[?&]body=([^]*)/);
+                const subject = subjectMatch ? decodeURIComponent(subjectMatch[1].replace(/\+/g, ' ')) : 'New Case Request';
+                const body    = bodyMatch    ? decodeURIComponent(bodyMatch[1].replace(/\+/g, ' '))    : '';
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&to=info@mentalhealthfrontline.org&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                document.getElementById('finalWhatsappBtn').innerHTML = `
+                    <i class="far fa-envelope" style="font-size:20px"></i>
+                    <span>Open Gmail</span>
+                `;
+                document.getElementById('finalWhatsappBtn').style.background = '#3b82f6';
+                document.getElementById('finalWhatsappBtn').href = gmailUrl;
+                setTimeout(() => window.open(gmailUrl, '_blank'), 1500);
+            }
         } catch (error) {
             console.error('Submission error:', error);
             alert(currentLang === 'ar'
@@ -2100,60 +2109,63 @@ document.addEventListener('DOMContentLoaded', function () {
 
         window.open(`https://wa.me/972568200088?text=${encodeURIComponent(message)}`, '_blank');
     };
-     window.openDoc = function() {
-    const existing = document.getElementById('legalDocModal');
-    if (existing) existing.remove();
 
-    const lang = currentLang;
-    const files = {
-        en: '/documents/legal-en.pdf',
-        ar: '/documents/legal-ar.pdf'
-    };
-    const url = files[lang];
+    // ══ Legal Doc Modal ══
+    window.openDoc = function() {
+        const existing = document.getElementById('legalDocModal');
+        if (existing) existing.remove();
 
-    const labels = {
-        en: { title: 'Legal Documents', sub: 'How would you like to view it?',
-              preview: 'Preview in browser', download: 'Download PDF', cancel: 'Cancel' },
-        ar: { title: 'الوثائق القانونية', sub: 'كيف تريد عرضه؟',
-              preview: 'معاينة في المتصفح', download: 'تنزيل PDF', cancel: 'إلغاء' }
-    };
-    const l = labels[lang];
+        const lang = currentLang;
+        const files = {
+            en: '/documents/legal-en.pdf',
+            ar: '/documents/legal-ar.pdf'
+        };
+        const url = files[lang];
 
-    const overlay = document.createElement('div');
-    overlay.className = 'legal-overlay';
-    overlay.id = 'legalDocModal';
-    overlay.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
-    overlay.innerHTML = `
-        <div class="legal-modal">
-            <p class="legal-modal-title">${l.title}</p>
-            <p class="legal-modal-sub">${l.sub}</p>
-            <button class="legal-action-btn" id="legalPreviewBtn">
-                <i class="fas fa-eye"></i> ${l.preview}
-            </button>
-            <button class="legal-action-btn" id="legalDownloadBtn">
-                <i class="fas fa-download"></i> ${l.download}
-            </button>
-            <button class="legal-cancel-btn" id="legalCancelBtn">${l.cancel}</button>
-        </div>
-    `;
-    document.body.appendChild(overlay);
+        const labels = {
+            en: { title: 'Legal Documents', sub: 'How would you like to view it?',
+                  preview: 'Preview in browser', download: 'Download PDF', cancel: 'Cancel' },
+            ar: { title: 'الوثائق القانونية', sub: 'كيف تريد عرضه؟',
+                  preview: 'معاينة في المتصفح', download: 'تنزيل PDF', cancel: 'إلغاء' }
+        };
+        const l = labels[lang];
 
-    document.getElementById('legalPreviewBtn').onclick = function() {
-        window.open(url, '_blank');
-        overlay.remove();
+        const overlay = document.createElement('div');
+        overlay.className = 'legal-overlay';
+        overlay.id = 'legalDocModal';
+        overlay.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+        overlay.innerHTML = `
+            <div class="legal-modal">
+                <p class="legal-modal-title">${l.title}</p>
+                <p class="legal-modal-sub">${l.sub}</p>
+                <button class="legal-action-btn" id="legalPreviewBtn">
+                    <i class="fas fa-eye"></i> ${l.preview}
+                </button>
+                <button class="legal-action-btn" id="legalDownloadBtn">
+                    <i class="fas fa-download"></i> ${l.download}
+                </button>
+                <button class="legal-cancel-btn" id="legalCancelBtn">${l.cancel}</button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        document.getElementById('legalPreviewBtn').onclick = function() {
+            window.open(url, '_blank');
+            overlay.remove();
+        };
+        document.getElementById('legalDownloadBtn').onclick = function() {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'legal-' + lang + '.pdf';
+            a.click();
+            overlay.remove();
+        };
+        document.getElementById('legalCancelBtn').onclick = function() { overlay.remove(); };
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) overlay.remove();
+        });
     };
-    document.getElementById('legalDownloadBtn').onclick = function() {
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'legal-' + lang + '.pdf';
-        a.click();
-        overlay.remove();
-    };
-    document.getElementById('legalCancelBtn').onclick = function() { overlay.remove(); };
-    overlay.addEventListener('click', function(e) {
-        if (e.target === overlay) overlay.remove();
-    });
-};
+
     document.getElementById('refNumberInput').addEventListener('keydown', function(e) {
         if (e.key === 'Enter') window.lookupReference();
     });

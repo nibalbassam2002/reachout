@@ -1,6 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W6TM5ZWC');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -12,23 +21,28 @@
     <meta property="og:type" content="website" />
     <meta property="og:description" content="You deserve to be heard. You don't have to go through this alone." />
     <meta property="og:image" content="{{ asset('reachout/img/logo3.png') }}" />
-<meta property="og:description" content="You deserve to be heard. You don't have to go through this alone." />
+    <meta property="og:description" content="You deserve to be heard. You don't have to go through this alone." />
 
-<meta property="og:image" content="{{ secure_asset('reachout/img/logo3.png') }}" />
+    <meta property="og:image" content="{{ secure_asset('reachout/img/logo3.png') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Inter:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('reachout/css/styleee.css') }}">
+    <link rel="stylesheet" href="{{ asset('reachout/css/styleee.css') }}?v={{ filemtime(public_path('reachout/css/styleee.css')) }}">
     @yield('styles')
 </head>
 <body>
-<div class="nav-overlay" id="navOverlay"></div>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W6TM5ZWC"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="nav-overlay" id="navOverlay"></div>
     <header class="main-header">
         <nav class="navbar">
             <a href="{{ url('/') }}" class="nav-logo">
-                <img src="{{ asset('reachout/img/logo3.png') }}" alt="Mental Health Frontline">
+                <img src="{{ asset('reachout/img/logo3.png') }}?v={{ filemtime(public_path('reachout/img/logo3.png')) }}" alt="Mental Health Frontline">
             </a>
             <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
             <ul class="nav-links" id="navLinks">
@@ -56,8 +70,8 @@
     <i class="fas fa-scale-balanced"></i> Policies
 </a></li>
 
-<li><a href="{{ route('donate.page') }}" class="donate-btn-nav">
-    <i class="fas fa-hand-holding-heart"></i> Donate
+<li><a href="{{ route('donate.page') }}" class="donate-btn-nav {{ request()->routeIs('donate.page') ? 'active' : '' }}">
+    <i class="fas fa-hand-holding-heart"></i> Back Us
 </a></li>
             </ul>
         </nav>
@@ -68,10 +82,8 @@
     <!-- ══ FOOTER ══ -->
     <footer class="main-footer @yield('footer-class')">
         <div class="footer-wire"></div>
-        <img class="footer-flag" src="{{ asset('reachout/img/pal-flag-wavy.png') }}" alt="Palestine Flag">
         <div class="footer-inner">
             <div class="footer-palestine-badge">
-                <img src="{{ asset('reachout/img/pal-text.png') }}" alt="Palestine">
             </div>
             <h2 class="footer-heading">Empowering resilience and<br>healing hearts amidst the crisis</h2>
             <ul class="footer-nav-links">

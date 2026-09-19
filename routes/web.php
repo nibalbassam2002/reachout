@@ -31,10 +31,13 @@ Route::get('/policies', function () {
     return view('frontend.policies');
 })->name('policies');
 Route::get('/donate-now', function () {
-    
     $bank = \App\Models\BankAccount::first(); 
     return view('frontend.donate', compact('bank'));
 })->name('donate.page');
+
+Route::get('/back-us', function () {
+    return redirect()->route('donate.page');
+})->name('backus');
 
 // ─────────────────────────────────────────
 // AUTH ROUTES — يحتاج تسجيل دخول
