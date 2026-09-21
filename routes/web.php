@@ -25,6 +25,14 @@ Route::middleware('guest')->group(function () {
 Route::get('/home', function () {
     return view('frontend.index'); // تأكد أن الاسم يطابق اسم المجلد والملف
 });
+Route::get('/about', function () {
+    return view('frontend.about');
+})->name('about');
+
+Route::get('/get-help', function () {
+    return view('frontend.get-help');
+})->name('gethelp');
+
 Route::get('/news', [NewsController::class, 'index'])->name('news');
  
 Route::get('/policies', function () {

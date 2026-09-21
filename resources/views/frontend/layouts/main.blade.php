@@ -54,8 +54,12 @@
     <i class="fas fa-house"></i> Home
 </a></li>
 
-<li><a href="{{ route('home') }}#about">
+<li><a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">
     <i class="fas fa-circle-info"></i> About Us
+</a></li>
+
+<li><a href="{{ route('gethelp') }}" class="{{ request()->routeIs('gethelp') ? 'active' : '' }}">
+    <i class="fas fa-hands-holding-child"></i> Get Help
 </a></li>
 
 <li><a href="{{ route('home') }}#get-help">

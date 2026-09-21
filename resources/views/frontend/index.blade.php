@@ -2,6 +2,37 @@
 
 @section('title', 'Mental Health Frontline')
 
+@section('styles')
+<style>
+.btn-about-readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #184B89;
+    color: #ffffff;
+    padding: 13px 30px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 14px rgba(24, 75, 137, 0.28);
+}
+.btn-about-readmore:hover {
+    background: #0a2a4a;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(10, 42, 74, 0.38);
+}
+.btn-about-readmore i {
+    transition: transform 0.25s ease;
+}
+.btn-about-readmore:hover i {
+    transform: translateX(5px);
+}
+</style>
+@endsection
+
 @section('content')
 
     <!-- ══ HERO ══ -->
@@ -37,6 +68,12 @@
                     <span class="action-badge">We step in immediately.</span>
                 </div>
                 <p class="footer-para reveal" style="transition-delay: 0.4s;">Through free, confidential consultations via WhatsApp and email, we provide practical, culturally grounded psychological support to reach those no one else can reach.</p>
+                <div class="about-readmore-wrap reveal" style="transition-delay: 0.45s; margin-top: 25px;">
+                    <a href="{{ route('about') }}" class="btn-about-readmore">
+                        <span>Read More About Us</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -202,14 +239,18 @@
             </div>
             <div class="get-help-footer reveal" style="transition-delay: 0.3s;">
                 <p class="footer-text">Don't hesitate to contact us to protect your child.</p>
-                <div class="contact-buttons">
-                     <a href="#" class="btn-contact btn-whatsapp" 
+                <div class="contact-buttons" style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: center;">
+                    <a href="#" class="btn-contact btn-whatsapp" 
                     onclick="openPopupWithChannel('whatsapp'); return false;">
                         <i class="fab fa-whatsapp"></i> Whatsapp
                     </a>
                     <a href="#" class="btn-contact btn-email" 
                     onclick="openPopupWithChannel('email'); return false;">
                         <i class="fas fa-envelope"></i> Email
+                    </a>
+                    <a href="{{ route('gethelp') }}" class="btn-about-readmore" style="padding: 11px 24px; font-size: 14px;">
+                        <span>Read More / اقرأ المزيد</span>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
