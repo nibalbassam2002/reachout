@@ -329,8 +329,22 @@ html, body {
             color: var(--section-title-color); margin-bottom: var(--section-title-mb);
         }
         .get-help-subtitle { font-size: var(--section-subtitle-size); font-weight: 800; color: #424242; margin-bottom: var(--section-subtitle-mb); }
+        .get-help-flow-track {
+            position: relative;
+            display: flow-root;
+        }
+        .get-help-flow-track::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 10px;
+            bottom: -2px;
+            width: 2px;
+            background: #184B89;
+            z-index: 1;
+        }
         .steps-wrapper { position: relative; padding-left: 50px; }
-        .steps-wrapper::before { content: ''; position: absolute; left: 14px; top: 10px; bottom: -210px; width: 2px; background: #184B89; z-index: 1; }
+        .steps-wrapper::before { display: none; }
         .step-item {
             position: relative; margin-bottom: 40px;
             transition: transform 0.3s ease;
@@ -1965,9 +1979,19 @@ body {
 /* ══ FIX: Get Help Section - Mobile ══ */
 @media (max-width: 768px) {
 
-    /* إصلاح الخط الجانبي - يوقف عند الـ policy-container */
+    /* إصلاح الخط الجانبي على الموبايل - يوقف عند الـ steps */
+    .get-help-flow-track::before {
+        display: none !important;
+    }
     .steps-wrapper::before {
+        display: block !important;
+        position: absolute;
+        left: 10px;
+        top: 10px;
         bottom: 0 !important;
+        width: 2px;
+        background: #184B89;
+        z-index: 1;
     }
 
     /* إصلاح الـ policy-container على الموبايل */

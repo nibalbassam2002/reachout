@@ -202,6 +202,7 @@
         <div class="get-help-container">
             <h2 class="get-help-title reveal-left">Get help</h2>
             <p class="get-help-subtitle reveal-left" style="transition-delay: 0.1s;">To get support, follow these steps</p>
+        <div class="get-help-flow-track">
             <div class="steps-wrapper">
                 <div class="step-item reveal" style="transition-delay: 0.1s;">
                     <div class="step-header">
@@ -225,7 +226,16 @@
                     <p class="step-desc">You won't leave the conversation alone; you will receive practical techniques to calm your child and manage panic and stress, strengthening your family's resilience.</p>
                 </div>
             </div>
-            <div class="policy-container reveal" style="transition-delay: 0.2s;">
+
+            <!-- Centered Read More Button before Policies & Disclaimer -->
+            <div class="get-help-readmore-wrap reveal" style="display: flex; justify-content: center; margin: 35px 0 25px 0; transition-delay: 0.2s;">
+                <a href="{{ route('gethelp') }}" class="btn-about-readmore">
+                    <span>Read More </span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="policy-container reveal" style="transition-delay: 0.25s;">
                 <div class="policy-info">
                     <i class="fas fa-file-shield"></i>
                     <p class="policy-text">
@@ -237,9 +247,10 @@
                     <i class="fas fa-download"></i> Download PDF
                 </a>
             </div>
+        </div>
             <div class="get-help-footer reveal" style="transition-delay: 0.3s;">
                 <p class="footer-text">Don't hesitate to contact us to protect your child.</p>
-                <div class="contact-buttons" style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: center;">
+                <div class="contact-buttons">
                     <a href="#" class="btn-contact btn-whatsapp" 
                     onclick="openPopupWithChannel('whatsapp'); return false;">
                         <i class="fab fa-whatsapp"></i> Whatsapp
@@ -247,10 +258,6 @@
                     <a href="#" class="btn-contact btn-email" 
                     onclick="openPopupWithChannel('email'); return false;">
                         <i class="fas fa-envelope"></i> Email
-                    </a>
-                    <a href="{{ route('gethelp') }}" class="btn-about-readmore" style="padding: 11px 24px; font-size: 14px;">
-                        <span>Read More / اقرأ المزيد</span>
-                        <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
