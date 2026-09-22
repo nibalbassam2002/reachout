@@ -41,61 +41,134 @@
             @endforelse
         </div>
 
-        {{-- منطقة أزرار الانتقال المبسطة على شكل أسهم ناعمة --}}
-        <div class="pagination-wrapper">
+        {{-- منطقة أزرار الانتقال الاحترافية الحديثة --}}
+        <div class="news-pagination-bar">
             {{-- زر السابق --}}
             @if ($articles->onFirstPage())
-                <span class="nav-icon disabled">←</span>
+                <span class="p-nav-btn disabled" aria-disabled="true">
+                    <i class="fas fa-chevron-left"></i>
+                    <span>Previous</span>
+                </span>
             @else
-                <a href="{{ $articles->previousPageUrl() }}" class="nav-icon">←</a>
+                <a href="{{ $articles->previousPageUrl() }}" class="p-nav-btn">
+                    <i class="fas fa-chevron-left"></i>
+                    <span>Previous</span>
+                </a>
             @endif
+
+            {{-- عداد الصفحة الأنيق --}}
+            <div class="p-page-chip">
+                <span>Page {{ $articles->currentPage() }}</span>
+            </div>
 
             {{-- زر التالي --}}
             @if ($articles->hasMorePages())
-                <a href="{{ $articles->nextPageUrl() }}" class="nav-icon">→</a>
+                <a href="{{ $articles->nextPageUrl() }}" class="p-nav-btn next">
+                    <span>Next</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
             @else
-                <span class="nav-icon disabled">→</span>
+                <span class="p-nav-btn next disabled" aria-disabled="true">
+                    <span>Next</span>
+                    <i class="fas fa-chevron-right"></i>
+                </span>
             @endif
         </div>
     </div>
 </main>
 
-{{-- الأناقة والترتيب ضفناهم هان مباشرة عشان يظبطوا فوراً --}}
 <style>
-    .pagination-wrapper {
+    /* ═══════════════════════════════════════════════════════════════
+       PROFESSIONAL PAGINATION BAR
+    ═══════════════════════════════════════════════════════════════ */
+    .news-pagination-bar {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
-        gap: 15px !important;
-        margin: 40px 0 !important;
-        width: 100% !important;
+        gap: 12px !important;
+        margin: 50px auto 20px auto !important;
+        padding: 8px 14px !important;
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 50px !important;
+        box-shadow: 0 4px 20px rgba(0, 43, 92, 0.07) !important;
+        width: fit-content !important;
+        max-width: 90% !important;
     }
 
-    .pagination-wrapper .nav-icon {
-        display: flex !important;
-        justify-content: center !important;
+    .p-nav-btn {
+        display: inline-flex !important;
         align-items: center !important;
-        width: 40px !important;
-        height: 40px !important;
-        border-radius: 50% !important;
-        background-color: #1a446c !important; /* الكحلي الأنيق للـ Navbar */
-        color: #ffffff !important;
-        font-size: 18px !important;
+        gap: 8px !important;
+        padding: 10px 18px !important;
+        border-radius: 30px !important;
+        background: #f8fafc !important;
+        color: #002b5c !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
         text-decoration: none !important;
-        transition: all 0.2s ease !important;
+        border: 1px solid #e2e8f0 !important;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
         cursor: pointer !important;
     }
 
-    /* تأثير تمرير الماوس ليتحول للون الأحمر الهادئ مثل زر الدعم */
-    .pagination-wrapper .nav-icon:not(.disabled):hover {
-        background-color: #b32d2e !important;
+    .p-nav-btn i {
+        font-size: 12px !important;
+        transition: transform 0.25s ease !important;
     }
 
-    /* شكل السهم المعطل المفاتيح الهادئة */
-    .pagination-wrapper .nav-icon.disabled {
-        background-color: #f1f5f9 !important;
+    /* Hover effect */
+    .p-nav-btn:not(.disabled):hover {
+        background: #002b5c !important;
+        color: #ffffff !important;
+        border-color: #002b5c !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 16px rgba(0, 43, 92, 0.2) !important;
+    }
+
+    .p-nav-btn:not(.disabled):hover i {
+        transform: translateX(-3px) !important;
+    }
+
+    .p-nav-btn.next:not(.disabled):hover i {
+        transform: translateX(3px) !important;
+    }
+
+    /* Disabled State */
+    .p-nav-btn.disabled {
+        background: #f8fafc !important;
         color: #cbd5e1 !important;
+        border-color: #edf2f7 !important;
         cursor: not-allowed !important;
+        pointer-events: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Page chip in the middle */
+    .p-page-chip {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 6px 14px !important;
+        background: rgba(0, 43, 92, 0.05) !important;
+        border-radius: 20px !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        color: #002b5c !important;
+        letter-spacing: 0.3px !important;
+    }
+
+    @media (max-width: 576px) {
+        .p-nav-btn span {
+            display: none !important;
+        }
+        .p-nav-btn {
+            width: 40px !important;
+            height: 40px !important;
+            padding: 0 !important;
+            justify-content: center !important;
+            border-radius: 50% !important;
+        }
     }
 </style>
 @endsection
