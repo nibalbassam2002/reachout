@@ -52,6 +52,18 @@ body {
     overflow-x: hidden;
 }
 
+@media (max-width: 860px) {
+    .ab-page-wrap {
+        padding-top: 72px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ab-page-wrap {
+        padding-top: 68px;
+    }
+}
+
 /* Category / Section Pills */
 .ab-pill {
     display: inline-flex;
@@ -126,23 +138,24 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: #ffffff;
-    color: var(--ab-text-dark);
+    background: var(--ab-blue-primary);
+    color: #ffffff;
     font-size: 14px;
     font-weight: 700;
-    padding: 12px 24px;
+    padding: 12px 28px;
     border-radius: 50px;
-    border: 1.5px solid var(--ab-border);
+    border: 1.5px solid var(--ab-blue-primary);
     text-decoration: none;
     transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(24, 75, 137, 0.20);
 }
 
 .ab-btn-ghost:hover {
-    border-color: var(--ab-blue-primary);
-    color: var(--ab-blue-primary);
-    background: var(--ab-blue-light);
+    background: var(--ab-navy-deep);
+    border-color: var(--ab-navy-deep);
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(24, 75, 137, 0.12);
+    box-shadow: 0 8px 22px rgba(10, 42, 74, 0.30);
 }
 
 /* Image Frame & Script Annotations */
@@ -541,8 +554,10 @@ body {
 .ab-who-actions {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -1818,9 +1833,50 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+    .ab-hero-cinematic {
+        padding: 48px 20px 42px 20px !important;
+        min-height: 380px !important;
+        height: auto !important;
+    }
+    .ab-hero-content-box {
+        text-align: center;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .ab-hero-eyebrow {
+        font-size: 11px;
+        margin-bottom: 12px;
+    }
+    .ab-hero-title-white {
+        font-size: clamp(23px, 6.8vw, 32px) !important;
+        line-height: 1.25 !important;
+        margin-bottom: 14px !important;
+    }
+    .ab-hero-lead-white {
+        font-size: 14px !important;
+        line-height: 1.55 !important;
+        margin: 0 auto 22px auto !important;
+        max-width: 440px;
+    }
+    .ab-hero-actions {
+        justify-content: center;
+        gap: 10px;
+    }
+    .btn-ab-hero-white, .btn-ab-hero-outline {
+        padding: 12px 20px;
+        font-size: 13.5px;
+    }
+}
+
 @media (max-width: 640px) {
-    .ab-page-wrap {
-        padding-top: 70px;
+    .ab-hero-overlay {
+        background: linear-gradient(
+            to bottom,
+            rgba(10, 24, 42, 0.85) 0%,
+            rgba(10, 24, 42, 0.75) 55%,
+            rgba(10, 24, 42, 0.40) 100%
+        );
     }
 
     .ab-who-highlights {
@@ -1884,6 +1940,29 @@ body {
         padding: 32px 24px;
     }
 }
+
+@media (max-width: 480px) {
+    .ab-hero-cinematic {
+        padding: 36px 16px 32px 16px !important;
+        min-height: 340px !important;
+    }
+    .ab-hero-title-white {
+        font-size: 25px !important;
+    }
+    .ab-hero-lead-white {
+        font-size: 13.5px !important;
+    }
+    .ab-hero-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .btn-ab-hero-white, .btn-ab-hero-outline {
+        width: 100%;
+        justify-content: center;
+    }
+}
 </style>
 @endsection
 
@@ -1898,27 +1977,28 @@ body {
         </div>
 
         <div class="ro-hero-container">
-            <div class="ab-hero-content-box">
-                <span class="ab-hero-eyebrow">ABOUT US</span>
+            <div class="ab-hero-content-box" style="margin-top: -80px;">
+                <img src="{{ asset('reachout/img/logo3.png') }}?v={{ filemtime(public_path('reachout/img/logo3.png')) }}" alt="Mental Health Frontline" style="height: 145px; width: auto; margin-bottom: 22px; margin-left: 148px; display: block; filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(0,0,0,0.4)); opacity: 1;">
 
-                <h1 class="ab-hero-title-white">
-                    Mental Health<br>
-                    Stronger People<br>
-                    More Hope
+                <h1 class="ab-hero-title-white" style="font-size: clamp(30px, 3.6vw, 48px);">
+                    Mental health support,
+                    <span style="display: block; font-size: 0.9em; font-weight: 700; opacity: 0.92;">Even when reaching care is difficult.</span>
                 </h1>
 
                 <p class="ab-hero-lead-white">
-                    We believe in a world where every person affected by conflict and crisis can access safe, compassionate and professional mental health support.
+                    Mental Health Frontline is an independent initiative providing free psychological and
+psychosocial support to people affected by conflict and displacement, through
+accessible channels including WhatsApp and email.
                 </p>
 
                 <div class="ab-hero-actions">
                     <a href="#our-story" class="btn-ab-hero-white">
                         <span>Discover Our Story</span>
-                        <i class="fas fa-arrow-down"></i>
+                        
                     </a>
                     <a href="#our-role" class="btn-ab-hero-outline">
                         <span>What We Do</span>
-                        <i class="fas fa-arrow-right"></i>
+                        
                     </a>
                 </div>
             </div>
@@ -1936,7 +2016,7 @@ body {
                 <div class="ab-who-main-frame">
                     <img src="{{ asset('reachout/img/about_who_we_are.jpg') }}?v={{ filemtime(public_path('reachout/img/about_who_we_are.jpg')) }}" alt="Children in Gaza - Mental Health Frontline">
                     <div class="ab-who-badge-top">
-                        <i class="fas fa-heart-pulse"></i>
+                        
                         <span>On-The-Ground Frontline</span>
                     </div>
                 </div>
@@ -1945,7 +2025,7 @@ body {
                 <div class="ab-who-sub-frame">
                     <img src="{{ asset('reachout/img/about_comforting.jpg') }}?v={{ filemtime(public_path('reachout/img/about_comforting.jpg')) }}" alt="Compassionate mental health consultation">
                     <div class="ab-sub-frame-caption">
-                        <i class="fas fa-shield-heart"></i>
+                        
                         <span>Safe & Dignified Care</span>
                     </div>
                 </div>
@@ -1953,7 +2033,7 @@ body {
 
             <!-- Right: Content & Core Pillars -->
             <div class="ab-who-content">
-                <span class="ab-pill"><i class="fas fa-shield-halved"></i> WHO WE ARE</span>
+                <span class="ab-pill"> WHO WE ARE</span>
                 <h2 class="ab-title-main">
                     A more compassionate response to human suffering
                 </h2>
@@ -1967,26 +2047,22 @@ body {
                 <!-- 2 Highlight Trust Pillars -->
                 <div class="ab-who-highlights">
                     <div class="ab-who-pill-box">
-                        <div class="ab-who-pill-icon"><i class="fas fa-user-shield"></i></div>
+                        
                         <div class="ab-who-pill-text">
-                            <strong>100% Confidential</strong>
-                            <span>Private, secure, and respectful care</span>
+                            <strong>Confidential Support</strong>
+                            <span>Accessible Support</span>
                         </div>
                     </div>
                     <div class="ab-who-pill-box">
-                        <div class="ab-who-pill-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                        
                         <div class="ab-who-pill-text">
-                            <strong>Free Crisis Support</strong>
-                            <span>No barriers to psychological aid</span>
+                            <strong>Free Psychological Support</strong>
+                            <span>Reducing barriers to psychological support</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="ab-who-actions">
-                    <a href="#our-role" class="ab-btn-primary">
-                        <span>Our Work</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
+                <div class="ab-who-actions" style="margin-top: -8px;">
                     <a href="#why-we-exist" class="ab-btn-ghost">
                         <span>Why We Exist</span>
                     </a>
@@ -2003,24 +2079,22 @@ body {
                 <div>
                     <div class="ab-mv-top">
                         <span class="ab-mv-tag">
-                            <i class="fas fa-bullseye"></i> OUR MISSION
+                             OUR MISSION
                         </span>
-                        <div class="ab-mv-icon">
-                            <i class="fas fa-hand-holding-heart"></i>
-                        </div>
+                        
                     </div>
 
-                    <h3 class="ab-mv-heading">Action on the Frontlines of Crisis</h3>
+                    <h3 class="ab-mv-heading">Accessible Support in Times of Crisis</h3>
 
                     <p class="ab-mv-text">
-                        To make professional mental health and psychosocial support accessible to people and families affected by conflict and humanitarian crises, regardless of where they are or their ability to pay.
+                        To make professional mental health and psychosocial support easier to access for people and families affected by conflict and humanitarian crises, with a focus on Gaza and other conflict-affected communities.
                     </p>
                 </div>
 
                 <div class="ab-mv-pills">
-                    <span class="ab-mv-pill-item"><i class="fas fa-check"></i> Free Support</span>
-                    <span class="ab-mv-pill-item"><i class="fas fa-check"></i> Immediate Care</span>
-                    <span class="ab-mv-pill-item"><i class="fas fa-check"></i> 100% Confidential</span>
+                    <span class="ab-mv-pill-item"> Accessible Support</span>
+                    <span class="ab-mv-pill-item"> Professional Care</span>
+                    <span class="ab-mv-pill-item"> Confidentiality</span>
                 </div>
             </div>
 
@@ -2029,24 +2103,22 @@ body {
                 <div>
                     <div class="ab-mv-top">
                         <span class="ab-mv-tag vision">
-                            <i class="far fa-compass"></i> OUR VISION
+                             OUR VISION
                         </span>
-                        <div class="ab-mv-icon vision">
-                            <i class="far fa-eye"></i>
-                        </div>
+                        
                     </div>
 
-                    <h3 class="ab-mv-heading">A World Where No One Suffers Alone</h3>
+                    <h3 class="ab-mv-heading">Stronger Communities Through Mental Health Support</h3>
 
                     <p class="ab-mv-text">
-                        A world where no person affected by conflict or crisis is left without access to safe, compassionate and professional mental health support.
+                        We envision conflict-affected communities where people and families can access compassionate mental health and psychosocial support without cost or distance placing it out of reach.
                     </p>
                 </div>
 
                 <div class="ab-mv-pills vision">
-                    <span class="ab-mv-pill-item"><i class="fas fa-check"></i> Universal Compassion</span>
-                    <span class="ab-mv-pill-item"><i class="fas fa-check"></i> Resilient Families</span>
-                    <span class="ab-mv-pill-item"><i class="fas fa-check"></i> Hope Restored</span>
+                    <span class="ab-mv-pill-item"> Compassion</span>
+                    <span class="ab-mv-pill-item"> Resilience</span>
+                    <span class="ab-mv-pill-item"> Hope</span>
                 </div>
             </div>
         </div>
@@ -2056,35 +2128,33 @@ body {
     <section class="ab-section-why" id="why-we-exist">
         <div class="ab-why-grid">
             <div class="ab-why-content">
-                <span class="ab-pill"><i class="fas fa-heart-circle-exclamation"></i> WHY WE EXIST</span>
+                <span class="ab-pill"> WHY WE EXIST</span>
                 <h2 class="ab-title-main">
-                    Because mental health cannot wait
+                    Why access matters
                 </h2>
-                <p class="ab-lead-text" style="margin-bottom: 14px;">
-                    Conflict, displacement and humanitarian crises create immense psychological strain. In many affected communities, mental health services are shattered, overwhelmed or simply out of reach.
-                </p>
-                <p class="ab-lead-text" style="font-size: 15px; color: var(--ab-text-muted); margin-bottom: 24px;">
-                    We exist to help close this urgent gap — providing timely, accessible and dignified psychological support to children, families and individuals when they need it most.
+                <p class="ab-lead-text" style="margin-bottom: 24px;">
+                    When reaching a clinic is difficult, asking for support can become another burden.
+                    Cost, disrupted services and caring responsibilities can place help out of reach. MHF offers a practical way to start a conversation through familiar digital channels, without charging the person seeking support.
                 </p>
 
                 <!-- 3 Clear Impact Pillars -->
                 <div class="ab-why-points">
                     <div class="ab-why-point-item">
-                        <div class="ab-why-point-icon"><i class="fas fa-child-reaching"></i></div>
+                        
                         <div class="ab-why-point-body">
                             <strong>Protecting Children & Families</strong>
                             <span>Early trauma care to foster emotional stability and resilience amidst hardship.</span>
                         </div>
                     </div>
                     <div class="ab-why-point-item">
-                        <div class="ab-why-point-icon"><i class="fas fa-hand-holding-medical"></i></div>
+                        
                         <div class="ab-why-point-body">
                             <strong>Closing Healthcare Inequities</strong>
                             <span>Free and confidential psychological aid where conventional clinics cannot operate.</span>
                         </div>
                     </div>
                     <div class="ab-why-point-item">
-                        <div class="ab-why-point-icon"><i class="fas fa-shield-halved"></i></div>
+                        
                         <div class="ab-why-point-body">
                             <strong>Preserving Human Dignity</strong>
                             <span>Compassionate, respectful support ensuring no person suffers their grief alone.</span>
@@ -2092,29 +2162,20 @@ body {
                     </div>
                 </div>
 
-                <div class="ab-why-actions">
-                    <a href="#our-role" class="ab-btn-primary">
-                        <span>Our Role in Crisis</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
+
             </div>
 
             <!-- Image Frame with Child Photo -->
             <div class="ab-media-card ab-why-img-wrap">
                 <img src="{{ asset('reachout/img/about_why_we_exist_child.jpg') }}?v={{ filemtime(public_path('reachout/img/about_why_we_exist_child.jpg')) }}" alt="Child affected by conflict in Gaza - Why We Exist">
 
-                <div class="ab-why-badge-top">
-                    <i class="fas fa-heart-pulse"></i>
-                    <span>The Human Reality</span>
-                </div>
 
                 <div class="ab-why-caption-bar">
                     <div class="ab-why-quote-text font-script">
                         “In the midst of crisis, there is still hope.”
                     </div>
                     <div class="ab-why-caption-sub">
-                        <i class="fas fa-shield-heart" style="color: #f87171; margin-right: 4px;"></i>
+                        
                         Frontline Psychological & Psychosocial Support
                     </div>
                 </div>
@@ -2135,22 +2196,22 @@ body {
 
             <div class="ab-role-grid">
                 <div class="ab-role-card">
-                    <div class="ab-role-icon"><i class="fas fa-users-viewfinder"></i></div>
+                    
                     <p><strong>Improving access</strong> to timely mental health support</p>
                 </div>
 
                 <div class="ab-role-card">
-                    <div class="ab-role-icon"><i class="far fa-comments"></i></div>
+                    
                     <p><strong>Providing an accessible</strong> first point of contact</p>
                 </div>
 
                 <div class="ab-role-card">
-                    <div class="ab-role-icon"><i class="fas fa-diagram-project"></i></div>
+                    
                     <p><strong>Identifying needs and connecting</strong> individuals with appropriate services</p>
                 </div>
 
                 <div class="ab-role-card">
-                    <div class="ab-role-icon"><i class="fas fa-shield-halved"></i></div>
+                    
                     <p><strong>Contributing to stronger,</strong> more inclusive and responsive mental health systems</p>
                 </div>
             </div>
@@ -2160,11 +2221,10 @@ body {
     <!-- ══ 6. OUR APPROACH (4 STEPS - SOFT & BALANCED) ══ -->
     <section class="ab-section-approach" id="our-approach">
         <div class="ab-approach-header">
-            <span class="ab-pill"><i class="fas fa-route"></i> OUR APPROACH</span>
-            <h2 class="ab-title-main" style="margin-bottom: 8px;">A simple, people-centred approach</h2>
-            <p class="ab-lead-text" style="font-size: 15px; color: var(--ab-text-muted); max-width: 620px; margin: 0 auto; line-height: 1.6;">
-                A clear, compassionate pathway ensuring safe, timely and dignified mental health support from first touch to recovery.
-            </p>
+            <span class="ab-pill"> OUR APPROACH</span>
+            <h2 class="ab-title-main" style="margin-bottom: 8px;">How support works</h2>
+            <p style="font-size: 15px; color: var(--ab-text-muted); margin: 0;">A clear, compassionate pathway ensuring safe, timely and dignified mental health support from first touch to recovery. </p>
+            
         </div>
 
         <div class="ab-approach-grid">
@@ -2173,11 +2233,10 @@ body {
                 <div>
                     <div class="ab-step-header">
                         <span class="ab-step-badge">STEP 01</span>
-                        <div class="ab-step-icon"><i class="fas fa-paper-plane"></i></div>
+                        
                     </div>
-                    <h3 class="ab-step-title">Reach</h3>
-                    <span class="ab-step-sub">Direct Contact</span>
-                    <p class="ab-step-desc">We establish rapid, secure connections with individuals and families through accessible digital channels.</p>
+                    <h3 class="ab-step-title">Contact us</h3>
+                    <p class="ab-step-desc">Reach out through WhatsApp or email to start a conversation.</p>
                 </div>
                 <div class="ab-step-line"></div>
             </div>
@@ -2187,11 +2246,10 @@ body {
                 <div>
                     <div class="ab-step-header">
                         <span class="ab-step-badge">STEP 02</span>
-                        <div class="ab-step-icon"><i class="fas fa-clipboard-check"></i></div>
+                        
                     </div>
-                    <h3 class="ab-step-title">Assess</h3>
-                    <span class="ab-step-sub">Triage & Needs</span>
-                    <p class="ab-step-desc">We evaluate immediate psychological distress to identify the most urgent psychosocial priorities.</p>
+                    <h3 class="ab-step-title">Tell us what is happening</h3>
+                    <p class="ab-step-desc">We listen to your concerns and discuss what support may be appropriate.</p>
                 </div>
                 <div class="ab-step-line"></div>
             </div>
@@ -2201,11 +2259,10 @@ body {
                 <div>
                     <div class="ab-step-header">
                         <span class="ab-step-badge">STEP 03</span>
-                        <div class="ab-step-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                        
                     </div>
-                    <h3 class="ab-step-title">Support</h3>
-                    <span class="ab-step-sub">Frontline Aid</span>
-                    <p class="ab-step-desc">We deliver professional, confidential psychological first aid and emotional stabilization suited to the situation.</p>
+                    <h3 class="ab-step-title">Receive practical support</h3>
+                    <p class="ab-step-desc">Our team offers psychological support and guidance within the scope of the service.</p>
                 </div>
                 <div class="ab-step-line"></div>
             </div>
@@ -2215,11 +2272,10 @@ body {
                 <div>
                     <div class="ab-step-header">
                         <span class="ab-step-badge">STEP 04</span>
-                        <div class="ab-step-icon"><i class="fas fa-arrow-up-right-from-square"></i></div>
+                        
                     </div>
-                    <h3 class="ab-step-title">Refer</h3>
-                    <span class="ab-step-sub">Sustained Care</span>
-                    <p class="ab-step-desc">We connect individuals who require additional or specialized clinical care with trusted partner services.</p>
+                    <h3 class="ab-step-title">Agree on next steps</h3>
+                    <p class="ab-step-desc">Depending on your needs and service availability, next steps may include follow-up or exploring options for additional care.</p>
                 </div>
                 <div class="ab-step-line"></div>
             </div>
@@ -2230,21 +2286,21 @@ body {
     <section class="ab-section-serve">
         <div class="ab-serve-grid">
             <div class="ab-serve-content">
-                <span class="ab-pill"><i class="fas fa-users-rays"></i> WHO WE SERVE</span>
+                <span class="ab-pill"> WHO WE SERVE</span>
                 <h2 class="ab-title-main">People. Families. Communities.</h2>
                 <p class="ab-lead-text" style="margin-bottom: 20px;">We support individuals, families and communities affected by:</p>
                 <ul class="ab-serve-list">
-                    <li class="ab-serve-item"><i class="fas fa-check"></i> Conflict and armed violence</li>
-                    <li class="ab-serve-item"><i class="fas fa-check"></i> Displacement and forced migration</li>
-                    <li class="ab-serve-item"><i class="fas fa-check"></i> Humanitarian crises & acute deprivation</li>
-                    <li class="ab-serve-item"><i class="fas fa-check"></i> Loss, grief and prolonged psychological stress</li>
-                    <li class="ab-serve-item"><i class="fas fa-check"></i> Barriers to accessing essential mental health care</li>
-                    <li class="ab-serve-item"><i class="fas fa-check"></i> Vulnerable children and families in conflict zones</li>
+                    <li class="ab-serve-item"> Conflict and armed violence</li>
+                    <li class="ab-serve-item"> Displacement and forced migration</li>
+                    <li class="ab-serve-item"> Humanitarian crises & acute deprivation</li>
+                    <li class="ab-serve-item"> Loss, grief and prolonged psychological stress</li>
+                    <li class="ab-serve-item"> Barriers to accessing essential mental health care</li>
+                    <li class="ab-serve-item"> Vulnerable children and families in conflict zones</li>
                 </ul>
 
                 <a href="{{ route('backus') }}" class="ab-btn-primary">
                     <span>Stand With Them</span>
-                    <i class="fas fa-arrow-right"></i>
+                    
                 </a>
             </div>
 
@@ -2254,10 +2310,10 @@ body {
 
                 <!-- Main Arch Photo: Toddler looking up with hope -->
                 <div class="ab-serve-arch-frame">
-                    <img src="{{ asset('reachout/img/about_serve_children.png') }}?v={{ filemtime(public_path('reachout/img/about_serve_children.png')) }}" alt="Children in Gaza - Who We Serve">
+                    <img src="{{ asset('reachout/img/about_serve_water.png') }}?v={{ filemtime(public_path('reachout/img/about_serve_water.png')) }}" alt="Children in Gaza - Who We Serve">
 
                     <div class="ab-serve-badge-top">
-                        <i class="fas fa-shield-heart"></i>
+                        
                         <span>Frontline Humanitarian Care</span>
                     </div>
 
@@ -2268,9 +2324,9 @@ body {
 
                 <!-- Secondary Floating Inset: Young girl carrying water -->
                 <div class="ab-serve-inset-frame">
-                    <img src="{{ asset('reachout/img/about_serve_water.png') }}?v={{ filemtime(public_path('reachout/img/about_serve_water.png')) }}" alt="Child resilience in Gaza street">
+                    <img src="{{ asset('reachout/img/about_serve_children.png') }}?v={{ filemtime(public_path('reachout/img/about_serve_children.png')) }}" alt="Child resilience in Gaza street">
                     <div class="ab-serve-inset-caption">
-                        <i class="fas fa-heart"></i>
+                        
                         <span>Dignity & Resilience</span>
                     </div>
                 </div>
@@ -2282,7 +2338,7 @@ body {
     <section class="ab-section-values">
         <div class="ab-values-container">
             <div class="ab-values-header">
-                <span class="ab-pill"><i class="fas fa-compass" style="font-size: 11px;"></i> OUR VALUES</span>
+                <span class="ab-pill"> OUR VALUES</span>
                 <h2 class="ab-title-main" style="margin-bottom: 6px;">What guides us</h2>
                 <p style="font-size: 15px; color: var(--ab-text-muted); margin: 0;">The foundational principles anchoring our humanitarian mission and care.</p>
             </div>
@@ -2291,109 +2347,71 @@ body {
                 <!-- 01 -->
                 <div class="ab-value-card">
                     <span class="ab-value-index">01</span>
-                    <div class="ab-value-icon"><i class="far fa-heart"></i></div>
+                    
                     <h3 class="ab-value-title">Humanity & Dignity</h3>
                     <p class="ab-value-desc">We treat every person with compassion and respect.</p>
-                    <i class="fas fa-heart ab-value-watermark"></i>
+                    
                 </div>
 
                 <!-- 02 -->
                 <div class="ab-value-card">
                     <span class="ab-value-index">02</span>
-                    <div class="ab-value-icon"><i class="fas fa-lock"></i></div>
+                    
                     <h3 class="ab-value-title">Confidentiality</h3>
                     <p class="ab-value-desc">We understand privacy and trust of those we support.</p>
-                    <i class="fas fa-lock ab-value-watermark"></i>
+                    
                 </div>
 
                 <!-- 03 -->
                 <div class="ab-value-card">
                     <span class="ab-value-index">03</span>
-                    <div class="ab-value-icon"><i class="fas fa-user-group"></i></div>
+                    
                     <h3 class="ab-value-title">Professionalism</h3>
                     <p class="ab-value-desc">We provide responsible, evidence-informed support.</p>
-                    <i class="fas fa-user-group ab-value-watermark"></i>
+                    
                 </div>
 
                 <!-- 04 -->
                 <div class="ab-value-card">
                     <span class="ab-value-index">04</span>
-                    <div class="ab-value-icon"><i class="fas fa-shield-halved"></i></div>
+                    
                     <h3 class="ab-value-title">Safeguarding</h3>
                     <p class="ab-value-desc">We prioritise the safety and rights of children and vulnerable people.</p>
-                    <i class="fas fa-shield-halved ab-value-watermark"></i>
+                    
                 </div>
 
                 <!-- 05 -->
                 <div class="ab-value-card">
                     <span class="ab-value-index">05</span>
-                    <div class="ab-value-icon"><i class="fas fa-universal-access"></i></div>
+                    
                     <h3 class="ab-value-title">Accessibility</h3>
                     <p class="ab-value-desc">We work to remove barriers to mental health care.</p>
-                    <i class="fas fa-universal-access ab-value-watermark"></i>
+                    
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ══ 9. IMPACT & SAFEGUARDING ══ -->
-    <section class="ab-section-dual">
-        <div class="ab-dual-grid">
-            <!-- Panel 1: Our Impact -->
-            <div class="ab-dual-panel">
-                <div class="ab-dual-panel-icon"><i class="fas fa-chart-line"></i></div>
-                <span class="ab-pill"><i class="fas fa-seedling" style="font-size: 10px;"></i> OUR IMPACT</span>
-                <h2 class="ab-title-main" style="font-size: 28px; margin-bottom: 10px;">Towards a more supported tomorrow</h2>
-                <p style="font-size: 14.5px; color: var(--ab-text-muted); margin-bottom: 18px;">Our work contributes to:</p>
-                <ul class="ab-dual-list">
-                    <li class="ab-dual-list-item"><i class="fas fa-check"></i> Greater access to mental health support</li>
-                    <li class="ab-dual-list-item"><i class="fas fa-check"></i> Early support for individuals in distress</li>
-                    <li class="ab-dual-list-item"><i class="fas fa-check"></i> Safer care pathways through appropriate referral</li>
-                    <li class="ab-dual-list-item"><i class="fas fa-check"></i> Stronger communities and more resilient families</li>
-                    <li class="ab-dual-list-item"><i class="fas fa-check"></i> More responsive and inclusive mental health systems</li>
-                </ul>
-                <a href="{{ route('home') }}#impact" class="ab-btn-primary">
-                    <span>Explore Our Impact</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <!-- Panel 2: Safeguarding -->
-            <div class="ab-dual-panel">
-                <div class="ab-dual-panel-icon"><i class="fas fa-shield-halved"></i></div>
-                <span class="ab-pill"><i class="fas fa-shield-halved" style="font-size: 10px;"></i> SAFEGUARDING & STANDARDS</span>
-                <h2 class="ab-title-main" style="font-size: 28px; margin-bottom: 10px;">People's safety comes first</h2>
-                <p style="font-size: 14.5px; color: var(--ab-text-muted); margin-bottom: 18px;">We uphold the highest standards across all our work:</p>
-                <ul class="ab-dual-list">
-                    <li class="ab-dual-list-item"><i class="fas fa-check"></i> Professional ethics and accountability</li>
-                    <li class="ab-dual-list-item"><i class="fas fa-check"></i> Confidentiality and data protection</li>
-                    <li class="ab-dual-list-item"><i class="fas fa-check"></i> Safe and respectful care for all</li>
-                    <li class="ab-dual-list-item"><i class="fas fa-check"></i> Established humanitarian principles</li>
-                    <li class="ab-dual-list-item"><i class="fas fa-check"></i> Protection of children and vulnerable people</li>
-                </ul>
-                <a href="{{ route('policies') }}" class="ab-btn-primary">
-                    <span>Our Safeguarding Principles</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </section>
 
     <!-- ══ 10. BOTTOM CALL TO ACTION (FLOATING WHITE CARD LIKE BACK-US) ══ -->
     <section class="ro-bottom-cta">
         <div class="ro-bottom-cta-inner">
             <div class="cta-left-text">
-                <span class="cta-compact-pill"><i class="fas fa-seedling"></i> Together for a Brighter Tomorrow</span>
+                <span class="cta-compact-pill"> Get Involved</span>
                 <h2 class="font-display">Be part of a more supportive world</h2>
                 <p>Whether you want to support our work, collaborate, or simply learn more, there are many ways to get involved.</p>
             </div>
-            <div class="cta-right-action">
-                <a href="{{ route('backus') }}" class="btn-ro-compact">
-                    <span>Get Involved</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+            <div class="cta-right-action" style="display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
+                <div style="display: flex; flex-direction: row; gap: 12px; align-items: center;">
+                    <a href="{{ route('backus') }}" class="btn-ro-compact" style="min-width: 170px; justify-content: center;">
+                        <span>Fund Consultations</span>
+                    </a>
+                    <a href="{{ route('home') }}#partnerships" class="btn-ro-compact" style="min-width: 170px; justify-content: center; background: transparent; border: 2px solid var(--ab-navy-deep); color: var(--ab-navy-deep); box-shadow: none;">
+                        <span>Partner With Us</span>
+                    </a>
+                </div>
                 <div class="cta-handwritten-badge font-script">
-                    Real support. Lasting impact. <i class="fas fa-heart" style="color: #ef4444; font-size: 11px; margin-left: 3px;"></i>
+                    Real support. Lasting impact. 
                 </div>
             </div>
         </div>

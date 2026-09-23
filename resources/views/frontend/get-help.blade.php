@@ -48,8 +48,20 @@ body {
 }
 
 .gh-page-wrap {
-    padding-top: 76px;
+    padding-top: 80px;
     overflow-x: hidden;
+}
+
+@media (max-width: 860px) {
+    .gh-page-wrap {
+        padding-top: 72px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gh-page-wrap {
+        padding-top: 68px;
+    }
 }
 
 .gh-container {
@@ -267,6 +279,17 @@ body {
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.30);
 }
 
+.gh-hero-alone {
+    display: block;
+    font-size: clamp(22px, 2.8vw, 34px);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
 .gh-hero-actions {
     display: flex;
     flex-wrap: wrap;
@@ -427,13 +450,13 @@ body {
 
 @media (max-width: 991px) {
     .gh-hero-cinematic {
-        padding: 85px 0 65px 0;
-        min-height: 520px;
+        padding: 70px 0 55px 0;
+        min-height: 480px;
     }
     .gh-hero-bg-img {
         right: 0;
         width: 100%;
-        object-position: 75% center;
+        object-position: center center;
     }
     .gh-hero-overlay {
         background: linear-gradient(
@@ -449,6 +472,42 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+    .gh-hero-cinematic {
+        padding: 48px 0 42px 0 !important;
+        min-height: 380px !important;
+        height: auto !important;
+    }
+    .gh-hero-content-box {
+        text-align: center;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .gh-hero-eyebrow {
+        font-size: 11px;
+        margin-bottom: 12px;
+    }
+    .gh-hero-title-white {
+        font-size: clamp(23px, 6.8vw, 32px) !important;
+        line-height: 1.25 !important;
+        margin-bottom: 14px !important;
+    }
+    .gh-hero-lead-white {
+        font-size: 14px !important;
+        line-height: 1.55 !important;
+        margin: 0 auto 22px auto !important;
+        max-width: 440px;
+    }
+    .gh-hero-actions {
+        justify-content: center;
+        gap: 10px;
+    }
+    .gh-btn-wa-cinematic, .gh-btn-outline-cinematic {
+        padding: 12px 20px;
+        font-size: 13.5px;
+    }
+}
+
 @media (max-width: 640px) {
     .gh-trust-row-cinematic {
         grid-template-columns: 1fr;
@@ -457,10 +516,33 @@ body {
     .gh-hero-overlay {
         background: linear-gradient(
             to bottom,
-            rgba(10, 24, 42, 0.88) 0%,
-            rgba(10, 24, 42, 0.75) 60%,
-            rgba(10, 24, 42, 0.45) 100%
+            rgba(10, 24, 42, 0.85) 0%,
+            rgba(10, 24, 42, 0.75) 55%,
+            rgba(10, 24, 42, 0.40) 100%
         );
+    }
+}
+
+@media (max-width: 480px) {
+    .gh-hero-cinematic {
+        padding: 36px 0 32px 0 !important;
+        min-height: 340px !important;
+    }
+    .gh-hero-title-white {
+        font-size: 25px !important;
+    }
+    .gh-hero-lead-white {
+        font-size: 13.5px !important;
+    }
+    .gh-hero-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .gh-btn-wa-cinematic, .gh-btn-outline-cinematic {
+        width: 100%;
+        justify-content: center;
     }
 }
 
@@ -474,20 +556,24 @@ body {
 }
 
 .gh-help-header {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 48px;
-    align-items: center;
-    margin-bottom: 50px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 52px auto;
+}
+
+.gh-help-header .gh-pill {
+    margin-bottom: 16px;
+}
+
+.gh-help-header .gh-section-title {
+    margin-bottom: 14px;
 }
 
 .gh-help-header-desc {
     font-size: 16.5px;
-    color: #475569;
-    line-height: 1.7;
-    border-left: 3px solid var(--gh-blue-primary);
-    padding-left: 22px;
-    margin: 0;
+    color: #64748b;
+    line-height: 1.65;
+    margin: 0 auto;
 }
 
 .gh-cards-grid {
@@ -1471,7 +1557,6 @@ body {
 
 @media (max-width: 768px) {
     .gh-hero-grid,
-    .gh-help-header,
     .gh-access-grid,
     .gh-bottom-cta-inner {
         grid-template-columns: 1fr;
@@ -1512,16 +1597,13 @@ body {
 
         <div class="gh-container gh-hero-container">
             <div class="gh-hero-content-box">
-                <span class="gh-hero-eyebrow">
-                    <i class="fas fa-hand-holding-heart"></i> YOU ARE NOT ALONE
-                </span>
-
                 <h1 class="gh-hero-title-white">
                     Get the support<br>you need.
                 </h1>
 
                 <p class="gh-hero-lead-white">
-                    Free, confidential and professional mental health and psychosocial support for individuals and families affected by conflict, displacement and crisis.
+                   <span class="gh-hero-alone">You are not alone.</span>
+                   Get a Free, confidential and professional mental health and psychosocial support for individuals and families affected by conflict, displacement and crisis.
                 </p>
 
                 <div class="gh-hero-actions">
@@ -1539,12 +1621,7 @@ body {
 
             </div>
 
-            <!-- Floating Handwritten Script on the scene -->
-            <div class="gh-hero-floating-badge">
-                <img src="{{ asset('reachout/img/kite.png') }}" class="kite-doodle" alt="Kite">
-                <span class="font-script">Stronger Minds<br>Brighter Tomorrows</span>
-                <span class="script-heart font-script">♡</span>
-            </div>
+
         </div>
     </section>
 
@@ -1552,15 +1629,11 @@ body {
     <section class="gh-help-section">
         <div class="gh-container">
             <div class="gh-help-header">
-                <div>
-                    <span class="gh-pill">HOW WE CAN HELP</span>
-                    <h2 class="gh-section-title">Support for real lives,<br>in difficult times.</h2>
-                </div>
-                <div>
-                    <p class="gh-help-header-desc">
-                        We provide mental health and psychosocial support tailored to the needs of individuals and families affected by conflict, displacement and crisis.
-                    </p>
-                </div>
+                <span class="gh-pill">HOW WE CAN HELP</span>
+                <h2 class="gh-section-title">Support for real lives,<br>in difficult times.</h2>
+                <p class="gh-help-header-desc">
+                    We provide mental health and psychosocial support tailored to the needs of individuals and families affected by conflict, displacement and crisis.
+                </p>
             </div>
 
             <div class="gh-cards-grid">
@@ -1570,7 +1643,6 @@ body {
                         <img src="{{ asset('reachout/img/gethelp_emotional_light.jpg') }}" alt="Emotional & psychological support">
                         <div class="gh-card-overlay-vignette"></div>
                         <div class="gh-card-badge">
-                            <i class="fas fa-heartbeat"></i>
                             <span>Psychological</span>
                         </div>
                     </div>
@@ -1579,12 +1651,7 @@ body {
                             <h3 class="gh-card-title">Emotional & psychological support</h3>
                             <p class="gh-card-desc">A safe space to talk with a qualified professional about what you're experiencing.</p>
                         </div>
-                        <div class="gh-card-footer">
-                            <span class="gh-card-link">
-                                <span>Get this support</span>
-                                <i class="fas fa-arrow-right arrow-icon"></i>
-                            </span>
-                        </div>
+
                     </div>
                 </div>
 
@@ -1594,7 +1661,6 @@ body {
                         <img src="{{ asset('reachout/img/gethelp_care_hands.jpg') }}" alt="Caregiver & family guidance">
                         <div class="gh-card-overlay-vignette"></div>
                         <div class="gh-card-badge">
-                            <i class="fas fa-hands-helping"></i>
                             <span>Family & Care</span>
                         </div>
                     </div>
@@ -1602,12 +1668,6 @@ body {
                         <div>
                             <h3 class="gh-card-title">Caregiver & family guidance</h3>
                             <p class="gh-card-desc">Practical support for parents, caregivers and family members facing new challenges.</p>
-                        </div>
-                        <div class="gh-card-footer">
-                            <span class="gh-card-link">
-                                <span>Get this support</span>
-                                <i class="fas fa-arrow-right arrow-icon"></i>
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -1618,7 +1678,6 @@ body {
                         <img src="{{ asset('reachout/img/gethelp_kite_sky.jpg') }}" alt="Coping with stress, grief, fear and displacement">
                         <div class="gh-card-overlay-vignette"></div>
                         <div class="gh-card-badge">
-                            <i class="fas fa-wind"></i>
                             <span>Coping & Relief</span>
                         </div>
                     </div>
@@ -1626,12 +1685,6 @@ body {
                         <div>
                             <h3 class="gh-card-title">Coping with stress & displacement</h3>
                             <p class="gh-card-desc">Tools and strategies to help you navigate the emotional effects of crisis.</p>
-                        </div>
-                        <div class="gh-card-footer">
-                            <span class="gh-card-link">
-                                <span>Get this support</span>
-                                <i class="fas fa-arrow-right arrow-icon"></i>
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -1642,7 +1695,6 @@ body {
                         <img src="{{ asset('reachout/img/gethelp_wooden_signpost.webp') }}" alt="Referral when specialized care is needed">
                         <div class="gh-card-overlay-vignette"></div>
                         <div class="gh-card-badge">
-                            <i class="fas fa-map-signs"></i>
                             <span>Referral</span>
                         </div>
                     </div>
@@ -1650,12 +1702,6 @@ body {
                         <div>
                             <h3 class="gh-card-title">Referral when specialized care is needed</h3>
                             <p class="gh-card-desc">We help connect you with appropriate services and resources where available.</p>
-                        </div>
-                        <div class="gh-card-footer">
-                            <span class="gh-card-link">
-                                <span>Get this support</span>
-                                <i class="fas fa-arrow-right arrow-icon"></i>
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -1717,12 +1763,6 @@ body {
                         </span>
                         <h3 class="gh-step-title">Speak privately with a specialist</h3>
                         <p class="gh-step-text">Share what you're experiencing in a judgment-free, fully protected and compassionate space.</p>
-                        <div class="gh-step-footer">
-                            <button class="gh-step-action-link" onclick="openPopupWithChannel('whatsapp'); return false;">
-                                <span>Certified specialists</span>
-                                <i class="fas fa-arrow-right arrow-icon"></i>
-                            </button>
-                        </div>
                     </div>
 
                     <!-- Step 3 -->
@@ -1738,12 +1778,6 @@ body {
                         </span>
                         <h3 class="gh-step-title">Receive guidance & next steps</h3>
                         <p class="gh-step-text">Together we establish practical coping strategies, emotional relief, and ongoing tailored guidance.</p>
-                        <div class="gh-step-footer">
-                            <button class="gh-step-action-link" onclick="openPopupWithChannel('whatsapp'); return false;">
-                                <span>Your path forward</span>
-                                <i class="fas fa-arrow-right arrow-icon"></i>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1774,7 +1808,7 @@ body {
                 <!-- Content Area -->
                 <div class="gh-access-content">
                     <span class="gh-pill">
-                        <i class="fas fa-hand-holding-heart"></i> EASY & DIRECT ACCESS
+                        EASY & DIRECT ACCESS
                     </span>
 
                     <h2 class="gh-section-title">
@@ -1783,7 +1817,7 @@ body {
                     </h2>
 
                     <p class="gh-access-lead">
-                        Hardship and distance should never stand between you and mental well-being. Whether you are living through crisis, displaced, or carrying heavy emotional weight — qualified specialists are here to listen with empathy, dignity, and absolute confidentiality.
+                        Hardship and distance should never stand between you and mental well-being. Whether you are living through crisis, displaced, or carrying heavy emotional weight , qualified specialists are here to listen with empathy, dignity, and absolute confidentiality.
                     </p>
 
                     <div class="gh-access-points">
@@ -1902,9 +1936,8 @@ body {
         <div class="gh-container">
             <div class="gh-bottom-cta-inner">
                 <div>
-                    <span class="gh-pill">SUPPORT STARTS WITH A CONVERSATION</span>
                     <h2 class="gh-bottom-cta-title">You do not have<br>to face this alone.</h2>
-                    <p class="gh-bottom-cta-desc">We are here to listen.</p>
+                    <p class="gh-bottom-cta-desc">We are here to listen. Support starts with a conversation</p>
 
                     <div class="gh-bottom-cta-actions">
                         <button class="gh-btn-wa" onclick="openPopupWithChannel('whatsapp'); return false;">

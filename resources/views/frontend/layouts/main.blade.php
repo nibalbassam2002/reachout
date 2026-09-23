@@ -62,7 +62,7 @@
     <i class="fas fa-hands-holding-child"></i> Get Help
 </a></li>
 
-<li><a href="{{ route('home') }}#get-help">
+<li><a href="{{ route('home') }}#partnerships" id="nav-contact-link">
     <i class="fas fa-phone"></i> Contact Us
 </a></li>
 
@@ -80,6 +80,58 @@
             </ul>
         </nav>
     </header>
+    <script>
+    function setContactActive(on) {
+        document.querySelectorAll('.nav-links a').forEach(function(l) {
+            l.classList.remove('active');
+        });
+        if (on) {
+            var cl = document.getElementById('nav-contact-link');
+            if (cl) cl.classList.add('active');
+        } else {
+            // restore default active based on current path
+            var path = window.location.pathname;
+            document.querySelectorAll('.nav-links a').forEach(function(l) {
+                var href = l.getAttribute('href') || '';
+                if (href && href !== '#' && !href.includes('#')) {
+                    try {
+                        var url = new URL(href, window.location.origin);
+                        if (url.pathname === path && l.id !== 'nav-contact-link') {
+                            l.classList.add('active');
+                        }
+                    } catch(e) {}
+                }
+            });
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // 1. Check hash on load
+        if (window.location.hash === '#partnerships') {
+            setContactActive(true);
+        }
+
+        // 2. IntersectionObserver for scroll
+        var section = document.getElementById('partnerships');
+        if (section) {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    setContactActive(entry.isIntersecting);
+                });
+            }, { threshold: 0.15 });
+            observer.observe(section);
+        }
+
+        // 3. Listen for hash changes (click nav link)
+        window.addEventListener('hashchange', function() {
+            if (window.location.hash === '#partnerships') {
+                setContactActive(true);
+            } else {
+                setContactActive(false);
+            }
+        });
+    });
+    </script>
 
     @yield('content')
 

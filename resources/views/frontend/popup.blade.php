@@ -1224,7 +1224,7 @@
                     <a href="#" onclick="openDoc(); return false;"
                         data-en="Terms of Service" data-ar="شروط الخدمة"></a>
                         &amp;
-                        <a href="#" onclick="openDoc(); return false;"
+                    <a href="{{ route('policies') }}" target="_blank"
                         data-en="Privacy Policy" data-ar="سياسة الخصوصية"></a>
                 </p>
                 <div class="terms-notice">
@@ -2117,7 +2117,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const lang = currentLang;
         const files = {
-            en: '/documents/legal-en.pdf',
+            en: '/documents/Terms_of_Service.pdf',
             ar: '/documents/legal-ar.pdf'
         };
         const url = files[lang];
@@ -2156,7 +2156,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('legalDownloadBtn').onclick = function() {
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'legal-' + lang + '.pdf';
+            a.download = (lang === 'en') ? 'Terms_of_Service.pdf' : ('legal-' + lang + '.pdf');
             a.click();
             overlay.remove();
         };

@@ -1704,6 +1704,11 @@ body {
     animation: fadeIn 0.25s ease;
 }
 
+.ro-checkout-card,
+.ro-checkout-card * {
+    box-sizing: border-box;
+}
+
 .ro-checkout-card {
     background: #ffffff;
     max-width: 580px;
@@ -1812,8 +1817,10 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-.roc-form-group input {
+.roc-form-group input,
+.roc-card-fields input {
     width: 100%;
+    box-sizing: border-box;
     padding: 11px 14px;
     border: 1.5px solid var(--ro-border);
     border-radius: 10px;
@@ -1821,10 +1828,12 @@ body {
     font-family: inherit;
     color: var(--ro-text);
     outline: none;
+    background: #ffffff;
     transition: border-color 0.2s;
 }
 
-.roc-form-group input:focus {
+.roc-form-group input:focus,
+.roc-card-fields input:focus {
     border-color: var(--ro-blue);
 }
 
@@ -2241,9 +2250,36 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+    .ro-hero-section {
+        padding: 48px 20px 42px 20px !important;
+        min-height: 380px !important;
+        height: auto !important;
+    }
+    .ro-hero-content {
+        text-align: center;
+        margin: 0 auto !important;
+        max-width: 100%;
+    }
+    .ro-hero-title {
+        font-size: clamp(23px, 6.8vw, 32px) !important;
+        line-height: 1.25 !important;
+        margin-bottom: 14px !important;
+    }
+    .ro-hero-desc {
+        font-size: 14px !important;
+        line-height: 1.55 !important;
+        margin: 0 auto 22px auto !important;
+        max-width: 440px;
+    }
+    .ro-hero-cta-group {
+        align-items: center;
+    }
+}
+
 @media (max-width: 640px) {
     .ro-hero-section {
-        padding: 50px 16px 50px 16px;
+        padding: 40px 16px 36px 16px !important;
     }
     .ro-hero-trust-row {
         grid-template-columns: 1fr;
@@ -2284,8 +2320,158 @@ body {
     .transparency-card::after {
         display: none;
     }
+
+    /* ══ FIX 1: Frequency Switcher on Mobile (fits <=335px) ══ */
+    .ro-freq-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 10px !important;
+        box-sizing: border-box !important;
+    }
+    .ro-freq-toggle {
+        display: flex !important;
+        width: 100% !important;
+        max-width: 315px !important;
+        margin: 0 auto !important;
+        padding: 4px !important;
+        box-sizing: border-box !important;
+    }
+    .ro-freq-btn {
+        flex: 1 !important;
+        padding: 8px 6px !important;
+        font-size: 12px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 4px !important;
+        white-space: nowrap !important;
+    }
+    .ro-freq-btn i {
+        font-size: 10.5px !important;
+    }
+    .freq-badge-heart {
+        font-size: 9px !important;
+        padding: 2px 5px !important;
+    }
+    .ro-freq-subhint {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        font-size: 11px !important;
+        padding: 8px 12px !important;
+        text-align: center !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+    }
+
+    /* ══ FIX 2: Modal Responsiveness on Mobile (No Left Clipping) ══ */
+    .ro-modal-backdrop {
+        padding: 12px 8px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+    .ro-checkout-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        border-radius: 18px !important;
+        margin: auto !important;
+        max-height: 94vh !important;
+    }
+    .roc-header {
+        padding: 14px 16px !important;
+    }
+    .roc-header h3 {
+        font-size: 15.5px !important;
+    }
     .roc-scrollable-body {
-        padding: 18px;
+        padding: 16px 14px !important;
+        box-sizing: border-box !important;
+    }
+    .roc-summary-box {
+        padding: 10px 12px !important;
+        margin-bottom: 14px !important;
+    }
+    .roc-summary-title {
+        font-size: 13px !important;
+    }
+    .roc-summary-price {
+        font-size: 19px !important;
+    }
+    .roc-form-group {
+        margin-bottom: 12px !important;
+    }
+    .roc-form-group label {
+        font-size: 10.5px !important;
+    }
+    .roc-pay-tabs {
+        gap: 6px !important;
+        margin-bottom: 12px !important;
+    }
+    .roc-pay-tab {
+        padding: 8px 4px !important;
+        font-size: 11.5px !important;
+        gap: 4px !important;
+    }
+    .roc-card-fields {
+        padding: 12px 10px !important;
+    }
+    .roc-card-inline {
+        gap: 8px !important;
+    }
+    .bop-gateway-banner {
+        padding: 10px 12px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+    }
+    .bop-gateway-title {
+        font-size: 12px !important;
+    }
+    .bop-gateway-badge {
+        font-size: 9.5px !important;
+    }
+    .btn-submit-purchase {
+        padding: 13px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ro-hero-section {
+        margin-top: 68px;
+        padding: 36px 16px 32px 16px !important;
+        min-height: 340px !important;
+    }
+    .ro-hero-title {
+        font-size: 25px !important;
+    }
+    .ro-hero-desc {
+        font-size: 13.5px !important;
+    }
+    .ro-hero-cta-group {
+        width: 100%;
+    }
+    .ro-btn-primary-hero {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 360px) {
+    .ro-freq-btn {
+        font-size: 11px !important;
+        padding: 7px 3px !important;
+    }
+    .freq-badge-heart span {
+        display: none !important;
+    }
+    .roc-pay-tab {
+        font-size: 10.5px !important;
+        padding: 7px 3px !important;
     }
 }
 </style>
@@ -2325,7 +2511,7 @@ body {
                     </div>
                 </div>
                 <div class="ro-trust-pill">
-                    <i class="fas fa-stethoscope"></i>
+                    <i class="fas fa-brain icon-step-2"></i>
                     <div class="ro-trust-pill-text">
                         <strong>Qualified Therapists</strong>
                         <span>Compassionate support</span>
@@ -2581,7 +2767,7 @@ body {
     <!-- Centered Distinct Section Header -->
     <div class="ro-system-header">
         <span class="ro-eyebrow"><i class="fas fa-hand-holding-heart"></i> What Your Purchase Provides</span>
-        <h2 class="font-display">More than a consultation — a <span class="ro-highlight-red">comprehensive support</span> system</h2>
+        <h2 class="font-display">More than a consultation , a <span class="ro-highlight-red">comprehensive support</span> system</h2>
         <p>Your sponsorship funds an integrated circle of care. Tap through the stages below to see how each consultation creates lasting recovery.</p>
     </div>
 

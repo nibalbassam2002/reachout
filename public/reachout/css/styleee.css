@@ -105,13 +105,9 @@ html, body {
             flex-shrink: 0; margin-left: 0;
             animation: logoSlideIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
         }
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0); }
-            50%       { transform: translateY(-4px); }
-        }
         .nav-logo img {
             height: 64px; width: 64px; object-fit: contain; border-radius: 50%;
-            animation: logoFloat 3.5s ease-in-out infinite; transition: transform 0.3s;
+            transition: transform 0.3s;
             display: block;
         }
         .nav-logo:hover img { animation-play-state: paused; transform: scale(1.08) rotate(-3deg); }
@@ -1468,6 +1464,7 @@ body {
     .main-header { height: 72px; }
     .navbar { height: 72px; padding: 0 20px; }
     .nav-logo img { height: 56px; width: 56px; }
+    .hero-section { margin-top: 72px; }
 }
 
 @media (max-width: 480px) {
@@ -1475,6 +1472,7 @@ body {
     .navbar { height: 68px; padding: 0 16px; }
     .nav-logo img { height: 52px; width: 52px; }
     .nav-logo { margin-left: 0; }
+    .hero-section { margin-top: 68px; }
 }
 
 /* ══════════════════════════════

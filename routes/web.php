@@ -38,6 +38,8 @@ Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/policies', function () {
     return view('frontend.policies');
 })->name('policies');
+Route::redirect('/privacy', '/policies');
+Route::redirect('/privacy-policy', '/policies');
 Route::get('/back-us', function () {
     $bank = \App\Models\BankAccount::first(); 
     return view('frontend.donate', compact('bank'));
@@ -115,6 +117,21 @@ Route::post('/contact', function(\Illuminate\Http\Request $request) {
 });
 
 Route::post('/partnership/send', [PartnershipController::class, 'send'])->name('partnership.send');
+
+// Terms of Service PDF direct routes
+Route::get('/documents/Terms_of_Service', function () {
+    return response()->file(public_path('documents/Terms_of_Service.pdf'), [
+        'Content-Type' => 'application/pdf',
+        'Content-Disposition' => 'inline; filename="Terms_of_Service.pdf"'
+    ]);
+});
+Route::get('/Terms_of_Service', function () {
+    return response()->file(public_path('documents/Terms_of_Service.pdf'), [
+        'Content-Type' => 'application/pdf',
+        'Content-Disposition' => 'inline; filename="Terms_of_Service.pdf"'
+    ]);
+});
+
 Route::get('/', function () {
     return view('frontend.index');
 })->name('home');

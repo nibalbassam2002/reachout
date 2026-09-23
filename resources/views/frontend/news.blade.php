@@ -5,7 +5,7 @@
 @section('content')
 <main class="news-page">
     <div class="container">
-        <h1 class="page-title">Voices from the Ground</h1>
+        <h1 class="page-title">Updates & Resources</h1>
 
         <div class="articles-list">
             @forelse($articles as $article)
