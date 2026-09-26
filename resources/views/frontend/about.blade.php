@@ -111,6 +111,13 @@ body {
     margin-bottom: 28px;
 }
 
+/* Secondary lead — slightly smaller & lighter for visual hierarchy */
+.ab-lead-secondary {
+    font-size: clamp(14px, 1.05vw, 15.5px);
+    color: var(--ab-text-muted);
+    line-height: 1.65;
+}
+
 /* Base Buttons */
 .ab-btn-primary {
     display: inline-flex;
@@ -1746,12 +1753,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 8px;
+    gap: 10px;
     flex-shrink: 0;
 }
 
+.cta-btn-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
 .btn-ro-compact {
-    padding: 13px 30px;
+    padding: 13px 26px;
     font-size: 14.5px;
     background: var(--ab-accent-red);
     color: #ffffff;
@@ -1762,7 +1776,10 @@ body {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 8px;
+    white-space: nowrap;
 }
 
 .btn-ro-compact:hover {
@@ -1770,6 +1787,21 @@ body {
     color: #ffffff;
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(192, 57, 43, 0.45);
+}
+
+.btn-ro-compact.btn-ro-outline {
+    background: transparent;
+    border: 2px solid var(--ab-navy-deep);
+    color: var(--ab-navy-deep);
+    box-shadow: none;
+}
+
+.btn-ro-compact.btn-ro-outline:hover {
+    background: var(--ab-navy-deep);
+    color: #ffffff;
+    border-color: var(--ab-navy-deep);
+    box-shadow: 0 6px 18px rgba(10, 42, 74, 0.25);
+    transform: translateY(-2px);
 }
 
 .cta-handwritten-badge {
@@ -1843,21 +1875,28 @@ body {
         text-align: center;
         margin: 0 auto;
         max-width: 100%;
+        margin-top: 0 !important;
+    }
+    .ab-hero-logo {
+        height: 100px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-bottom: 16px !important;
     }
     .ab-hero-eyebrow {
         font-size: 11px;
         margin-bottom: 12px;
     }
     .ab-hero-title-white {
-        font-size: clamp(23px, 6.8vw, 32px) !important;
+        font-size: clamp(22px, 6.5vw, 30px) !important;
         line-height: 1.25 !important;
-        margin-bottom: 14px !important;
+        margin-bottom: 12px !important;
     }
     .ab-hero-lead-white {
         font-size: 14px !important;
         line-height: 1.55 !important;
-        margin: 0 auto 22px auto !important;
-        max-width: 440px;
+        margin: 0 auto 20px auto !important;
+        max-width: 420px;
     }
     .ab-hero-actions {
         justify-content: center;
@@ -1943,24 +1982,381 @@ body {
 
 @media (max-width: 480px) {
     .ab-hero-cinematic {
-        padding: 36px 16px 32px 16px !important;
-        min-height: 340px !important;
+        padding: 32px 16px 28px 16px !important;
+        min-height: 320px !important;
+    }
+    .ab-hero-logo {
+        height: 82px !important;
+        margin-bottom: 12px !important;
     }
     .ab-hero-title-white {
-        font-size: 25px !important;
+        font-size: 22px !important;
+        line-height: 1.3 !important;
     }
     .ab-hero-lead-white {
-        font-size: 13.5px !important;
+        font-size: 13px !important;
+        max-width: 100% !important;
     }
     .ab-hero-actions {
         flex-direction: column;
         width: 100%;
-        max-width: 300px;
+        max-width: 280px;
         margin: 0 auto;
+        gap: 8px;
     }
     .btn-ab-hero-white, .btn-ab-hero-outline {
         width: 100%;
         justify-content: center;
+        padding: 11px 18px;
+        font-size: 13px;
+    }
+}
+/* ── Who We Are: Tablet ── */
+@media (max-width: 768px) {
+    .ab-section-who {
+        padding: 50px 20px 40px;
+        overflow: hidden;
+    }
+    .ab-who-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .ab-who-collage {
+        max-width: 400px;
+        margin: 0 auto;
+        padding-right: 28px;
+        padding-bottom: 36px;
+        position: relative;
+    }
+    .ab-who-collage-decor {
+        display: none;
+    }
+    .ab-who-main-frame {
+        height: 290px;
+        border-radius: 18px;
+    }
+    .ab-who-sub-frame {
+        width: 170px;
+        height: 135px;
+        bottom: 0;
+        right: 0;
+    }
+    .ab-who-content {
+        padding: 0 4px;
+    }
+    .ab-who-highlights {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    .ab-title-main {
+        font-size: clamp(24px, 6vw, 34px);
+    }
+}
+
+/* ── Who We Are: Mobile ── */
+@media (max-width: 480px) {
+    .ab-section-who {
+        padding: 36px 16px 32px;
+    }
+    .ab-who-collage {
+        max-width: 295px;
+        margin: 0 auto;
+        padding-right: 20px;
+        padding-bottom: 28px;
+        position: relative;
+    }
+    .ab-who-collage-decor {
+        display: none;
+    }
+    .ab-who-main-frame {
+        height: 230px;
+        border-radius: 16px;
+    }
+    .ab-who-badge-top {
+        top: 12px;
+        left: 12px;
+        font-size: 11px;
+        padding: 5px 11px;
+    }
+    .ab-who-sub-frame {
+        width: 132px;
+        height: 104px;
+        border-width: 3px;
+        border-radius: 13px;
+        bottom: 0;
+        right: 0;
+    }
+    .ab-sub-frame-caption {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+    .ab-who-highlights {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .ab-who-pill-box {
+        padding: 12px 14px;
+    }
+    .ab-title-main {
+        font-size: clamp(22px, 7vw, 28px);
+        text-wrap: balance;
+    }
+    .ab-lead-text,
+    .ab-lead-secondary {
+        font-size: 14.5px;
+        text-align: justify;
+        hyphens: auto;
+    }
+}
+
+/* Balanced text on tablet too */
+@media (max-width: 768px) {
+    .ab-who-content .ab-title-main {
+        text-wrap: balance;
+    }
+    .ab-who-content .ab-lead-text,
+    .ab-who-content .ab-lead-secondary {
+        text-align: justify;
+        hyphens: auto;
+    }
+}
+/* ── Mission & Vision Cards: Mobile ── */
+@media (max-width: 768px) {
+    .ab-section-mv {
+        padding: 24px 20px 40px;
+    }
+    .ab-mv-grid {
+        gap: 16px;
+    }
+    .ab-mv-card {
+        padding: 22px 20px 18px;
+        border-radius: 16px;
+    }
+    .ab-mv-top {
+        margin-bottom: 14px;
+    }
+    .ab-mv-heading {
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+    .ab-mv-text {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 16px;
+        text-align: justify;
+        hyphens: auto;
+    }
+    .ab-mv-pills {
+        padding-top: 12px;
+        gap: 6px;
+    }
+    .ab-mv-pill-item {
+        font-size: 11.5px;
+        padding: 3px 9px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ab-section-mv {
+        padding: 16px 16px 32px;
+    }
+    .ab-mv-card {
+        padding: 18px 16px 14px;
+    }
+    .ab-mv-heading {
+        font-size: 16px;
+    }
+    .ab-mv-text {
+        font-size: 13.5px;
+        margin-bottom: 12px;
+    }
+}
+/* ════════════════════════════════════════════════════════════
+   UNIFIED SECTION SPACING — keeps rhythm consistent on mobile
+════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .ab-section-who,
+    .ab-section-mv,
+    .ab-section-why,
+    .ab-section-approach,
+    .ab-section-serve,
+    .ab-section-dual {
+        padding-top: 48px !important;
+        padding-bottom: 48px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    .ab-section-role {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    .ab-section-values {
+        padding-top: 48px !important;
+        padding-bottom: 48px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ab-section-who,
+    .ab-section-why,
+    .ab-section-approach,
+    .ab-section-serve,
+    .ab-section-dual {
+        padding-top: 36px !important;
+        padding-bottom: 36px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+    .ab-section-role {
+        padding-top: 32px !important;
+        padding-bottom: 32px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+    .ab-section-values {
+        padding-top: 36px !important;
+        padding-bottom: 36px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+}
+/* ── Who We Serve: Tablet ── */
+@media (max-width: 768px) {
+    .ab-serve-content .ab-btn-primary {
+        align-self: center;
+        margin-bottom: 8px;
+    }
+    .ab-serve-showcase {
+        max-width: 340px;
+        margin: 0 auto;
+        padding-bottom: 90px;
+        padding-right: 0;
+    }
+    .ab-serve-arch-decor {
+        display: none;
+    }
+    .ab-serve-arch-frame {
+        height: 350px;
+        border-radius: 160px 160px 24px 24px;
+    }
+    .ab-serve-inset-frame {
+        width: 160px;
+        height: 130px;
+        right: -10px;
+        bottom: 0;
+        border-width: 3px;
+        border-radius: 16px;
+    }
+    .ab-serve-script {
+        font-size: 20px;
+        bottom: 18px;
+        left: 16px;
+    }
+    .ab-serve-badge-top {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+}
+
+/* ── Who We Serve: Mobile ── */
+@media (max-width: 480px) {
+    .ab-serve-showcase {
+        max-width: 280px;
+        padding-bottom: 78px;
+    }
+    .ab-serve-arch-frame {
+        height: 300px;
+        border-radius: 130px 130px 20px 20px;
+    }
+    .ab-serve-inset-frame {
+        width: 130px;
+        height: 108px;
+        right: -4px;
+        border-width: 2.5px;
+        border-radius: 12px;
+    }
+    .ab-serve-inset-caption {
+        font-size: 10.5px;
+        padding: 5px 8px;
+    }
+    .ab-serve-script {
+        font-size: 17px;
+        bottom: 14px;
+        left: 12px;
+    }
+}
+
+/* ── Bottom CTA: Tablet & Mobile Responsive ── */
+@media (max-width: 900px) {
+    .ro-bottom-cta {
+        padding: 32px 18px 46px;
+    }
+    .ro-bottom-cta-inner {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 22px !important;
+        padding: 28px 24px !important;
+        box-sizing: border-box;
+    }
+    .cta-left-text {
+        text-align: center !important;
+        max-width: 100% !important;
+    }
+    .cta-right-action {
+        width: 100% !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    .cta-btn-group {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .cta-handwritten-badge {
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 580px) {
+    .ro-bottom-cta {
+        padding: 22px 12px 36px !important;
+    }
+    .ro-bottom-cta-inner {
+        padding: 22px 16px !important;
+        border-radius: 18px !important;
+        gap: 16px !important;
+    }
+    .cta-left-text h2 {
+        font-size: 20px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 8px !important;
+    }
+    .cta-left-text p {
+        font-size: 13.5px !important;
+        line-height: 1.55 !important;
+    }
+    .cta-btn-group {
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 280px !important;
+        gap: 10px !important;
+        margin: 0 auto !important;
+    }
+    .btn-ro-compact {
+        width: 100% !important;
+        min-width: 0 !important;
+        padding: 11px 16px !important;
+        font-size: 13.5px !important;
+        box-sizing: border-box !important;
+        justify-content: center !important;
+    }
+    .cta-handwritten-badge {
+        font-size: 15px !important;
+        text-align: center !important;
+        margin-top: 2px !important;
     }
 }
 </style>
@@ -1978,7 +2374,7 @@ body {
 
         <div class="ro-hero-container">
             <div class="ab-hero-content-box" style="margin-top: -80px;">
-                <img src="{{ asset('reachout/img/logo3.png') }}?v={{ filemtime(public_path('reachout/img/logo3.png')) }}" alt="Mental Health Frontline" style="height: 145px; width: auto; margin-bottom: 22px; margin-left: 148px; display: block; filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(0,0,0,0.4)); opacity: 1;">
+                <img src="{{ asset('reachout/img/logo3.png') }}?v={{ filemtime(public_path('reachout/img/logo3.png')) }}" alt="Mental Health Frontline" class="ab-hero-logo" style="height: 145px; width: auto; margin-bottom: 22px; margin-left: 148px; display: block; filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(0,0,0,0.4)); opacity: 1;">
 
                 <h1 class="ab-hero-title-white" style="font-size: clamp(30px, 3.6vw, 48px);">
                     Mental health support,
@@ -2040,7 +2436,7 @@ accessible channels including WhatsApp and email.
                 <p class="ab-lead-text" style="margin-bottom: 16px;">
                     Mental Health Frontline (MHF) is an independent mental health initiative providing free, confidential and professional psychological and psychosocial support to individuals and families affected by conflict, displacement and humanitarian crises.
                 </p>
-                <p class="ab-lead-text" style="font-size: 15px; color: var(--ab-text-muted); margin-bottom: 0;">
+                <p class="ab-lead-text ab-lead-secondary" style="margin-bottom: 0;">
                     We are a team of mental health professionals, working with communities on the ground and through accessible digital channels to ensure that no one has to face their psychological challenges alone.
                 </p>
 
@@ -2397,21 +2793,21 @@ accessible channels including WhatsApp and email.
     <section class="ro-bottom-cta">
         <div class="ro-bottom-cta-inner">
             <div class="cta-left-text">
-                <span class="cta-compact-pill"> Get Involved</span>
+                <span class="cta-compact-pill">Get Involved</span>
                 <h2 class="font-display">Be part of a more supportive world</h2>
                 <p>Whether you want to support our work, collaborate, or simply learn more, there are many ways to get involved.</p>
             </div>
-            <div class="cta-right-action" style="display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
-                <div style="display: flex; flex-direction: row; gap: 12px; align-items: center;">
-                    <a href="{{ route('backus') }}" class="btn-ro-compact" style="min-width: 170px; justify-content: center;">
+            <div class="cta-right-action">
+                <div class="cta-btn-group">
+                    <a href="{{ route('backus') }}" class="btn-ro-compact btn-ro-primary">
                         <span>Fund Consultations</span>
                     </a>
-                    <a href="{{ route('home') }}#partnerships" class="btn-ro-compact" style="min-width: 170px; justify-content: center; background: transparent; border: 2px solid var(--ab-navy-deep); color: var(--ab-navy-deep); box-shadow: none;">
+                    <a href="{{ route('home') }}#partnerships" class="btn-ro-compact btn-ro-outline">
                         <span>Partner With Us</span>
                     </a>
                 </div>
                 <div class="cta-handwritten-badge font-script">
-                    Real support. Lasting impact. 
+                    Real support. Lasting impact.
                 </div>
             </div>
         </div>
