@@ -108,9 +108,9 @@
             }
             let display;
             if (target >= 1000000) {
-                display = (start / 1000000).toFixed(1) + ' million';
+                display = prefix + Math.round(start / 1000000) + (suffix || '+ Million');
             } else if (target >= 1000) {
-                display = prefix + Math.round(start).toLocaleString('en-US');
+                display = prefix + Math.round(start).toLocaleString('en-US') + suffix;
             } else {
                 display = prefix + Math.round(start) + suffix;
             }

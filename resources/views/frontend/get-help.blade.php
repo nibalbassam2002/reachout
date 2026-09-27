@@ -182,7 +182,7 @@ body {
     display: flex;
     align-items: center;
     overflow: hidden;
-    background: #0a1829;
+    background: #060f1c;
 }
 
 .gh-hero-bg-layer {
@@ -335,13 +335,13 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.15);
     color: #ffffff;
     padding: 14px 28px;
     border-radius: 50px;
     font-size: 15.5px;
     font-weight: 700;
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border: 1.5px solid rgba(255, 255, 255, 0.55);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     cursor: pointer;
@@ -350,12 +350,18 @@ body {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
-.gh-btn-outline-cinematic:hover {
-    background: #ffffff;
-    color: var(--gh-navy);
-    border-color: #ffffff;
+.gh-btn-outline-cinematic:hover,
+.gh-btn-outline-cinematic:focus {
+    background: #ffffff !important;
+    color: var(--gh-navy) !important;
+    border-color: #ffffff !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 28px rgba(255, 255, 255, 0.30);
+}
+
+.gh-btn-outline-cinematic:hover i,
+.gh-btn-outline-cinematic:focus i {
+    color: var(--gh-navy) !important;
 }
 
 .gh-btn-outline-cinematic .arrow-icon {
@@ -363,7 +369,8 @@ body {
     transition: transform 0.25s ease;
 }
 
-.gh-btn-outline-cinematic:hover .arrow-icon {
+.gh-btn-outline-cinematic:hover .arrow-icon,
+.gh-btn-outline-cinematic:focus .arrow-icon {
     transform: translateX(4px);
 }
 
@@ -450,99 +457,179 @@ body {
 
 @media (max-width: 991px) {
     .gh-hero-cinematic {
-        padding: 70px 0 55px 0;
-        min-height: 480px;
+        padding: 70px 0 60px 0;
+        min-height: 520px;
     }
     .gh-hero-bg-img {
         right: 0;
         width: 100%;
-        object-position: center center;
+        object-position: 72% 22%;
+        filter: brightness(1.05) contrast(1.05) saturate(1.05);
     }
     .gh-hero-overlay {
         background: linear-gradient(
             to right,
-            rgba(10, 24, 42, 0.88) 0%,
-            rgba(10, 24, 42, 0.78) 50%,
-            rgba(10, 24, 42, 0.45) 80%,
-            rgba(10, 24, 42, 0.15) 100%
+            rgba(6, 15, 28, 0.92) 0%,
+            rgba(6, 15, 28, 0.78) 48%,
+            rgba(6, 15, 28, 0.38) 78%,
+            rgba(6, 15, 28, 0.10) 100%
         );
     }
-    .gh-hero-floating-badge {
-        display: none;
-    }
+    .gh-hero-floating-badge { display: none; }
 }
 
+/* ─── TABLET ─── */
 @media (max-width: 768px) {
     .gh-hero-cinematic {
-        padding: 48px 0 42px 0 !important;
-        min-height: 380px !important;
+        padding: 0 !important;
+        min-height: 100svh !important;
+        min-height: 580px !important;
         height: auto !important;
+        align-items: flex-end !important;
+    }
+    .gh-hero-bg-img {
+        object-position: 68% 18% !important;
+        filter: brightness(1.08) contrast(1.04) saturate(1.08) !important;
+    }
+    .gh-hero-overlay {
+        background:
+            linear-gradient(to top,
+                rgba(6, 15, 28, 1.00)   0%,
+                rgba(6, 15, 28, 0.95)  28%,
+                rgba(6, 15, 28, 0.72)  55%,
+                rgba(6, 15, 28, 0.30)  78%,
+                rgba(6, 15, 28, 0.05) 100%
+            ) !important;
+    }
+    .gh-container.gh-hero-container {
+        padding-bottom: 48px !important;
+        padding-top: 20px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 24px !important;
+        padding-right: 24px !important;
     }
     .gh-hero-content-box {
         text-align: center;
         margin: 0 auto;
-        max-width: 100%;
+        max-width: 480px;
+        width: 100%;
     }
+    /* Eyebrow badge */
     .gh-hero-eyebrow {
-        font-size: 11px;
-        margin-bottom: 12px;
+        font-size: 10.5px;
+        margin-bottom: 14px;
+        padding: 6px 14px;
     }
+    /* Main title */
     .gh-hero-title-white {
-        font-size: clamp(23px, 6.8vw, 32px) !important;
-        line-height: 1.25 !important;
-        margin-bottom: 14px !important;
+        font-size: clamp(30px, 8vw, 40px) !important;
+        line-height: 1.18 !important;
+        margin-bottom: 4px !important;
+        text-shadow: 0 2px 16px rgba(0,0,0,0.55) !important;
     }
+    /* "You are not alone" accent */
+    .gh-hero-alone {
+        font-size: 18px !important;
+        color: #7dd3fc !important;
+        margin-bottom: 12px !important;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-shadow: 0 0 20px rgba(125, 211, 252, 0.45) !important;
+    }
+    /* Lead paragraph */
     .gh-hero-lead-white {
         font-size: 14px !important;
-        line-height: 1.55 !important;
-        margin: 0 auto 22px auto !important;
-        max-width: 440px;
+        line-height: 1.65 !important;
+        margin: 0 auto 28px auto !important;
+        max-width: 380px;
+        color: rgba(255, 255, 255, 0.88) !important;
+        text-shadow: 0 1px 6px rgba(0,0,0,0.4) !important;
     }
+    /* Buttons wrapper */
     .gh-hero-actions {
-        justify-content: center;
-        gap: 10px;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 300px !important;
+        margin: 0 auto !important;
+        gap: 12px !important;
+        margin-bottom: 0 !important;
     }
-    .gh-btn-wa-cinematic, .gh-btn-outline-cinematic {
-        padding: 12px 20px;
-        font-size: 13.5px;
+    /* Both buttons full-width */
+    .gh-btn-wa-cinematic,
+    .gh-btn-outline-cinematic {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 14px 24px !important;
+        font-size: 15px !important;
+        box-sizing: border-box !important;
+        border-radius: 14px !important;
     }
+    /* WhatsApp button glow */
+    .gh-btn-wa-cinematic {
+        background: linear-gradient(135deg, #1d6ed4 0%, #184B89 100%) !important;
+        box-shadow: 0 6px 24px rgba(29, 110, 212, 0.45) !important;
+    }
+    /* Email button — glassy white border */
+    .gh-btn-outline-cinematic {
+        background: rgba(255, 255, 255, 0.10) !important;
+        border: 1.5px solid rgba(255, 255, 255, 0.60) !important;
+        color: #ffffff !important;
+        backdrop-filter: blur(12px) !important;
+    }
+    .gh-btn-outline-cinematic:hover,
+    .gh-btn-outline-cinematic:focus,
+    .gh-btn-outline-cinematic:active {
+        background: #ffffff !important;
+        color: #0e2a47 !important;
+        border-color: #ffffff !important;
+        box-shadow: 0 6px 24px rgba(255, 255, 255, 0.30) !important;
+    }
+    .gh-btn-outline-cinematic:hover i,
+    .gh-btn-outline-cinematic:focus i,
+    .gh-btn-outline-cinematic:active i {
+        color: #0e2a47 !important;
+    }
+    /* Hide trust row on small screens */
+    .gh-trust-row-cinematic { display: none !important; }
 }
 
-@media (max-width: 640px) {
-    .gh-trust-row-cinematic {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-    .gh-hero-overlay {
-        background: linear-gradient(
-            to bottom,
-            rgba(10, 24, 42, 0.85) 0%,
-            rgba(10, 24, 42, 0.75) 55%,
-            rgba(10, 24, 42, 0.40) 100%
-        );
-    }
-}
-
+/* ─── SMALL MOBILE ─── */
 @media (max-width: 480px) {
     .gh-hero-cinematic {
-        padding: 36px 0 32px 0 !important;
-        min-height: 340px !important;
+        min-height: 560px !important;
+    }
+    .gh-hero-bg-img {
+        object-position: 65% 15% !important;
+        width: 100% !important;
+    }
+    .gh-container.gh-hero-container {
+        padding-bottom: 40px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    .gh-hero-content-box {
+        max-width: 100%;
     }
     .gh-hero-title-white {
-        font-size: 25px !important;
+        font-size: clamp(28px, 9vw, 36px) !important;
+    }
+    .gh-hero-alone {
+        font-size: 16px !important;
     }
     .gh-hero-lead-white {
         font-size: 13.5px !important;
+        max-width: 100%;
+        margin-bottom: 24px !important;
     }
     .gh-hero-actions {
-        flex-direction: column;
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
+        max-width: 100% !important;
     }
-    .gh-btn-wa-cinematic, .gh-btn-outline-cinematic {
-        width: 100%;
-        justify-content: center;
+    .gh-btn-wa-cinematic,
+    .gh-btn-outline-cinematic {
+        padding: 13px 20px !important;
+        font-size: 14.5px !important;
     }
 }
 
@@ -580,6 +667,11 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
+}
+
+/* Hidden on desktop, shown on mobile via media query */
+.gh-cards-scroll-hint {
+    display: none;
 }
 
 .gh-card {
@@ -711,9 +803,164 @@ body {
     transform: translateX(5px);
 }
 
+/* ── Mobile: horizontal scroll snap for cards ── */
+@media (max-width: 768px) {
+    .gh-help-section {
+        padding: 60px 0 64px 0;
+    }
+    .gh-help-header {
+        margin: 0 auto 36px auto;
+        padding: 0 24px;
+    }
+    .gh-help-header-desc {
+        font-size: 15px;
+    }
+    /* Turn grid into horizontal scroll snap */
+    .gh-cards-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 8px 24px 20px 24px;
+        margin: 0 -0px;
+    }
+    .gh-cards-grid::-webkit-scrollbar {
+        display: none;
+    }
+    .gh-card {
+        flex: 0 0 76vw;
+        max-width: 280px;
+        min-width: 240px;
+        scroll-snap-align: start;
+        border-radius: 18px;
+    }
+    .gh-card-img {
+        height: 175px;
+    }
+    .gh-card-body {
+        padding: 18px 16px 16px 16px;
+    }
+    .gh-card-title {
+        font-size: 15.5px;
+        min-height: auto;
+        margin-bottom: 8px;
+    }
+    .gh-card-desc {
+        font-size: 13px;
+        margin-bottom: 0;
+    }
+    /* Scroll hint dots */
+    .gh-cards-scroll-hint {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 18px;
+    }
+    .gh-cards-scroll-hint span {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #cbd5e1;
+        display: inline-block;
+    }
+    .gh-cards-scroll-hint span:first-child {
+        background: var(--gh-blue-primary);
+        width: 18px;
+        border-radius: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gh-help-section {
+        padding: 52px 0 56px 0;
+    }
+    .gh-help-header {
+        padding: 0 20px;
+        margin-bottom: 28px;
+    }
+    .gh-cards-grid {
+        padding: 8px 20px 16px 20px;
+        gap: 14px;
+    }
+    .gh-card {
+        flex: 0 0 80vw;
+        max-width: 260px;
+    }
+    .gh-card-img {
+        height: 160px;
+    }
+}
+
+
 /* ════════════════════════════════════════════════════════════════
-   3. HOW IT WORKS SECTION (ANIMATED JOURNEY & INTERACTIVE CARDS)
+   3. HOW IT WORKS SECTION
 ════════════════════════════════════════════════════════════════ */
+/* ── Carousel Wrapper & Nav Arrows (mobile only) ── */
+.gh-carousel-wrap {
+    position: relative;
+}
+.gh-carousel-nav {
+    display: none; /* hidden on desktop */
+}
+@media (max-width: 768px) {
+    .gh-carousel-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 16px;
+    }
+    .gh-carousel-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1.5px solid #e2e8f0;
+        background: #ffffff;
+        color: var(--gh-navy);
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        flex-shrink: 0;
+    }
+    .gh-carousel-btn:hover,
+    .gh-carousel-btn:active {
+        background: var(--gh-blue-primary);
+        border-color: var(--gh-blue-primary);
+        color: #ffffff;
+    }
+    .gh-carousel-btn:disabled {
+        opacity: 0.35;
+        cursor: default;
+    }
+    .gh-carousel-dots {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .gh-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #cbd5e1;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        border: none;
+        padding: 0;
+    }
+    .gh-dot.active {
+        background: var(--gh-blue-primary);
+        width: 20px;
+        border-radius: 4px;
+    }
+}
+
 .gh-works-section {
     padding: 105px 0 100px 0;
     background: linear-gradient(180deg, #f8fafc 0%, #edf3f9 50%, #f8fafc 100%);
@@ -957,6 +1204,87 @@ body {
     transform: translateX(5px);
 }
 
+/* ── Section 3 Mobile ── */
+@media (max-width: 768px) {
+    .gh-works-section {
+        padding: 64px 0 68px 0;
+    }
+    .gh-works-header {
+        margin: 0 auto 36px auto;
+        padding: 0 24px;
+    }
+    .gh-works-header .gh-section-title {
+        font-size: clamp(24px, 7vw, 32px);
+    }
+    .gh-works-header-desc {
+        font-size: 15px !important;
+    }
+    /* Hide animated line on mobile */
+    .gh-steps-track-line { display: none; }
+    /* Horizontal snap scroll — same pattern as cards */
+    .gh-steps-row {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 16px !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 8px 24px 20px 24px;
+        grid-template-columns: unset !important;
+    }
+    .gh-steps-row::-webkit-scrollbar { display: none; }
+    .gh-step-card {
+        flex: 0 0 80vw !important;
+        max-width: 300px;
+        min-width: 240px;
+        scroll-snap-align: start;
+        padding: 24px 20px 22px 20px;
+        border-radius: 18px;
+    }
+    .gh-step-top {
+        margin-bottom: 16px;
+    }
+    .gh-step-icon-wrap {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+        border-radius: 14px;
+    }
+    .gh-step-number-watermark {
+        font-size: 28px;
+    }
+    .gh-step-title {
+        font-size: 16.5px;
+        min-height: auto;
+        margin-bottom: 8px;
+    }
+    .gh-step-text {
+        font-size: 13.5px;
+        margin-bottom: 16px;
+    }
+    .gh-step-footer {
+        padding-top: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gh-works-section {
+        padding: 52px 0 56px 0;
+    }
+    .gh-works-header {
+        padding: 0 20px;
+        margin-bottom: 28px;
+    }
+    .gh-steps-row {
+        padding: 8px 20px 16px 20px !important;
+    }
+    .gh-step-card {
+        flex: 0 0 84vw !important;
+        max-width: 280px;
+    }
+}
+
 /* ════════════════════════════════════════════════════════════════
    4. EASY ACCESS BANNER CARD (BACK-US STYLE)
 ════════════════════════════════════════════════════════════════ */
@@ -1191,6 +1519,103 @@ body {
     50%       { transform: translateX(5px); opacity: 1; }
 }
 
+/* ── Section 5 Mobile ── */
+@media (max-width: 768px) {
+    .gh-expect-section {
+        padding: 60px 0 64px 0;
+    }
+    .gh-expect-header {
+        text-align: center;
+        margin-bottom: 36px;
+        padding: 0 24px;
+    }
+    .gh-expect-header .gh-section-title {
+        font-size: clamp(22px, 7vw, 30px);
+    }
+    /* Hide horizontal arrows */
+    .gh-flow-arrow { display: none; }
+    /* Vertical timeline layout */
+    .gh-flow-track {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 36px;
+        padding: 0 24px;
+        position: relative;
+    }
+    /* Vertical connecting line */
+    .gh-flow-track::before {
+        content: '';
+        position: absolute;
+        left: 48px;
+        top: 26px;
+        bottom: 26px;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--gh-blue-primary), #cbd5e1);
+        border-radius: 2px;
+        z-index: 0;
+    }
+    .gh-flow-step {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 16px;
+        row-gap: 2px;
+        padding: 16px 0;
+        position: relative;
+        z-index: 1;
+    }
+    .gh-flow-step::before {
+        top: 14px;
+        left: -6px;
+        width: 18px;
+        height: 18px;
+        font-size: 9px;
+    }
+    .gh-flow-icon {
+        grid-column: 1;
+        grid-row: 1 / 3;
+        align-self: start;
+        width: 48px;
+        height: 48px;
+        font-size: 17px;
+        flex-shrink: 0;
+        background: #ffffff;
+        box-shadow: 0 2px 12px rgba(24, 75, 137, 0.14);
+    }
+    .gh-flow-step h4 {
+        grid-column: 2;
+        grid-row: 1;
+        font-size: 14.5px;
+        margin: 0 0 4px 0;
+        align-self: end;
+    }
+    .gh-flow-step p {
+        grid-column: 2;
+        grid-row: 2;
+        font-size: 13px;
+        line-height: 1.55;
+        color: #64748b;
+        align-self: start;
+    }
+}
+
+@media (max-width: 480px) {
+    .gh-expect-section {
+        padding: 52px 0 56px 0;
+    }
+    .gh-expect-header {
+        padding: 0 20px;
+    }
+    .gh-flow-track {
+        padding: 0 20px;
+    }
+    .gh-flow-track::before {
+        left: 44px;
+    }
+}
+
+
 /* Informational alert cards */
 .gh-alerts-row {
     display: grid;
@@ -1269,6 +1694,42 @@ body {
     text-decoration: underline;
 }
 
+@media (max-width: 768px) {
+    .gh-alerts-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 0 24px;
+    }
+    .gh-alert-box {
+        padding: 18px 20px;
+        gap: 14px;
+        border-radius: 12px;
+    }
+    .gh-alert-icon {
+        font-size: 20px;
+    }
+    .gh-alert-content h4 {
+        font-size: 15px;
+        margin-bottom: 4px;
+    }
+    .gh-alert-content p {
+        font-size: 13px;
+    }
+    .gh-alert-link {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gh-alerts-row {
+        padding: 0 20px;
+    }
+    .gh-alert-box {
+        padding: 16px 16px;
+    }
+}
+
+
 /* ════════════════════════════════════════════════════════════════
    6. BOTTOM CTA BANNER
 ════════════════════════════════════════════════════════════════ */
@@ -1292,8 +1753,32 @@ body {
     top: 0;
     right: 0;
     height: 100%;
-    width: auto;
+    width: 60%;
+    object-fit: cover;
+    object-position: center 20%;
     filter: brightness(0.88) contrast(1.05);
+}
+
+@media (max-width: 768px) {
+    .gh-cta-bg-img {
+        width: 100%;
+        object-position: center 15%;
+    }
+    .gh-cta-overlay {
+        background: linear-gradient(
+            to bottom,
+            rgba(10, 24, 42, 0.55) 0%,
+            rgba(10, 24, 42, 0.75) 45%,
+            rgba(10, 24, 42, 0.96) 80%,
+            rgba(10, 24, 42, 1.00) 100%
+        ) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .gh-cta-bg-img {
+        object-position: center 10%;
+    }
 }
 
 .gh-cta-overlay {
@@ -1520,16 +2005,108 @@ body {
 @media (max-width: 991px) {
     .gh-access-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 45px 0 55px 0;
+        gap: 32px;
+        padding: 48px 0 56px 0;
     }
     .gh-access-frame {
-        max-width: 100%;
+        max-width: 340px;
+        margin: 0 auto;
+        aspect-ratio: 1 / 1;
     }
     .gh-access-frame img {
-        height: 300px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+    .gh-access-content {
+        align-items: center;
+        text-align: center;
+    }
+    .gh-access-points {
+        text-align: left;
+        max-width: 400px;
+        margin: 0 auto 28px auto;
+    }
+    .gh-access-subtext {
+        text-align: center;
+    }
+    .gh-floating-pulse-badge {
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 11.5px;
+    }
+    .gh-access-ambient-blob {
+        width: 280px;
+        height: 280px;
     }
 }
+
+@media (max-width: 768px) {
+    .gh-access-section {
+        padding: 40px 20px 50px 20px;
+    }
+    .gh-access-grid {
+        gap: 28px;
+        padding: 0;
+    }
+    .gh-access-frame {
+        max-width: 260px;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+    }
+    .gh-access-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+    .gh-access-frame:hover {
+        border-radius: 50%;
+    }
+    .gh-section-title {
+        font-size: clamp(24px, 7vw, 32px) !important;
+    }
+    .gh-access-lead {
+        font-size: 14px;
+        line-height: 1.65;
+        margin-bottom: 18px;
+    }
+    .gh-access-point {
+        font-size: 13.5px;
+    }
+    .gh-hero-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        gap: 10px;
+    }
+    .gh-hero-actions .gh-btn-wa,
+    .gh-hero-actions .gh-btn-outline {
+        width: 100%;
+        justify-content: center;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gh-access-section {
+        padding: 36px 16px 44px 16px;
+    }
+    .gh-access-frame {
+        max-width: 200px;
+    }
+    .gh-access-lead {
+        font-size: 13.5px;
+        max-width: 100%;
+    }
+    .gh-access-points {
+        max-width: 100%;
+    }
+}
+
 
 /* ════════════════════════════════════════════════════════════════
    RESPONSIVENESS (existing section)
@@ -1542,10 +2119,7 @@ body {
     .gh-steps-track-line {
         display: none;
     }
-    .gh-steps-row {
-        grid-template-columns: 1fr;
-        gap: 28px;
-    }
+    /* steps-row handled per-section above */
     .gh-flow-track {
         grid-template-columns: 1fr 1fr;
         gap: 30px;
@@ -1555,21 +2129,15 @@ body {
     }
 }
 
+
 @media (max-width: 768px) {
     .gh-hero-grid,
-    .gh-access-grid,
     .gh-bottom-cta-inner {
         grid-template-columns: 1fr;
         gap: 36px;
     }
     .gh-hero-visual img {
         height: 340px;
-    }
-    .gh-access-visual img {
-        height: 300px;
-    }
-    .gh-cards-grid {
-        grid-template-columns: 1fr;
     }
     .gh-flow-track {
         grid-template-columns: 1fr;
@@ -1580,7 +2148,43 @@ body {
     .gh-bottom-cta-script {
         text-align: left;
     }
+    /* Bottom CTA section mobile */
+    .gh-bottom-cta {
+        padding: 60px 0;
+    }
+    .gh-bottom-cta-title {
+        font-size: clamp(26px, 7vw, 36px);
+    }
+    .gh-bottom-cta-desc {
+        font-size: 15px;
+        margin-bottom: 22px;
+    }
+    .gh-bottom-cta-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .gh-bottom-cta-actions .gh-btn-wa,
+    .gh-bottom-cta-actions .gh-btn-outline {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+        border-radius: 12px;
+    }
+    .gh-bottom-cta-script {
+        display: none;
+    }
 }
+
+@media (max-width: 480px) {
+    .gh-bottom-cta {
+        padding: 52px 16px;
+    }
+    .gh-bottom-cta-actions .gh-btn-wa,
+    .gh-bottom-cta-actions .gh-btn-outline {
+        max-width: 100%;
+    }
+}
+
 </style>
 @endsection
 
@@ -1706,6 +2310,13 @@ body {
                     </div>
                 </div>
             </div>
+
+            {{-- Swipe hint replaced by carousel nav --}}
+            <div class="gh-carousel-nav" id="cardsNav">
+                <button class="gh-carousel-btn" id="cardsPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="gh-carousel-dots" id="cardsDots"></div>
+                <button class="gh-carousel-btn" id="cardsNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
         </div>
     </section>
 
@@ -1724,11 +2335,11 @@ body {
                 </p>
             </div>
 
-            <div class="gh-steps-container">
+            <div class="gh-steps-container gh-carousel-wrap">
                 <!-- Animated Connecting Flow Line across steps -->
                 <div class="gh-steps-track-line"></div>
 
-                <div class="gh-steps-row">
+                <div class="gh-steps-row" id="stepsTrack">
                     <!-- Step 1 -->
                     <div class="gh-step-card">
                         <div class="gh-step-top">
@@ -1779,6 +2390,12 @@ body {
                         <h3 class="gh-step-title">Receive guidance & next steps</h3>
                         <p class="gh-step-text">Together we establish practical coping strategies, emotional relief, and ongoing tailored guidance.</p>
                     </div>
+                </div>
+                {{-- Steps carousel nav --}}
+                <div class="gh-carousel-nav" id="stepsNav">
+                    <button class="gh-carousel-btn" id="stepsPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                    <div class="gh-carousel-dots" id="stepsDots"></div>
+                    <button class="gh-carousel-btn" id="stepsNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
@@ -1980,5 +2597,175 @@ function openPopupWithChannel(channel) {
         if (btn) btn.click();
     }, 100);
 }
+
+/* ═══════════════════════════════════════════
+   MOBILE CAROUSEL ENGINE
+   Works for both #cardsTrack and #stepsTrack
+═══════════════════════════════════════════ */
+(function() {
+    'use strict';
+
+    function initCarousel(cfg) {
+        var track      = document.querySelector(cfg.track);
+        var prevBtn    = document.getElementById(cfg.prev);
+        var nextBtn    = document.getElementById(cfg.next);
+        var dotsWrap   = document.getElementById(cfg.dots);
+        var autoDelay  = cfg.delay || 3500;
+
+        if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
+
+        // Only run on mobile
+        function isMobile() { return window.innerWidth <= 768; }
+
+        var cards      = Array.from(track.children);
+        var current    = 0;
+        var total      = cards.length;
+        var autoTimer  = null;
+        var userPaused = false;
+
+        /* ── Build dots ── */
+        function buildDots() {
+            dotsWrap.innerHTML = '';
+            cards.forEach(function(_, i) {
+                var d = document.createElement('button');
+                d.className = 'gh-dot' + (i === 0 ? ' active' : '');
+                d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                d.addEventListener('click', function() {
+                    goTo(i);
+                    resetAuto();
+                });
+                dotsWrap.appendChild(d);
+            });
+        }
+
+        /* ── Update active dot ── */
+        function updateDots(idx) {
+            var dots = dotsWrap.querySelectorAll('.gh-dot');
+            dots.forEach(function(d, i) {
+                d.classList.toggle('active', i === idx);
+            });
+        }
+
+        /* ── Scroll to card index ── */
+        function goTo(idx) {
+            if (idx < 0) idx = total - 1;
+            if (idx >= total) idx = 0;
+            current = idx;
+            var card = cards[current];
+            // scrollIntoView-style: align card to left of track
+            track.scrollTo({
+                left: card.offsetLeft - parseInt(getComputedStyle(track).paddingLeft),
+                behavior: 'smooth'
+            });
+            updateDots(current);
+        }
+
+        /* ── Read current index from scroll position ── */
+        function getIndexFromScroll() {
+            var pl = parseInt(getComputedStyle(track).paddingLeft) || 0;
+            var scrollLeft = track.scrollLeft;
+            var best = 0;
+            var bestDist = Infinity;
+            cards.forEach(function(card, i) {
+                var dist = Math.abs(card.offsetLeft - pl - scrollLeft);
+                if (dist < bestDist) { bestDist = dist; best = i; }
+            });
+            return best;
+        }
+
+        /* ── Auto-play ── */
+        function startAuto() {
+            stopAuto();
+            if (!isMobile() || userPaused) return;
+            autoTimer = setInterval(function() {
+                if (!isMobile()) { stopAuto(); return; }
+                var next = (current + 1) % total;
+                goTo(next);
+            }, autoDelay);
+        }
+
+        function stopAuto() {
+            clearInterval(autoTimer);
+            autoTimer = null;
+        }
+
+        function resetAuto() {
+            stopAuto();
+            startAuto();
+        }
+
+        /* ── Nav buttons ── */
+        prevBtn.addEventListener('click', function() {
+            goTo(current - 1);
+            resetAuto();
+        });
+        nextBtn.addEventListener('click', function() {
+            goTo(current + 1);
+            resetAuto();
+        });
+
+        /* ── Sync dots on manual scroll ── */
+        var scrollTimer;
+        track.addEventListener('scroll', function() {
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(function() {
+                current = getIndexFromScroll();
+                updateDots(current);
+            }, 120);
+        }, { passive: true });
+
+        /* ── Pause auto on touch ── */
+        track.addEventListener('touchstart', function() {
+            userPaused = true;
+            stopAuto();
+        }, { passive: true });
+        track.addEventListener('touchend', function() {
+            // resume after 6s of inactivity
+            setTimeout(function() {
+                userPaused = false;
+                startAuto();
+            }, 6000);
+        }, { passive: true });
+
+        /* ── Init & resize ── */
+        function init() {
+            buildDots();
+            goTo(0);
+            if (isMobile()) startAuto();
+        }
+
+        var resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                if (isMobile()) { startAuto(); }
+                else { stopAuto(); }
+            }, 300);
+        });
+
+        init();
+    }
+
+    /* ── Wire up both carousels ── */
+    document.addEventListener('DOMContentLoaded', function() {
+        // Section 2: Help Cards
+        initCarousel({
+            track: '.gh-cards-grid',
+            prev:  'cardsPrev',
+            next:  'cardsNext',
+            dots:  'cardsDots',
+            delay: 3800
+        });
+
+        // Section 3: Step Cards
+        initCarousel({
+            track: '#stepsTrack',
+            prev:  'stepsPrev',
+            next:  'stepsNext',
+            dots:  'stepsDots',
+            delay: 4200
+        });
+    });
+}());
 </script>
 @endsection

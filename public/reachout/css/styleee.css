@@ -283,6 +283,8 @@ html, body {
             background: #e2e2e2; border-radius: 8px; overflow: hidden; border: 1px solid #e0e0e0;
             transition: transform 0.35s ease, box-shadow 0.35s ease;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
         }
         .impact-card:hover {
             transform: translateY(-10px);
@@ -293,7 +295,12 @@ html, body {
             transition: transform 0.5s ease;
         }
         .impact-card:hover .impact-card-img { transform: scale(1.06); }
-        .impact-card-body { padding: 18px 18px 20px 18px; }
+        .impact-card-body {
+            padding: 18px 18px 20px 18px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
         .impact-stat {
             font-family: 'Inter', sans-serif; font-size: 34px; font-weight: 800; color: #0d2849;
             line-height: 1; margin-bottom: 20px; font-variant-numeric: tabular-nums;
@@ -303,8 +310,39 @@ html, body {
             direction: ltr;
             display: inline-block;
         }
-        .impact-desc { font-family: 'Inter', sans-serif; font-size: 13px; color: #444444; line-height: 1.6; margin-bottom: 14px; }
-        .impact-source { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; color: #1A6FBF; letter-spacing: 0.3px; }
+        .impact-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: #444444;
+            line-height: 1.6;
+            margin-bottom: 14px;
+            flex: 1;
+        }
+        .impact-source {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: #1A6FBF;
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: auto;
+            width: fit-content;
+            transition: color 0.2s ease;
+        }
+        .impact-source:hover {
+            color: #0d2849;
+            text-decoration: underline;
+        }
+        .impact-source i {
+            font-size: 10px;
+            transition: transform 0.2s ease;
+        }
+        .impact-source:hover i {
+            transform: translate(2px, -2px);
+        }
 
         /* ══ PATH OF HEALING ══ */
         .healing-section { background: #ffffff; padding: var(--section-padding); text-align: center; }

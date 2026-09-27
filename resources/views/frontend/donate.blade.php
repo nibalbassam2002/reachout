@@ -278,10 +278,14 @@ body {
     color: rgba(255, 255, 255, 0.82);
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    flex-wrap: wrap;
+    line-height: 1.4;
+    text-align: center;
 }
 
 .ro-hero-cta-meta i {
@@ -616,28 +620,92 @@ body {
     font-size: 14px;
 }
 
-/* Custom grant bar */
+/* Custom grant bar - Premium Card Design */
 .ro-custom-bar {
-    max-width: 600px;
-    margin: 38px auto 0 auto;
-    text-align: center;
-    padding: 16px 24px;
-    background: var(--ro-bg-soft);
-    border: 1.5px dashed var(--ro-border-blue);
-    border-radius: 50px;
+    max-width: 680px;
+    margin: 36px auto 0 auto;
+    padding: 16px 22px;
+    background: linear-gradient(135deg, #f8fbff 0%, #f1f6fd 100%);
+    border: 1.5px solid #d4e3fc;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    box-shadow: 0 4px 18px rgba(24, 75, 137, 0.05);
+    transition: all 0.25s ease;
+}
+
+.ro-custom-bar:hover {
+    border-color: var(--ro-blue);
+    box-shadow: 0 6px 24px rgba(24, 75, 137, 0.1);
+    transform: translateY(-1px);
+}
+
+.ro-custom-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+}
+
+.ro-custom-bar-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #bfdbfe;
+    color: var(--ro-blue);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    font-size: 14.5px;
+    font-size: 17px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(24, 75, 137, 0.06);
+}
+
+.ro-custom-bar-text {
+    line-height: 1.4;
+}
+
+.ro-custom-bar-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--ro-navy);
+    font-family: 'Inter', sans-serif;
+}
+
+.ro-custom-bar-text span {
+    font-size: 12.5px;
     color: var(--ro-text-muted);
 }
 
-.ro-custom-btn-link {
+.ro-custom-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #ffffff;
     color: var(--ro-blue);
+    border: 1.5px solid var(--ro-blue);
+    padding: 10px 18px;
+    border-radius: 11px;
+    font-size: 13px;
     font-weight: 800;
-    text-decoration: underline;
     cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    font-family: 'Inter', sans-serif;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(24, 75, 137, 0.08);
+}
+
+.ro-custom-btn:hover {
+    background: var(--ro-blue);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(24, 75, 137, 0.25);
+    transform: translateY(-1px);
 }
 
 /* ══ 3. HOW YOUR PURCHASE BECOMES CARE (DYNAMIC ANIMATED PROCESS) ══ */
@@ -960,11 +1028,11 @@ body {
 /* Left Photo Box */
 .ro-wire-box {
     position: relative;
-    border-radius: 24px;
+    border-radius: 22px;
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(10, 42, 74, 0.12);
-    border: 2px solid #e2e8f0;
-    height: 480px;
+    box-shadow: 0 16px 40px rgba(10, 42, 74, 0.1);
+    border: 1.5px solid var(--ro-border);
+    height: clamp(380px, 40vw, 460px);
     width: 100%;
     background: #e2e8f0;
 }
@@ -973,6 +1041,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 22%;
     display: block;
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -1018,6 +1087,10 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
+}
+
+.why-features-dots {
+    display: none;
 }
 
 .why-feat-card {
@@ -1809,11 +1882,10 @@ body {
 .roc-form-group label {
     display: block;
     font-size: 12px;
-    font-weight: 800;
-    color: var(--ro-text-muted);
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-weight: 700;
+    color: var(--ro-navy);
+    margin-bottom: 5px;
+    letter-spacing: 0.2px;
     font-family: 'Inter', sans-serif;
 }
 
@@ -1974,23 +2046,24 @@ body {
     background: var(--ro-red);
     color: #ffffff;
     border: none;
-    border-radius: 50px;
-    padding: 15px;
-    font-size: 15.5px;
-    font-weight: 800;
+    border-radius: 12px;
+    padding: 13px 20px;
+    font-size: 14.5px;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    box-shadow: 0 4px 14px rgba(192, 57, 43, 0.35);
+    box-shadow: 0 4px 14px rgba(192, 57, 43, 0.32);
     font-family: 'Inter', sans-serif;
 }
 
 .btn-submit-purchase:hover {
     background: var(--ro-red-hover);
-    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.45);
+    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.42);
+    transform: translateY(-1px);
 }
 
 /* ══ RECEIPT CONFIRMATION VIEW ══ */
@@ -2275,6 +2348,16 @@ body {
     .ro-hero-cta-group {
         align-items: center;
     }
+    .ro-why-section {
+        padding: 56px 20px !important;
+    }
+    .ro-why-container {
+        gap: 32px !important;
+    }
+    .ro-wire-box {
+        height: 340px !important;
+        border-radius: 20px !important;
+    }
 }
 
 @media (max-width: 640px) {
@@ -2304,54 +2387,347 @@ body {
     .ro-packages-grid {
         grid-template-columns: 1fr;
     }
+    /* ══ Why Features Horizontal Carousel on Mobile (Auto-Scroll) ══ */
     .why-features-row {
-        grid-template-columns: 1fr;
+        display: flex !important;
+        grid-template-columns: none !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 12px !important;
+        padding: 4px 4px 10px 4px !important;
+        scrollbar-width: none !important;
+        margin: 0 !important;
     }
-    .ro-system-grid {
-        grid-template-columns: 1fr;
+    .why-features-row::-webkit-scrollbar {
+        display: none !important;
+    }
+    .why-feat-card {
+        flex: 0 0 84% !important;
+        max-width: 285px !important;
+        scroll-snap-align: center !important;
+        padding: 18px 16px !important;
+        border-radius: 16px !important;
+        box-sizing: border-box !important;
+    }
+    .why-features-dots {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        margin-top: 8px !important;
+    }
+    .why-dot {
+        width: 6px !important;
+        height: 6px !important;
+        border-radius: 50% !important;
+        background: #cbd5e1 !important;
+        transition: all 0.3s ease !important;
+    }
+    .why-dot.active {
+        width: 18px !important;
+        border-radius: 10px !important;
+        background: var(--ro-blue) !important;
+    }
+    .ro-why-section {
+        padding: 40px 16px !important;
+        overflow: hidden !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .ro-why-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        overflow: hidden !important;
+    }
+    .ro-why-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+    .ro-why-content .ro-eyebrow {
+        font-size: 11px !important;
+        margin-bottom: 6px !important;
+    }
+    .ro-why-content h2 {
+        font-size: clamp(20px, 5.8vw, 25px) !important;
+        line-height: 1.28 !important;
+        margin-bottom: 12px !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    .ro-why-content p {
+        font-size: 13.5px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 18px !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    .ro-wire-box {
+        max-width: 275px !important;
+        width: 100% !important;
+        height: 195px !important;
+        margin: 0 auto !important;
+        border-radius: 16px !important;
+    }
+    .ro-wire-box img {
+        object-position: center 25% !important;
+    }
+    .why-handwritten-badge {
+        bottom: 10px !important;
+        left: 10px !important;
+        padding: 5px 12px !important;
+        font-size: 13.5px !important;
+        border-radius: 10px !important;
+    }
+    /* ══ Section 5: What Your Purchase Provides Mobile Polish ══ */
+    .ro-system-section {
+        padding: 42px 14px 48px 14px !important;
+        overflow: hidden !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .ro-system-header {
+        margin-bottom: 20px !important;
+        padding: 0 4px !important;
+    }
+    .ro-system-header .ro-eyebrow {
+        font-size: 11px !important;
+        margin-bottom: 6px !important;
+    }
+    .ro-system-header h2 {
+        font-size: clamp(20px, 5.8vw, 25px) !important;
+        line-height: 1.25 !important;
+        margin-bottom: 8px !important;
+    }
+    .ro-system-header p {
+        font-size: 13px !important;
+        line-height: 1.55 !important;
+    }
+    .ro-step-tabs {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        margin-bottom: 14px !important;
+        padding: 0 !important;
+    }
+    .ro-step-tab-btn {
+        padding: 8px 10px !important;
+        gap: 8px !important;
+        border-radius: 12px !important;
+        min-height: 52px !important;
+        align-items: center !important;
+    }
+    .ro-step-tab-btn .tab-num {
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 11px !important;
+        flex-shrink: 0 !important;
+    }
+    .ro-step-tab-btn .tab-label {
+        overflow: visible !important;
+        min-width: 0 !important;
+        flex: 1 !important;
+    }
+    .ro-step-tab-btn .tab-tag {
+        font-size: 9px !important;
+        margin-bottom: 1px !important;
+        letter-spacing: 0.04em !important;
+    }
+    .ro-step-tab-btn .tab-name {
+        font-size: 11.5px !important;
+        line-height: 1.2 !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: unset !important;
+        word-break: break-word !important;
+    }
+    .ro-showcase-stage {
+        border-radius: 18px !important;
+        box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06) !important;
+    }
+    .ro-showcase-slide {
+        padding: 18px 14px 14px 14px !important;
+    }
+    .ro-slide-content {
+        grid-template-columns: 46px 1fr !important;
+        gap: 12px !important;
+        align-items: start !important;
+    }
+    .ro-slide-icon-box {
+        width: 46px !important;
+        height: 46px !important;
+        font-size: 20px !important;
+        border-radius: 12px !important;
+    }
+    .ro-slide-top-meta {
+        margin-bottom: 6px !important;
+    }
+    .ro-slide-pill {
+        font-size: 10px !important;
+        padding: 3px 8px !important;
+    }
+    .ro-slide-step-counter {
+        font-size: 11px !important;
+    }
+    .ro-slide-title {
+        font-size: 16.5px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 6px !important;
+    }
+    .ro-slide-desc {
+        font-size: 12.5px !important;
+        line-height: 1.55 !important;
+        margin-bottom: 12px !important;
+    }
+    .ro-slide-tags {
+        gap: 5px !important;
+    }
+    .ro-slide-tag {
+        font-size: 11px !important;
+        padding: 3px 8px !important;
+        border-radius: 6px !important;
+    }
+    .ro-showcase-nav-bar {
+        padding: 10px 14px !important;
+    }
+    .ro-nav-dot {
+        width: 8px !important;
+        height: 8px !important;
+    }
+    .ro-nav-dot.active {
+        width: 20px !important;
+    }
+    .ro-nav-arrow-btn {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 12px !important;
+        border-radius: 8px !important;
+    }
+    /* ══ Section 6: Transparency & Accountability Mobile Polish ══ */
+    .ro-transparency-section {
+        padding: 42px 14px 48px 14px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .ro-transparency-section .ro-section-header {
+        margin-bottom: 20px !important;
+        padding: 0 4px !important;
+    }
+    .ro-transparency-section .ro-eyebrow {
+        font-size: 11px !important;
+        margin-bottom: 6px !important;
+    }
+    .ro-transparency-section .ro-section-title {
+        font-size: clamp(20px, 5.8vw, 25px) !important;
+        line-height: 1.25 !important;
+        margin-bottom: 8px !important;
+    }
+    .ro-transparency-section .ro-section-sub {
+        font-size: 13px !important;
+        line-height: 1.55 !important;
     }
     .transparency-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        max-width: 100% !important;
+        padding: 0 !important;
     }
     .transparency-card {
-        padding: 8px 12px;
+        background: #f8fafc !important;
+        border: 1.5px solid #e9edf4 !important;
+        border-radius: 14px !important;
+        padding: 16px 10px 14px 10px !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        box-shadow: 0 2px 8px rgba(10, 42, 74, 0.03) !important;
+        box-sizing: border-box !important;
     }
     .transparency-card::after {
-        display: none;
+        display: none !important;
+    }
+    .transparency-icon {
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 11px !important;
+        background: #ffffff !important;
+        border: 1px solid #dbeafe !important;
+        color: var(--ro-blue) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 17px !important;
+        margin: 0 auto 10px auto !important;
+        box-shadow: 0 2px 6px rgba(24, 75, 137, 0.06) !important;
+    }
+    .transparency-card h4 {
+        font-size: 12.5px !important;
+        font-weight: 800 !important;
+        color: var(--ro-navy) !important;
+        margin-bottom: 5px !important;
+        line-height: 1.25 !important;
+    }
+    .transparency-card p {
+        font-size: 11px !important;
+        line-height: 1.45 !important;
+        color: var(--ro-text-muted) !important;
+        margin: 0 !important;
     }
 
     /* ══ FIX 1: Frequency Switcher on Mobile (fits <=335px) ══ */
+    .ro-packages-section {
+        padding: 44px 16px 52px 16px !important;
+    }
+    .ro-section-title {
+        font-size: clamp(22px, 6.5vw, 30px) !important;
+    }
+    .ro-section-sub {
+        font-size: 14px !important;
+    }
     .ro-freq-wrapper {
         width: 100% !important;
         max-width: 100% !important;
-        padding: 0 10px !important;
+        padding: 0 !important;
         box-sizing: border-box !important;
     }
     .ro-freq-toggle {
         display: flex !important;
         width: 100% !important;
-        max-width: 315px !important;
+        max-width: 100% !important;
         margin: 0 auto !important;
         padding: 4px !important;
         box-sizing: border-box !important;
+        border-radius: 14px !important;
     }
     .ro-freq-btn {
         flex: 1 !important;
-        padding: 8px 6px !important;
-        font-size: 12px !important;
+        padding: 9px 4px !important;
+        font-size: 11.5px !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
         gap: 4px !important;
         white-space: nowrap !important;
+        border-radius: 10px !important;
     }
     .ro-freq-btn i {
-        font-size: 10.5px !important;
+        font-size: 10px !important;
+        display: none !important;
     }
     .freq-badge-heart {
         font-size: 9px !important;
-        padding: 2px 5px !important;
+        padding: 2px 4px !important;
+    }
+    .freq-badge-heart span {
+        display: none !important;
     }
     .ro-freq-subhint {
         max-width: 100% !important;
@@ -2365,9 +2741,48 @@ body {
         gap: 6px !important;
     }
 
-    /* ══ FIX 2: Modal Responsiveness on Mobile (No Left Clipping) ══ */
+    /* ══ Custom Grant Bar Mobile ══ */
+    .ro-custom-bar {
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 16px 14px !important;
+        margin: 24px auto 0 auto !important;
+        border-radius: 14px !important;
+        gap: 13px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .ro-custom-bar-left {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 8px !important;
+    }
+    .ro-custom-bar-icon {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 15px !important;
+        border-radius: 10px !important;
+    }
+    .ro-custom-bar-text strong {
+        font-size: 13px !important;
+        margin-bottom: 2px !important;
+    }
+    .ro-custom-bar-text span {
+        font-size: 11.5px !important;
+        line-height: 1.4 !important;
+    }
+    .ro-custom-btn {
+        width: 100% !important;
+        padding: 10px 14px !important;
+        font-size: 12.5px !important;
+        border-radius: 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ══ FIX 2: Modal Responsiveness on Mobile (Sleek & Perfectly Proportioned) ══ */
     .ro-modal-backdrop {
-        padding: 12px 8px !important;
+        padding: 10px 8px !important;
         align-items: center !important;
         justify-content: center !important;
         overflow-y: auto !important;
@@ -2375,52 +2790,89 @@ body {
     }
     .ro-checkout-card {
         width: 100% !important;
-        max-width: 100% !important;
+        max-width: 440px !important;
         box-sizing: border-box !important;
-        border-radius: 18px !important;
+        border-radius: 16px !important;
         margin: auto !important;
         max-height: 94vh !important;
     }
     .roc-header {
-        padding: 14px 16px !important;
+        padding: 12px 14px !important;
     }
     .roc-header h3 {
-        font-size: 15.5px !important;
+        font-size: 14.5px !important;
+    }
+    .btn-close-modal {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 15px !important;
     }
     .roc-scrollable-body {
-        padding: 16px 14px !important;
+        padding: 14px 12px 16px 12px !important;
         box-sizing: border-box !important;
     }
     .roc-summary-box {
-        padding: 10px 12px !important;
-        margin-bottom: 14px !important;
+        padding: 9px 12px !important;
+        margin-bottom: 12px !important;
+        border-radius: 10px !important;
     }
     .roc-summary-title {
-        font-size: 13px !important;
+        font-size: 12.5px !important;
     }
     .roc-summary-price {
-        font-size: 19px !important;
+        font-size: 17px !important;
     }
     .roc-form-group {
-        margin-bottom: 12px !important;
+        margin-bottom: 11px !important;
     }
     .roc-form-group label {
-        font-size: 10.5px !important;
+        font-size: 11px !important;
+        margin-bottom: 4px !important;
+        text-transform: none !important;
+        color: var(--ro-navy) !important;
+    }
+    .roc-form-group input {
+        padding: 9px 11px !important;
+        font-size: 13px !important;
+        border-radius: 9px !important;
     }
     .roc-pay-tabs {
         gap: 6px !important;
-        margin-bottom: 12px !important;
+        margin-bottom: 11px !important;
     }
     .roc-pay-tab {
         padding: 8px 4px !important;
-        font-size: 11.5px !important;
+        font-size: 11px !important;
         gap: 4px !important;
+        border-radius: 9px !important;
+        white-space: nowrap !important;
     }
     .roc-card-fields {
-        padding: 12px 10px !important;
+        padding: 11px 10px !important;
+        border-radius: 11px !important;
+        margin-bottom: 12px !important;
+    }
+    .roc-card-row {
+        margin-bottom: 9px !important;
     }
     .roc-card-inline {
         gap: 8px !important;
+    }
+    .roc-card-fields input {
+        padding: 9px 10px !important;
+        font-size: 13px !important;
+        border-radius: 9px !important;
+    }
+    .roc-bop-secure-note {
+        padding: 8px 10px !important;
+        font-size: 11px !important;
+        gap: 7px !important;
+        border-radius: 8px !important;
+        margin-top: 10px !important;
+        line-height: 1.4 !important;
+    }
+    .roc-bop-secure-note i {
+        font-size: 13px !important;
     }
     .bop-gateway-banner {
         padding: 10px 12px !important;
@@ -2435,8 +2887,16 @@ body {
         font-size: 9.5px !important;
     }
     .btn-submit-purchase {
-        padding: 13px !important;
-        font-size: 14px !important;
+        padding: 11px 14px !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        border-radius: 11px !important;
+        gap: 6px !important;
+        line-height: 1.3 !important;
+        box-shadow: 0 3px 10px rgba(192, 57, 43, 0.28) !important;
+    }
+    .btn-submit-purchase i {
+        font-size: 12px !important;
     }
 }
 
@@ -2454,10 +2914,23 @@ body {
     }
     .ro-hero-cta-group {
         width: 100%;
+        align-items: center;
     }
-    .ro-btn-primary-hero {
+    .ro-btn-primary-hero,
+    .btn-ro-primary {
         width: 100%;
         justify-content: center;
+        padding: 13px 24px;
+        font-size: 14px;
+        border-radius: 12px;
+        box-shadow: 0 4px 14px rgba(192, 57, 43, 0.38);
+    }
+}
+
+@media (max-width: 640px) and (min-width: 481px) {
+    .btn-ro-primary {
+        padding: 13px 28px;
+        font-size: 14.5px;
     }
 }
 
@@ -2470,8 +2943,75 @@ body {
         display: none !important;
     }
     .roc-pay-tab {
+        font-size: 10px !important;
+        padding: 7px 2px !important;
+        gap: 3px !important;
+    }
+    .btn-submit-purchase {
+        padding: 10px 10px !important;
+        font-size: 12px !important;
+        border-radius: 10px !important;
+        gap: 5px !important;
+    }
+    .ro-wire-box {
+        max-width: 250px !important;
+        height: 175px !important;
+        margin: 0 auto !important;
+        border-radius: 14px !important;
+    }
+    .why-handwritten-badge {
+        bottom: 8px !important;
+        left: 8px !important;
+        padding: 4px 10px !important;
+        font-size: 12px !important;
+        border-radius: 8px !important;
+    }
+    .ro-step-tabs {
+        gap: 6px !important;
+    }
+    .ro-step-tab-btn {
+        padding: 6px 6px !important;
+        gap: 6px !important;
+    }
+    .ro-step-tab-btn .tab-num {
+        width: 20px !important;
+        height: 20px !important;
+        font-size: 10px !important;
+    }
+    .ro-step-tab-btn .tab-tag {
+        font-size: 8.5px !important;
+    }
+    .ro-step-tab-btn .tab-name {
         font-size: 10.5px !important;
-        padding: 7px 3px !important;
+    }
+    .ro-slide-content {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+    .ro-slide-icon-box {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 18px !important;
+    }
+    .transparency-grid {
+        gap: 8px !important;
+    }
+    .transparency-card {
+        padding: 13px 7px 11px 7px !important;
+        border-radius: 12px !important;
+    }
+    .transparency-icon {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 15px !important;
+        margin-bottom: 7px !important;
+    }
+    .transparency-card h4 {
+        font-size: 11.5px !important;
+    }
+    .transparency-card p {
+        font-size: 10px !important;
+        line-height: 1.4 !important;
     }
 }
 </style>
@@ -2532,7 +3072,7 @@ body {
                     <i class="fas fa-arrow-right"></i>
                 </a>
                 <div class="ro-hero-cta-meta">
-                    <i class="fas fa-shield-halved"></i> Direct service fee sponsorship · Starting from $5 · 
+                    <i class="fas fa-shield-halved"></i> Direct service fee sponsorship · <span style="white-space:nowrap;">Starting from $5</span>
                 </div>
             </div>
         </div>
@@ -2636,8 +3176,19 @@ body {
 
     <!-- Custom Amount Option -->
     <div class="ro-custom-bar">
-        <span>Looking to sponsor an institutional or custom grant?</span>
-        <a class="ro-custom-btn-link" onclick="openCustomCheckout()">Enter Custom Amount &rarr;</a>
+        <div class="ro-custom-bar-left">
+            <div class="ro-custom-bar-icon">
+                <i class="fas fa-hand-holding-dollar"></i>
+            </div>
+            <div class="ro-custom-bar-text">
+                <strong>Looking to sponsor a custom or institutional grant?</strong>
+                <span>Support with any contribution amount tailored to your impact goal.</span>
+            </div>
+        </div>
+        <button type="button" class="ro-custom-btn" onclick="openCustomCheckout()">
+            <span>Enter Custom Amount</span>
+            <i class="fas fa-arrow-right"></i>
+        </button>
     </div>
 </section>
 
@@ -2739,7 +3290,7 @@ body {
                 People affected by war, displacement and ongoing crisis experience deep fear, grief, and emotional distress. Accessible mental health support helps children and families cope, regain emotional stability, and find safe paths to recovery.
             </p>
 
-            <div class="why-features-row">
+            <div class="why-features-row" id="whyFeaturesRow">
                 <div class="why-feat-card">
                     <div class="why-feat-icon"><i class="fas fa-shield-halved"></i></div>
                     <h4>Immediate Support</h4>
@@ -2755,6 +3306,12 @@ body {
                     <h4>Easy To Access</h4>
                     <p>Connect with qualified therapists through online consultations.</p>
                 </div>
+            </div>
+            <!-- Mobile Carousel Indicators -->
+            <div class="why-features-dots" id="whyDots">
+                <span class="why-dot active" onclick="scrollWhyTo(0)"></span>
+                <span class="why-dot" onclick="scrollWhyTo(1)"></span>
+                <span class="why-dot" onclick="scrollWhyTo(2)"></span>
             </div>
         </div>
     </div>
@@ -3007,7 +3564,7 @@ body {
             </div>
 
             <div class="roc-form-group">
-                <label>Email Address (for service invoice & receipt) *</label>
+                <label>Email Address <span style="font-weight: normal; font-size: 11px; color: var(--ro-text-muted);">(for invoice & receipt)</span> *</label>
                 <input type="email" id="custEmail" placeholder="e.g. john@example.com" required>
             </div>
 
@@ -3027,10 +3584,10 @@ body {
             <!-- Panel 1: Bank of Palestine Direct Card Gateway -->
             <div id="panel-card-form" class="roc-card-fields">
                 <div class="roc-card-row">
-                    <label style="display:block; font-size:11px; font-weight:700; color:var(--ro-text-muted); margin-bottom:5px; text-transform:uppercase;">Card Number</label>
+                    <label style="display:block; font-size:11.5px; font-weight:700; color:var(--ro-navy); margin-bottom:5px;">Card Number</label>
                     <div style="position: relative;">
-                        <input type="text" id="ccNumber" placeholder="4000 1234 5678 9010" maxlength="19" oninput="formatCC(this)" style="padding-right: 90px;">
-                        <div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: flex; gap: 6px; font-size: 18px; color: #64748b;">
+                        <input type="text" id="ccNumber" placeholder="4000 1234 5678 9010" maxlength="19" oninput="formatCC(this)" style="padding-right: 68px;">
+                        <div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: flex; gap: 6px; font-size: 17px; color: #64748b;">
                             <i class="fab fa-cc-visa"></i>
                             <i class="fab fa-cc-mastercard"></i>
                         </div>
@@ -3038,11 +3595,11 @@ body {
                 </div>
                 <div class="roc-card-inline">
                     <div>
-                        <label style="display:block; font-size:11px; font-weight:700; color:var(--ro-text-muted); margin-bottom:5px; text-transform:uppercase;">Expiry</label>
+                        <label style="display:block; font-size:11.5px; font-weight:700; color:var(--ro-navy); margin-bottom:5px;">Expiry</label>
                         <input type="text" id="ccExp" placeholder="MM / YY" maxlength="5" oninput="formatExp(this)">
                     </div>
                     <div>
-                        <label style="display:block; font-size:11px; font-weight:700; color:var(--ro-text-muted); margin-bottom:5px; text-transform:uppercase;">CVV / CVC</label>
+                        <label style="display:block; font-size:11.5px; font-weight:700; color:var(--ro-navy); margin-bottom:5px;">CVV / CVC</label>
                         <input type="text" id="ccCvc" placeholder="123" maxlength="4">
                     </div>
                 </div>
@@ -3077,7 +3634,7 @@ body {
             <!-- Submit Button (100% AUTOMATED, NO WHATSAPP, NO MANUAL WIRE) -->
             <button type="button" class="btn-submit-purchase" id="btnSubmitOrder" onclick="completeOrder()">
                 <i class="fas fa-lock"></i>
-                <span id="btnSubmitText">Pay $25.00 via Bank of Palestine Gateway</span>
+                <span id="btnSubmitText">Pay $25.00 via Bank of Palestine</span>
             </button>
 
             <div style="font-size: 11px; color: var(--ro-text-light); text-align: center; margin-top: 12px; line-height: 1.4;">
@@ -3251,12 +3808,12 @@ function openCheckoutModal(count, price, title) {
     selectedPrice = price;
     selectedTitle = title;
 
-    var freqSuffix = currentFrequency === 'monthly' ? ' / month' : '';
+    var freqSuffix = currentFrequency === 'monthly' ? ' / mo' : '';
     document.getElementById('summaryPkgTitle').textContent = title + ' Package';
     document.getElementById('summaryFreqTitle').textContent = currentFrequency === 'monthly' ? 'Recurring Monthly Consultation Grant' : 'One-Time Consultation Purchase';
-    document.getElementById('summaryPkgPrice').textContent = '$' + price.toFixed(2) + freqSuffix;
+    document.getElementById('summaryPkgPrice').textContent = '$' + price.toFixed(2) + (currentFrequency === 'monthly' ? ' / month' : '');
     
-    var methodLabel = currentModalPay === 'card' ? ' via Bank of Palestine Gateway' : ' via PalPay Wallet';
+    var methodLabel = currentModalPay === 'card' ? ' via Bank of Palestine' : ' via PalPay Wallet';
     document.getElementById('btnSubmitText').textContent = 'Pay $' + price.toFixed(2) + freqSuffix + methodLabel;
 
     // Reset View
@@ -3341,8 +3898,8 @@ function switchModalPay(method) {
     document.getElementById('panel-card-form').style.display = method === 'card' ? 'block' : 'none';
     document.getElementById('panel-palpay-form').style.display = method === 'palpay' ? 'block' : 'none';
 
-    var freqSuffix = currentFrequency === 'monthly' ? ' / month' : '';
-    var methodLabel = method === 'card' ? ' via Bank of Palestine Gateway' : ' via PalPay Wallet';
+    var freqSuffix = currentFrequency === 'monthly' ? ' / mo' : '';
+    var methodLabel = method === 'card' ? ' via Bank of Palestine' : ' via PalPay Wallet';
     document.getElementById('btnSubmitText').textContent = 'Pay $' + selectedPrice.toFixed(2) + freqSuffix + methodLabel;
 }
 
@@ -3391,8 +3948,8 @@ function completeOrder() {
 
     setTimeout(function() {
         btn.disabled = false;
-        var freqSuffix = currentFrequency === 'monthly' ? ' / month' : '';
-        var methodLabel = currentModalPay === 'card' ? ' via Bank of Palestine Gateway' : ' via PalPay Wallet';
+        var freqSuffix = currentFrequency === 'monthly' ? ' / mo' : '';
+        var methodLabel = currentModalPay === 'card' ? ' via Bank of Palestine' : ' via PalPay Wallet';
         btn.innerHTML = '<i class="fas fa-lock"></i> <span id="btnSubmitText">Pay $' + selectedPrice.toFixed(2) + freqSuffix + methodLabel + '</span>';
 
         // Populate receipt slip
@@ -3480,6 +4037,80 @@ startShowcaseTimer();
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', startShowcaseTimer);
 }
+
+// ══ Mobile Auto-Scroll Carousel for Why Features ══
+var whyAutoInterval = null;
+var whyIsInteracting = false;
+var whyCurrentIdx = 0;
+
+function scrollWhyTo(idx) {
+    var row = document.getElementById('whyFeaturesRow');
+    if (!row) return;
+    var cards = row.querySelectorAll('.why-feat-card');
+    if (!cards.length) return;
+    idx = (idx + cards.length) % cards.length;
+    whyCurrentIdx = idx;
+    var card = cards[idx];
+    var leftPos = card.offsetLeft - (row.clientWidth - card.clientWidth) / 2;
+    row.scrollTo({
+        left: Math.max(0, leftPos),
+        behavior: 'smooth'
+    });
+    updateWhyDots(idx);
+}
+
+function updateWhyDots(idx) {
+    var dots = document.querySelectorAll('.why-dot');
+    dots.forEach(function(dot, i) {
+        dot.classList.toggle('active', i === idx);
+    });
+}
+
+function startWhyAutoScroll() {
+    if (whyAutoInterval) clearInterval(whyAutoInterval);
+    whyAutoInterval = setInterval(function() {
+        if (window.innerWidth <= 640 && !whyIsInteracting) {
+            var row = document.getElementById('whyFeaturesRow');
+            if (row) {
+                var cards = row.querySelectorAll('.why-feat-card');
+                whyCurrentIdx = (whyCurrentIdx + 1) % cards.length;
+                scrollWhyTo(whyCurrentIdx);
+            }
+        }
+    }, 3200);
+}
+
+(function initWhyFeaturesCarousel() {
+    var row = document.getElementById('whyFeaturesRow');
+    if (!row) return;
+
+    row.addEventListener('touchstart', function() {
+        whyIsInteracting = true;
+    }, { passive: true });
+
+    row.addEventListener('touchend', function() {
+        setTimeout(function() { whyIsInteracting = false; }, 3500);
+    }, { passive: true });
+
+    // Sync dots and current index on manual scroll/swipe
+    var scrollDebounce = null;
+    row.addEventListener('scroll', function() {
+        if (window.innerWidth > 640) return;
+        clearTimeout(scrollDebounce);
+        scrollDebounce = setTimeout(function() {
+            var cards = row.querySelectorAll('.why-feat-card');
+            var center = row.scrollLeft + row.clientWidth / 2;
+            cards.forEach(function(card, i) {
+                if (card.offsetLeft <= center && (card.offsetLeft + card.clientWidth) >= center) {
+                    whyCurrentIdx = i;
+                    updateWhyDots(i);
+                }
+            });
+        }, 60);
+    }, { passive: true });
+
+    startWhyAutoScroll();
+})();
 
 </script>
 @endsection

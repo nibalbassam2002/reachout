@@ -136,53 +136,69 @@
         </div>
         <div class="impact-grid">
             <div class="impact-card reveal-scale" style="transition-delay: 0s;">
-                <img class="impact-card-img" src="{{ asset('reachout/img/impact1.jpeg') }}" alt="">
+                <img class="impact-card-img" src="{{ asset('reachout/img/impact1.jpeg') }}" alt="Children in Gaza City facing psychological distress">
                 <div class="impact-card-body">
-                    <div class="impact-stat" lang="en" translate="no" data-target="450000" data-suffix="" data-prefix="+ ">
-    + 450,000
-</div>
-                    <p class="impact-desc">children in Gaza are facing devastating psychological consequences, with the majority experiencing severe distress, including sleep disturbances.</p>
-                    <span class="impact-source">UNICEF</span>
+                    <div class="impact-stat" lang="en" translate="no" data-target="450000" data-suffix="+">450,000+</div>
+                    <p class="impact-desc">Over 450,000 children in Gaza City are facing devastating consequences from the ongoing conflict, with many experiencing severe psychological distress and sleep disturbances.</p>
+                    <a href="https://www.unicef.org/sop/press-releases/statement-attributable-unicef-regional-director-middle-east-and-north-africa-edouard" target="_blank" rel="noopener noreferrer" class="impact-source" title="View UNICEF Report">
+                        <span>UNICEF, 2025</span>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
                 </div>
             </div>
             <div class="impact-card reveal-scale" style="transition-delay: 0.1s;">
-                <img class="impact-card-img" src="{{ asset('reachout/img/impact2.jpg') }}" alt="">
+                <img class="impact-card-img" src="{{ asset('reachout/img/impact2.jpg') }}" alt="Children in Gaza requiring mental health and psychosocial support">
                 <div class="impact-card-body">
                     <div class="impact-stat" data-target="100" data-suffix="%">100%</div>
-                    <p class="impact-desc">All children in Gaza are now in need of mental health and psychosocial support.</p>
-                    <span class="impact-source">United Nations</span>
+                    <p class="impact-desc">Virtually all children in Gaza are estimated to require mental health and psychosocial support.</p>
+                    <a href="https://www.un.org/unispal/document/report-gaza-strip-rapid-damage-20apr26/" target="_blank" rel="noopener noreferrer" class="impact-source" title="View United Nations Assessment">
+                        <span>United Nations, 2026</span>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
                 </div>
             </div>
             <div class="impact-card reveal-scale" style="transition-delay: 0.2s;">
-                <img class="impact-card-img" src="{{ asset('reachout/img/impact3.jpg') }}" alt="">
+                <img class="impact-card-img" src="{{ asset('reachout/img/impact3.jpg') }}" alt="Children surveyed in Gaza reporting emotional distress">
                 <div class="impact-card-body">
                     <div class="impact-stat" data-target="80" data-suffix="%">80%</div>
-                    <p class="impact-desc">Save the Children reports that over 80% of children in Gaza show signs of emotional distress and anxiety.</p>
-                    <span class="impact-source">UNFPA</span>
+                    <p class="impact-desc">Of children surveyed in Gaza reported emotional distress, a significant increase from 55% in 2018.</p>
+                    <a href="https://www.savethechildren.net/news/after-15-years-blockade-four-out-five-children-gaza-say-they-are-living-depression-grief-and" target="_blank" rel="noopener noreferrer" class="impact-source" title="View Save the Children Report">
+                        <span>Save the Children, 2022</span>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
                 </div>
             </div>
             <div class="impact-card reveal-scale" style="transition-delay: 0.3s;">
-                <img class="impact-card-img" src="{{ asset('reachout/img/impact4.jpeg') }}" alt="">
+                <img class="impact-card-img" src="{{ asset('reachout/img/impact4.jpeg') }}" alt="Vulnerable children in Gaza study">
                 <div class="impact-card-body">
                     <div class="impact-stat" data-target="96" data-suffix="%">96%</div>
-                    <p class="impact-desc">of children in Gaza feel their death is imminent due to ongoing trauma.</p>
-                    <span class="impact-source">UN Report</span>
+                    <p class="impact-desc">Of vulnerable children surveyed were reported by their caregivers to feel that death was imminent.</p>
+                    <a href="https://www.warchild.org.uk/news/war-child-shares-first-study-psychological-impact-war-vulnerable-children-gaza" target="_blank" rel="noopener noreferrer" class="impact-source" title="View War Child Study">
+                        <span>War Child, 2024</span>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
                 </div>
             </div>
             <div class="impact-card reveal-scale" style="transition-delay: 0.4s;">
-                <img class="impact-card-img" src="{{ asset('reachout/img/impact5.jpg') }}" alt="">
+                <img class="impact-card-img" src="{{ asset('reachout/img/impact5.jpg') }}" alt="Four out of five children surveyed in Gaza">
                 <div class="impact-card-body">
-                    <div class="impact-stat" data-target="80" data-suffix="%">80%</div>
-                    <p class="impact-desc">4 in 5 children show signs of severe emotional distress, depression, or anxiety due to ongoing conflict.</p>
-                    <span class="impact-source">IMC</span>
+                    <div class="impact-stat">4 in 5</div>
+                    <p class="impact-desc">Four out of five children surveyed in Gaza reported living with depression, grief and fear.</p>
+                    <a href="https://www.savethechildren.net/news/after-15-years-blockade-four-out-five-children-gaza-say-they-are-living-depression-grief-and" target="_blank" rel="noopener noreferrer" class="impact-source" title="View Save the Children Report">
+                        <span>Save the Children, 2022</span>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
                 </div>
             </div>
             <div class="impact-card reveal-scale" style="transition-delay: 0.5s;">
-                <img class="impact-card-img" src="{{ asset('reachout/img/impact6.jpg') }}" alt="">
+                <img class="impact-card-img" src="{{ asset('reachout/img/impact6.jpg') }}" alt="More than one million children in Gaza">
                 <div class="impact-card-body">
-                    <div class="impact-stat" data-target="1000000" data-suffix="">1 million</div>
-                    <p class="impact-desc">Almost every child in Gaza, over 1 million children is in need of mental health and psychosocial support.</p>
-                    <span class="impact-source">UNICEF</span>
+                    <div class="impact-stat" data-target="1000000" data-suffix="+ Million">1+ Million</div>
+                    <p class="impact-desc">More than one million children in Gaza require mental health and psychosocial support.</p>
+                    <a href="https://www.un.org/unispal/document/unicef-humanitarian-action-appeal-for-children-2026-state-of-palestine-revision-1-february-2026/" target="_blank" rel="noopener noreferrer" class="impact-source" title="View UNICEF Appeal Report">
+                        <span>UNICEF, 2026</span>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
                 </div>
             </div>
         </div>
