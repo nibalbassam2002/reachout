@@ -59,7 +59,7 @@
 </a></li>
 
 <li><a href="{{ route('gethelp') }}" class="{{ request()->routeIs('gethelp') ? 'active' : '' }}">
-    <i class="fas fa-hands-holding-child"></i> Get Help
+    <i class="fas fa-hand-holding-heart"></i> Get Help
 </a></li>
 
 <li><a href="{{ route('home') }}#partnerships" id="nav-contact-link">

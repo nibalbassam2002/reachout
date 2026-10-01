@@ -3177,9 +3177,6 @@ body {
     <!-- Custom Amount Option -->
     <div class="ro-custom-bar">
         <div class="ro-custom-bar-left">
-            <div class="ro-custom-bar-icon">
-                <i class="fas fa-hand-holding-dollar"></i>
-            </div>
             <div class="ro-custom-bar-text">
                 <strong>Looking to sponsor a custom or institutional grant?</strong>
                 <span>Support with any contribution amount tailored to your impact goal.</span>

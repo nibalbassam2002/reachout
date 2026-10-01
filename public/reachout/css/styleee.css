@@ -282,7 +282,7 @@ html, body {
         .impact-card {
             background: #e2e2e2; border-radius: 8px; overflow: hidden; border: 1px solid #e0e0e0;
             transition: transform 0.35s ease, box-shadow 0.35s ease;
-            cursor: pointer;
+            cursor: default;
             display: flex;
             flex-direction: column;
         }
@@ -441,7 +441,7 @@ html, body {
         .bridge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 40px; }
         .bridge-card {
             position: relative; height: 400px; border-radius: 15px; overflow: hidden;
-            cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            cursor: default; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
         .bridge-card:hover { transform: translateY(-8px); box-shadow: 0 28px 56px rgba(0,0,0,0.18); }

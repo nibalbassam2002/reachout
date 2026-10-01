@@ -503,7 +503,7 @@ body {
 .ab-who-highlights {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 14px;
     width: 100%;
     margin: 28px 0 34px 0;
 }
@@ -524,6 +524,13 @@ body {
     border-color: var(--ab-blue-primary);
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(24, 75, 137, 0.08);
+}
+
+/* Third card centered like the old button */
+.ab-who-highlights .ab-who-pill-box:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 7px);
+    margin: 0 auto;
 }
 
 .ab-who-pill-icon {
@@ -1824,7 +1831,6 @@ body {
         grid-template-columns: 1fr;
         gap: 28px;
     }
-
     .ab-who-collage {
         max-width: 600px;
         margin: 0 auto;
@@ -1921,6 +1927,10 @@ body {
     .ab-who-highlights {
         grid-template-columns: 1fr;
         gap: 12px;
+    }
+
+    .ab-who-pill-box {
+        padding: 12px 14px;
     }
 
     .ab-who-collage {
@@ -2440,28 +2450,35 @@ accessible channels including WhatsApp and email.
                     We are a team of mental health professionals, working with communities on the ground and through accessible digital channels to ensure that no one has to face their psychological challenges alone.
                 </p>
 
-                <!-- 2 Highlight Trust Pillars -->
+                <!-- 3 Highlight Trust Pillars -->
                 <div class="ab-who-highlights">
                     <div class="ab-who-pill-box">
-                        
+                        <div class="ab-who-pill-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
                         <div class="ab-who-pill-text">
                             <strong>Confidential Support</strong>
                             <span>Accessible Support</span>
                         </div>
                     </div>
                     <div class="ab-who-pill-box">
-                        
+                        <div class="ab-who-pill-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
                         <div class="ab-who-pill-text">
                             <strong>Free Psychological Support</strong>
                             <span>Reducing barriers to psychological support</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="ab-who-actions" style="margin-top: -8px;">
-                    <a href="#why-we-exist" class="ab-btn-ghost">
-                        <span>Why We Exist</span>
-                    </a>
+                    <div class="ab-who-pill-box">
+                        <div class="ab-who-pill-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="ab-who-pill-text">
+                            <strong>Easy to Access</strong>
+                            <span>Support available remotely through simple and accessible channels</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2708,23 +2725,11 @@ accessible channels including WhatsApp and email.
                 <div class="ab-serve-arch-frame">
                     <img src="{{ asset('reachout/img/about_serve_water.png') }}?v={{ filemtime(public_path('reachout/img/about_serve_water.png')) }}" alt="Children in Gaza - Who We Serve">
 
-                    <div class="ab-serve-badge-top">
-                        
-                        <span>Frontline Humanitarian Care</span>
-                    </div>
-
-                    <div class="ab-serve-script font-script">
-                        Stronger Children<br>Stronger Communities
-                    </div>
                 </div>
 
                 <!-- Secondary Floating Inset: Young girl carrying water -->
                 <div class="ab-serve-inset-frame">
                     <img src="{{ asset('reachout/img/about_serve_children.png') }}?v={{ filemtime(public_path('reachout/img/about_serve_children.png')) }}" alt="Child resilience in Gaza street">
-                    <div class="ab-serve-inset-caption">
-                        
-                        <span>Dignity & Resilience</span>
-                    </div>
                 </div>
             </div>
         </div>

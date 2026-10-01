@@ -141,12 +141,12 @@
 
     if (path.includes('news') || path.includes('policies') || path.includes('donate') || path.includes('back-us') || path.includes('backus')) return;
 
-    if (!document.getElementById('about')) return;
+    if (!document.getElementById('hero')) return;
 
+    // Only highlight Home when scrolling through hero section
+    // About Us and Get Help have their own dedicated pages — do NOT highlight them on scroll
     const map = {
-        'hero':     navItems[0],
-        'about':    navItems[1],
-        'get-help': navItems[2],
+        'hero': navItems[0],
     };
 
     const observer = new IntersectionObserver((entries) => {

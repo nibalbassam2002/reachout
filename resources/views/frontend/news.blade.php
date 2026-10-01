@@ -29,10 +29,7 @@
                              alt="{{ $article->title }}"
                              loading="lazy"
                              onerror="this.src='{{ $fallback }}'">
-                        
-                        <span class="article-source-overlay">
-                            <i class="fas fa-globe"></i> {{ $article->source ?? 'Al Jazeera' }}
-                        </span>
+
                     </div>
 
                     <div class="article-content">
@@ -41,16 +38,6 @@
                             $isChildArticle = str_contains($titleText, 'child') || str_contains($titleText, 'kid') || str_contains($titleText, 'orphan') || str_contains($titleText, 'infant') || str_contains($titleText, 'baby') || str_contains($titleText, 'pediatric') || str_contains($titleText, 'school') || str_contains($titleText, 'student');
                         @endphp
                         <div class="article-meta-header">
-                            <div class="meta-badges">
-                                @if($isChildArticle)
-                                    <span class="article-source-pill child-badge">
-                                        <i class="fas fa-child"></i> Children & Youth
-                                    </span>
-                                @endif
-                                <span class="article-source-pill source-badge">
-                                    <i class="fas fa-newspaper"></i> {{ $article->source ?? 'Al Jazeera English' }}
-                                </span>
-                            </div>
                             <span class="article-date">
                                 <i class="far fa-calendar-alt"></i> {{ $article->published_at ? $article->published_at->format('M d, Y') : 'Recent' }}
                             </span>

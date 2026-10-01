@@ -59,16 +59,16 @@
     <!-- ══ ABOUT ══ -->
     <section class="about-refined" id="about">
         <div class="about-container">
-            <h2 class="about-title reveal-left">About us</h2>
-            <p class="about-subtitle reveal-left" style="transition-delay: 0.1s;">We are here.. living the reality, understanding the pain, and leading the support.</p>
+            <h2 class="about-title">About us</h2>
+            <p class="about-subtitle">We are here.. living the reality, understanding the pain, and leading the support.</p>
             <div class="about-body-area">
-                <p class="lead-para reveal" style="transition-delay: 0.2s;">We are a team of local mental health professionals living and working in <strong>Gaza</strong>, understanding the reality of war from daily life, not from a distance.</p>
-                <div class="crisis-callout reveal" style="transition-delay: 0.3s;">
+                <p class="lead-para">We are a team of local mental health professionals living and working in <strong>Gaza</strong>, understanding the reality of war from daily life, not from a distance.</p>
+                <div class="crisis-callout">
                     <p>When services collapse, children are left with fear, aggression, and trauma. Families are left without support.</p>
                     <span class="action-badge">We step in immediately.</span>
                 </div>
-                <p class="footer-para reveal" style="transition-delay: 0.4s;">Through free, confidential consultations via WhatsApp and email, we provide practical, culturally grounded psychological support to reach those no one else can reach.</p>
-                <div class="about-readmore-wrap reveal" style="transition-delay: 0.45s; margin-top: 25px;">
+                <p class="footer-para">Through free, confidential consultations via WhatsApp and email, we provide practical, culturally grounded psychological support to reach those no one else can reach.</p>
+                <div class="about-readmore-wrap" style="margin-top: 25px;">
                     <a href="{{ route('about') }}" class="btn-about-readmore">
                         <span>Read More About Us</span>
                         <i class="fas fa-arrow-right"></i>
@@ -216,25 +216,25 @@
     <!-- ══ GET HELP SECTION ══ -->
     <section class="get-help-section" id="get-help">
         <div class="get-help-container">
-            <h2 class="get-help-title reveal-left">Get help</h2>
-            <p class="get-help-subtitle reveal-left" style="transition-delay: 0.1s;">To get support, follow these steps</p>
+            <h2 class="get-help-title">Get help</h2>
+            <p class="get-help-subtitle">To get support, follow these steps</p>
         <div class="get-help-flow-track">
             <div class="steps-wrapper">
-                <div class="step-item reveal" style="transition-delay: 0.1s;">
+                <div class="step-item" style="transition-delay: 0.1s;">
                     <div class="step-header">
                         <i class="fas fa-lock"></i>
                         <h3>Choose Your Secure Gateway.</h3>
                     </div>
                     <p class="step-desc">Select the method that brings you comfort WhatsApp or email to start supporting your child instantly without any complicated registration.</p>
                 </div>
-                <div class="step-item reveal" style="transition-delay: 0.2s;">
+                <div class="step-item" style="transition-delay: 0.2s;">
                     <div class="step-header">
                         <i class="fas fa-comment-dots"></i>
                         <h3>Speak Freely and Privately.</h3>
                     </div>
                     <p class="step-desc">Connect with a specialist who understands your reality, in a space that guarantees absolute confidentiality and emotional support for you and your family.</p>
                 </div>
-                <div class="step-item reveal" style="transition-delay: 0.3s;">
+                <div class="step-item" style="transition-delay: 0.3s;">
                     <div class="step-header">
                         <i class="fas fa-lightbulb"></i>
                         <h3>Practical Steps Toward Recovery.</h3>
@@ -244,14 +244,14 @@
             </div>
 
             <!-- Centered Read More Button before Policies & Disclaimer -->
-            <div class="get-help-readmore-wrap reveal" style="display: flex; justify-content: center; margin: 35px 0 25px 0; transition-delay: 0.2s;">
+            <div class="get-help-readmore-wrap" style="display: flex; justify-content: center; margin: 35px 0 25px 0;">
                 <a href="{{ route('gethelp') }}" class="btn-about-readmore">
                     <span>Read More </span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
 
-            <div class="policy-container reveal" style="transition-delay: 0.25s;">
+            <div class="policy-container">
                 <div class="policy-info">
                     <i class="fas fa-file-shield"></i>
                     <p class="policy-text">
@@ -259,12 +259,67 @@
                         Please take a moment to review our terms. they are designed to protect your privacy and ensure clear, safe communication. You can contact us anytime for support. By reaching out, you confirm your understanding and acceptance of these guidelines.
                     </p>
                 </div>
-                <a href="/documents/Terms_of_Service.pdf" class="btn-download" download="Terms_of_Service.pdf" title="Download Usage Policies">
-                    <i class="fas fa-download"></i> Download PDF
-                </a>
+                <div style="display:flex; gap:10px; flex-shrink:0;">
+                    <button onclick="openPdfModal()" class="btn-download" style="background:#f0f6ff; color:#184B89; border:1.5px solid #bfdbfe; cursor:pointer;">
+                        <i class="fas fa-eye"></i> View PDF
+                    </button>
+                    <a href="/documents/Terms_of_Service.pdf" class="btn-download" download="Terms_of_Service.pdf" title="Download Usage Policies">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+
+            <!-- ══ PDF VIEWER MODAL ══ -->
+            <div id="pdfViewerModal" style="
+                display:none; position:fixed; inset:0; z-index:99999;
+                background:rgba(10,26,50,0.72); backdrop-filter:blur(6px);
+                align-items:center; justify-content:center; padding:20px;
+            ">
+                <div style="
+                    background:#fff; border-radius:18px; width:100%; max-width:860px;
+                    max-height:90vh; display:flex; flex-direction:column;
+                    box-shadow:0 30px 80px rgba(0,0,0,0.35); overflow:hidden;
+                ">
+                    <!-- Modal Header -->
+                    <div style="
+                        display:flex; align-items:center; justify-content:space-between;
+                        padding:18px 24px; border-bottom:1.5px solid #e2e8f0;
+                        background:#f8fafc; flex-shrink:0;
+                    ">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div style="
+                                width:38px; height:38px; border-radius:10px;
+                                background:#eef4fc; color:#184B89; border:1.5px solid #bfdbfe;
+                                display:flex; align-items:center; justify-content:center; font-size:16px;
+                            "><i class="fas fa-file-shield"></i></div>
+                            <div>
+                                <div style="font-weight:800; color:#0a2a4a; font-size:15px;">Service Usage Policies & Disclaimer</div>
+                                <div style="font-size:12px; color:#5a6e85;">Terms_of_Service.pdf</div>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <a href="/documents/Terms_of_Service.pdf" download="Terms_of_Service.pdf"
+                               style="display:inline-flex; align-items:center; gap:7px; background:#184B89; color:#fff;
+                                      padding:9px 18px; border-radius:50px; font-size:13.5px; font-weight:700;
+                                      text-decoration:none;">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                            <button onclick="closePdfModal()" style="
+                                width:36px; height:36px; border-radius:50%; border:1.5px solid #e2e8f0;
+                                background:#fff; color:#5a6e85; cursor:pointer; font-size:16px;
+                                display:flex; align-items:center; justify-content:center;
+                            "><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- PDF iframe -->
+                    <iframe src="/documents/Terms_of_Service.pdf"
+                            style="flex:1; width:100%; min-height:560px; border:none;"
+                            title="Service Usage Policies">
+                    </iframe>
+                </div>
             </div>
         </div>
-            <div class="get-help-footer reveal" style="transition-delay: 0.3s;">
+            <div class="get-help-footer">
                 <p class="footer-text">Don't hesitate to contact us to protect your child.</p>
                 <div class="contact-buttons">
                     <a href="#" class="btn-contact btn-whatsapp" 
@@ -445,5 +500,28 @@ function sendPartnerEmail() {
         alert('Something went wrong. Please try again.');
     });
 }
+
+// ══ PDF VIEWER MODAL ══
+function openPdfModal() {
+    const modal = document.getElementById('pdfViewerModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closePdfModal() {
+    const modal = document.getElementById('pdfViewerModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+// Close on backdrop click
+document.getElementById('pdfViewerModal')?.addEventListener('click', function(e) {
+    if (e.target === this) closePdfModal();
+});
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePdfModal();
+});
 </script>
 @endsection

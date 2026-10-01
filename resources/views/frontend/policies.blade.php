@@ -130,6 +130,35 @@
                 </div>
             </div>
 
+            <!-- ══ PDF BOX after Online Safety Policy ══ -->
+            <div style="background:#f0f6ff; border:1.5px solid #bfdbfe; border-radius:16px; padding:20px 24px;
+                        display:flex; align-items:center; justify-content:space-between; gap:16px;
+                        margin-bottom:32px; flex-wrap:wrap; box-shadow:0 4px 14px rgba(24,75,137,0.06);">
+                <div style="display:flex; align-items:center; gap:14px; flex:1;">
+                    <div style="width:42px; height:42px; border-radius:11px; background:#eef4fc; color:#184B89;
+                                border:1.5px solid #bfdbfe; display:flex; align-items:center;
+                                justify-content:center; font-size:18px; flex-shrink:0;">
+                        <i class="fas fa-file-shield"></i>
+                    </div>
+                    <div>
+                        <div style="font-weight:800; color:#0a2a4a; font-size:15px; margin-bottom:3px;">Service Usage Policies & Disclaimer</div>
+                        <div style="font-size:13px; color:#5a6e85; line-height:1.5;">
+                            Please take a moment to review our full terms. They are designed to protect your privacy and ensure clear, safe communication.
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:10px; flex-shrink:0;">
+                    <button onclick="openPdfModal()" class="btn-download"
+                            style="background:#fff; color:#184B89; border:1.5px solid #bfdbfe; cursor:pointer;">
+                        <i class="fas fa-eye"></i> View PDF
+                    </button>
+                    <a href="/documents/Terms_of_Service.pdf" class="btn-download"
+                       download="Terms_of_Service.pdf" title="Download Usage Policies">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+
             <!-- 6. Do No Harm & Ethical Practice -->
             <div class="policy-item-block">
                 <div class="policy-item-header">
@@ -241,9 +270,84 @@
         </div>
     </section>
 
+
+
+
+    <!-- ══ PDF VIEWER MODAL ══ -->
+    <div id="pdfViewerModal" style="
+        display:none; position:fixed; inset:0; z-index:99999;
+        background:rgba(10,26,50,0.72); backdrop-filter:blur(6px);
+        align-items:center; justify-content:center; padding:20px;
+    ">
+        <div style="
+            background:#fff; border-radius:18px; width:100%; max-width:860px;
+            max-height:90vh; display:flex; flex-direction:column;
+            box-shadow:0 30px 80px rgba(0,0,0,0.35); overflow:hidden;
+        ">
+            <!-- Modal Header -->
+            <div style="
+                display:flex; align-items:center; justify-content:space-between;
+                padding:18px 24px; border-bottom:1.5px solid #e2e8f0;
+                background:#f8fafc; flex-shrink:0;
+            ">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <div style="
+                        width:38px; height:38px; border-radius:10px;
+                        background:#eef4fc; color:#184B89; border:1.5px solid #bfdbfe;
+                        display:flex; align-items:center; justify-content:center; font-size:16px;
+                    "><i class="fas fa-file-shield"></i></div>
+                    <div>
+                        <div style="font-weight:800; color:#0a2a4a; font-size:15px;">Service Usage Policies & Disclaimer</div>
+                        <div style="font-size:12px; color:#5a6e85;">Terms_of_Service.pdf</div>
+                    </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <a href="/documents/Terms_of_Service.pdf" download="Terms_of_Service.pdf"
+                       style="display:inline-flex; align-items:center; gap:7px; background:#184B89; color:#fff;
+                              padding:9px 18px; border-radius:50px; font-size:13.5px; font-weight:700;
+                              text-decoration:none;">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                    <button onclick="closePdfModal()" style="
+                        width:36px; height:36px; border-radius:50%; border:1.5px solid #e2e8f0;
+                        background:#fff; color:#5a6e85; cursor:pointer; font-size:16px;
+                        display:flex; align-items:center; justify-content:center;
+                    "><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <!-- PDF iframe -->
+            <iframe src="/documents/Terms_of_Service.pdf"
+                    style="flex:1; width:100%; min-height:560px; border:none;"
+                    title="Service Usage Policies">
+            </iframe>
+        </div>
+    </div>
+
 @endsection
 
 <script>
+// ══ PDF VIEWER MODAL ══
+function openPdfModal() {
+    const modal = document.getElementById('pdfViewerModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closePdfModal() {
+    const modal = document.getElementById('pdfViewerModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+document.getElementById('pdfViewerModal')?.addEventListener('click', function(e) {
+    if (e.target === this) closePdfModal();
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePdfModal();
+});
+
+// ══ HERO & SCROLL ANIMATIONS ══
 document.addEventListener('DOMContentLoaded', function () {
     const heroElements = [
         { el: document.querySelectorAll('.ph-doc-1, .ph-doc-2, .ph-doc-3, .ph-doc-4, .ph-doc-5, .ph-doc-6'), delay: 0 },
